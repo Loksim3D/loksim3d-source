@@ -100,6 +100,7 @@ protected:
 	void Update11To12();
 	void Update12To13(const boost::filesystem::path& l3dPath);
 	void Update13To14();
+	void Update14To15();
 
 private:
 	Kompex::SQLiteDatabase db;

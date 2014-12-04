@@ -32,7 +32,7 @@ namespace l3d
 			{
 				std::vector<DBFileEntry> ret;
 				dbStmt_->Sql("SELECT ID, Filename, ExistedBefore, UsageCount FROM Files "
-							"WHERE LOWER(Filename) LIKE LOWER(@txt) ORDER BY Filename LIMIT 10");
+							"WHERE Filename LIKE(@txt) COLLATE NOCASE ORDER BY Filename LIMIT 10");
 				dbStmt_->BindString16(1, txt.c_str());
 				while (dbStmt_->FetchRow()) {
 					ret.emplace_back(*dbStmt_);

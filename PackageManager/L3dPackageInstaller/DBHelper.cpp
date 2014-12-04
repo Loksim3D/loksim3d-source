@@ -139,6 +139,20 @@ void DBHelper::SetPreference(const std::wstring& prefName, const std::wstring& v
 	}
 }
 
+void DBHelper::Update14To15()
+{
+	SQLiteStatement stmt(&db);
+	stmt.BeginTransaction();
+
+	stmt.SqlStatement("CREATE INDEX Files_Filename_Index "
+					  "ON Files(Filename COLLATE NOCASE)");
+
+
+	stmt.SqlStatement("UPDATE VersionInfo SET Major=1, Minor=5 WHERE Component='Database'");
+
+	stmt.CommitTransaction();
+}
+
 void DBHelper::Update13To14()
 {
 	{
@@ -366,6 +380,9 @@ void DBHelper::InitDb(const boost::filesystem::path& dbPath, const boost::filesy
 							  "UPDATE Files SET UsageCount = UsageCount - 1 WHERE ID = OLD.FileID AND UsageCount > 0; "
 							  "END ");
 
+			stmt.SqlStatement("CREATE INDEX Files_Filename_Index "
+							  "ON Files(Filename COLLATE NOCASE)");
+
 			/*
 			stmt.SqlStatement("CREATE TRIGGER OnUninstalledDependencyInsert " 
 							  "AFTER INSERT ON UninstalledDependencies " 
@@ -382,7 +399,7 @@ void DBHelper::InitDb(const boost::filesystem::path& dbPath, const boost::filesy
 							  "END ");
 			*/
 
-			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Database', 1, 4)");
+			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Database', 1, 5)");
 			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Programm', 2, 8)");
 			stmt.CommitTransaction();
 
@@ -402,7 +419,7 @@ bool DBHelper::IsDbUpdateRequired()
 	SQLiteStatement stmt(&db);
 	int major = stmt.GetSqlResultInt("SELECT Major FROM VersionInfo WHERE Component='Database'", -1);
 	int minor = stmt.GetSqlResultInt("SELECT Minor FROM VersionInfo WHERE Component='Database'", -1);
-	return major == 1 && minor < 4;
+	return major == 1 && minor < 5;
 }
 
 void DBHelper::UpdateDb(const boost::filesystem::path& l3dPath)
@@ -421,6 +438,9 @@ void DBHelper::UpdateDb(const boost::filesystem::path& l3dPath)
 	}
 	if (major == 1 && minor <= 3) {
 		Update13To14();
+	}
+	if (major == 1 && minor <= 4) {
+		Update14To15();
 	}
 }
 

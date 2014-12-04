@@ -46,7 +46,7 @@ void InstallPkgDBAgent::run(void)
 		stmtUpdateDependency.reset(new SQLiteStatement(db.get()));
 		stmtOther.reset(new SQLiteStatement(db.get()));
 
-		stmtSelectFileId->Sql("SELECT ID FROM Files WHERE LOWER(Filename)=LOWER(@filename);");
+		stmtSelectFileId->Sql("SELECT ID FROM Files WHERE Filename=@filename COLLATE NOCASE;");
 		stmtInsertFile->Sql("INSERT INTO Files(Filename, ExistedBefore) VALUES(@filename, @existedbefore);");
 		stmtInsertDependency->Sql("INSERT INTO Dependencies(FileID, PackageID, Installed) VALUES(@fileid, @packageid, @installed);");
 		stmtUpdateDependency->Sql("UPDATE Dependencies Set Installed = @installed WHERE FileID=@fileid AND PackageID=@packageid;");
