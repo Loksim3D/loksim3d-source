@@ -1,0 +1,15 @@
+﻿<Window x:Class="Loksim3D.WetterEdit.Dialogs.NewFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Neue Datei" Height="132" Width="224" ResizeMode="NoResize">
+    <StackPanel>
+        <ListView Margin="10" MouseDoubleClick="ListView_MouseDoubleClick" Name="listView" SelectedIndex="0">
+            <ListViewItem Content="Himmelsdatei" ToolTip="Fasst mehrere Wetterdateien zu einer Himmelsauswahl zusammen" Tag="l3dsky"  />
+            <ListViewItem Content="Wetterdatei" ToolTip="Definiert das Wetter für einen ganzen Tag" Tag="l3dweather" />
+        </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Margin="5" MinWidth="60" Click="ButtonOK_Click" />
+            <Button Content="Abbrechen" Margin="5" MinWidth="80" Click="ButtonCancel_Click"  />
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Loksim3D.WetterEdit.Views.SkyFileEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:usrCtrls="clr-namespace:Loksim3D.WetterEdit.Views.Controls"
+             xmlns:conv="clr-namespace:Loksim3D.WetterEdit.Views.Converters"
+             xmlns:res="clr-namespace:Loksim3D.WetterEdit.Resources"
+             mc:Ignorable="d" 
+             d:DesignHeight="399" d:DesignWidth="800">
+    <UserControl.Resources>
+        <conv:ReferenceToBoolConverter x:Key="boolConv" />
+    </UserControl.Resources>
+
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding Path=CopyWeatherFile}" Gesture="CTRL+C" />
+        <KeyBinding Command="{Binding Path=CutWeatherFile}" Gesture="CTRL+X" />
+        <KeyBinding Command="{Binding Path=PasteWeatherFile}" Gesture="CTRL+V" />
+    </UserControl.InputBindings>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel>
+            <ListView ItemsSource="{Binding Path=SkyFile.WeatherSets}" MinWidth="250" Name="listView" 
+                      SelectedValue="{Binding Path=SelectedWeatherFile}"  Margin="5" MinHeight="150" SelectedIndex="{Binding Path=SelectedWeatherFileIndex}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=WeatherFile.Filename}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="{x:Static res:Strings.AddNewWeatherFile}" Command="{Binding Path=AddFileCmd}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/addfile.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="{x:Static res:Strings.RemoveWeatherFile}" Command="{Binding Path=RemoveFileCmd}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/delete.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                            <Separator />
+                            
+                            <MenuItem Command="{Binding Path=WeatherFileUp}" Header="{x:Static res:Strings.WeatherFileUp}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/up.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                            <MenuItem Command="{Binding Path=WeatherFileDown}" Header="{x:Static res:Strings.WeatherFileDown}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/down.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                            <Separator />                            
+                            <MenuItem Command="{Binding Path=CutWeatherFile}" Header="{x:Static res:Strings.Cut}" InputGestureText="{x:Static res:Strings.CutGestureText}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/cut.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Command="{Binding Path=CopyWeatherFile}" Header="{x:Static res:Strings.Copy}" InputGestureText="{x:Static res:Strings.CopyGestureText}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/copy.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Command="{Binding Path=PasteWeatherFile}" Header="{x:Static res:Strings.Paste}" InputGestureText="{x:Static res:Strings.PasteGestureText}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/paste.ico" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Stretch"  Margin="5">
+            <Grid Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                    <Label Content="{x:Static res:Strings.PathColon}" Grid.Row="0" Grid.Column="0"  Margin="5" HorizontalAlignment="Left"/>
+                    <usrCtrls:FilePathControl FilePath="{Binding ElementName=listView, Path=SelectedItem.WeatherFile, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                              FileDialogFilters="{Binding Path=FileDlgWeatherFilesFilters, Mode=OneTime}" 
+                                              FileDialogGuid="{Binding Path=FileDlgWeatherFilesGuid, Mode=OneTime}"
+                                              MinWidth="200" Margin="5" HorizontalAlignment="Left"  Grid.Row="0" Grid.Column="1" 
+                                              IsEnabled="{Binding ElementName=listView,Path=SelectedValue, Converter={StaticResource boolConv}}" />
+
+                    <Label Content="{x:Static res:Strings.PropabilityColon}" Grid.Row="1" Grid.Column="0"  Margin="5" HorizontalAlignment="Left" />
+                    <TextBox MinWidth="60" ToolTip="{x:Static res:Strings.WeatherFilePropabilityDescription}" 
+                             Grid.Row="1" Grid.Column="1" MaxWidth="100" HorizontalAlignment="Left" Style="{StaticResource ToolTipErrorStyle}"
+                             Text="{Binding ElementName=listView, Path=SelectedItem.Probability, FallbackValue=''}"  Margin="5" 
+                             IsEnabled="{Binding ElementName=listView,Path=SelectedValue, Converter={StaticResource boolConv}}"
+                             />                
+            </Grid>
+
+            <Label Content="{x:Static res:Strings.InfoColon}"  Margin="5" />
+            <TextBox MinHeight="200" IsEnabled="False" Text="{Binding Path=CurrentWeather.FileInfo, FallbackValue=''}"  Margin="5" />
+
+            <Image MaxHeight="256" MaxWidth="256" Source="{Binding Path=CurrentWeather.FilePicture.AbsolutePath}" Margin="5" />
+
+        </StackPanel>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>

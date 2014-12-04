@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Loksim3D.WetterEdit.Views.DrivingCabFileEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:res="clr-namespace:Loksim3D.WetterEdit.Resources"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:f="clr-namespace:Loksim3D.WetterEdit.FileWrappers"
+             xmlns:mns="clr-namespace:Loksim3D.WetterEdit"             
+             xmlns:uc="clr-namespace:Loksim3D.WetterEdit.Views.Controls"
+             xmlns:views="clr-namespace:Loksim3D.WetterEdit.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel LastChildFill="True">
+        <xctk:PropertyGrid MaxWidth="350" x:Name="propGrid" DockPanel.Dock="Left" SelectedObject="{Binding Path=CabFile}" AutoGenerateProperties="False" 
+                           SelectedPropertyItemChanged="PropertyGrid_SelectedPropertyItemChanged" FilterWatermark="Suche...">
+            <xctk:PropertyGrid.PropertyDefinitions>
+                <xctk:PropertyDefinition Name="Schleudern" />
+                <xctk:PropertyDefinition Name="Sanden"  />                
+                <xctk:PropertyDefinition Name="EngineLength"  />
+                <xctk:PropertyDefinition Name="Bitmap"  />
+                <xctk:PropertyDefinition Name="Author"  />
+            </xctk:PropertyGrid.PropertyDefinitions>
+
+            <xctk:PropertyGrid.EditorDefinitions>
+                <!-- Template für Instrument-Position -->
+                <xctk:EditorDefinition TargetType="{x:Type f:GaugePosition}">
+                    <xctk:EditorDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                 <TextBox Text="{Binding Path=Value.X}" Grid.Row="0" Grid.Column="0" ToolTip="X-Position des Instruments"/>
+                                 <TextBox Text="{Binding Path=Value.Y}" Grid.Row="0" Grid.Column="1" ToolTip="Y-Position des Instruments" />
+                            </Grid>
+                        </DataTemplate>
+                    </xctk:EditorDefinition.EditorTemplate>
+                </xctk:EditorDefinition>
+
+                <!-- Template für Instrument Größe -->
+                <xctk:EditorDefinition TargetType="{x:Type f:GaugeDimension}">
+                    <xctk:EditorDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Path=Value.Width}" Grid.Row="0" Grid.Column="0" ToolTip="Breite des Instruments in px" />
+                                <TextBox Text="{Binding Path=Value.Height}" Grid.Row="1" Grid.Column="1" ToolTip="Höhe des Instruments in px" />
+                            </Grid>
+                        </DataTemplate>
+                    </xctk:EditorDefinition.EditorTemplate>
+                </xctk:EditorDefinition>
+
+                <!-- Template für L3dFilePath -->
+                <xctk:EditorDefinition TargetType="{x:Type mns:L3dFilePath}">
+                    <xctk:EditorDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <uc:FilePathControl FilePath="{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FileDialogFilters="{Binding Source={x:Static views:FileExtensions.TextureFiles}}" />
+                        </DataTemplate>
+                    </xctk:EditorDefinition.EditorTemplate>
+                </xctk:EditorDefinition>
+            </xctk:PropertyGrid.EditorDefinitions>
+        </xctk:PropertyGrid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="canvasBmp" MouseDown="canvasBmp_MouseDown" MouseMove="canvasBmp_MouseMove" MouseUp="canvasBmp_MouseUp" MouseWheel="canvasBmp_MouseWheel">
+                <Image Source="{Binding Path=CabFile.Bitmap.AbsolutePath}" x:Name="imgCab" SizeChanged="imgCab_SizeChanged">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" x:Name="imgScale" />
+                    </Image.RenderTransform>
+                </Image>
+            </Canvas>
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>

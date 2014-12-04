@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Above" xml:space="preserve">
+    <value>Above</value>
+  </data>
+  <data name="AddNewWeatherFile" xml:space="preserve">
+    <value>Add new Weatherfile</value>
+  </data>
+  <data name="AddVariable" xml:space="preserve">
+    <value>New Variable</value>
+  </data>
+  <data name="AppCloseUnsavedChanges" xml:space="preserve">
+    <value>There are unsaved changes
+Would you like to save these changes?</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Loksim WeatherEdit</value>
+  </data>
+  <data name="AuthorColon" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="BrightnessColon" xml:space="preserve">
+    <value>Brightness:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ClearImage" xml:space="preserve">
+    <value>Clear Image</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CopyGestureText" xml:space="preserve">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CutGestureText" xml:space="preserve">
+    <value>Ctrl+X</value>
+  </data>
+  <data name="DeleteVariable" xml:space="preserve">
+    <value>Delete Variable</value>
+  </data>
+  <data name="East" xml:space="preserve">
+    <value>East</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="ErrorLoadingFile_0_Msg_1_" xml:space="preserve">
+    <value>Error loading file {0}:
+{1}</value>
+  </data>
+  <data name="FileProperties" xml:space="preserve">
+    <value>File Properties</value>
+  </data>
+  <data name="FileSaveError" xml:space="preserve">
+    <value>Error while saving {0}:
+{1}</value>
+  </data>
+  <data name="FilesBmp" xml:space="preserve">
+    <value>Bitmap Files</value>
+  </data>
+  <data name="FilesImages" xml:space="preserve">
+    <value>Image Files</value>
+  </data>
+  <data name="FilesLoksim" xml:space="preserve">
+    <value>Loksim Files</value>
+  </data>
+  <data name="FilesSky" xml:space="preserve">
+    <value>Sky Files</value>
+  </data>
+  <data name="FilesWeather" xml:space="preserve">
+    <value>Weather Files</value>
+  </data>
+  <data name="File_0_NotFound" xml:space="preserve">
+    <value>{0} not found</value>
+  </data>
+  <data name="ImageFromClipboard" xml:space="preserve">
+    <value>Image from Clipboard</value>
+  </data>
+  <data name="InfoColon" xml:space="preserve">
+    <value>Info:</value>
+  </data>
+  <data name="MainMenuEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="MainMenuFile" xml:space="preserve">
+    <value>_File</value>
+  </data>
+  <data name="MainMenuFileClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MainMenuFileNew" xml:space="preserve">
+    <value>_New</value>
+  </data>
+  <data name="MainMenuFileOpen" xml:space="preserve">
+    <value>_Open</value>
+  </data>
+  <data name="MainMenuFileProperties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="MainMenuFileRecent" xml:space="preserve">
+    <value>Recent Files</value>
+  </data>
+  <data name="MainMenuFileSave" xml:space="preserve">
+    <value>_Save</value>
+  </data>
+  <data name="MainMenuFileSaveAs" xml:space="preserve">
+    <value>Save as...</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewFile" xml:space="preserve">
+    <value>New File</value>
+  </data>
+  <data name="North" xml:space="preserve">
+    <value>North</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OtherImage" xml:space="preserve">
+    <value>Other Image</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="PasteGestureText" xml:space="preserve">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="PathColon" xml:space="preserve">
+    <value>Path:</value>
+  </data>
+  <data name="PropabilityColon" xml:space="preserve">
+    <value>Propability:</value>
+  </data>
+  <data name="RemoveWeatherFile" xml:space="preserve">
+    <value>Remove Weatherfile</value>
+  </data>
+  <data name="SightdistanceColon" xml:space="preserve">
+    <value>Sightdistance:</value>
+  </data>
+  <data name="SkyFile" xml:space="preserve">
+    <value>Skyfile</value>
+  </data>
+  <data name="SkyFileDescription" xml:space="preserve">
+    <value>Combines some Weatherfiles into one file that allows to select a sky</value>
+  </data>
+  <data name="South" xml:space="preserve">
+    <value>South</value>
+  </data>
+  <data name="WthTest" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Variables" xml:space="preserve">
+    <value>Variables</value>
+  </data>
+  <data name="VarValidationEmpty" xml:space="preserve">
+    <value>Please insert a variable name.</value>
+  </data>
+  <data name="VarValidationNumber" xml:space="preserve">
+    <value>Variablenames cannot start with numbers.</value>
+  </data>
+  <data name="VarValidation_0_Illegal" xml:space="preserve">
+    <value>'{0}' cannot be used in a variable name.</value>
+  </data>
+  <data name="WeatherFile" xml:space="preserve">
+    <value>Weatherfile</value>
+  </data>
+  <data name="WeatherFileDescription" xml:space="preserve">
+    <value>Defines the weather for a whole day</value>
+  </data>
+  <data name="WeatherFilePropabilityDescription" xml:space="preserve">
+    <value>The higher this propability the more likely this weather will be choose when using random weahter selection</value>
+  </data>
+  <data name="West" xml:space="preserve">
+    <value>West</value>
+  </data>
+  <data name="WthAddTimerange" xml:space="preserve">
+    <value>New Timerange</value>
+  </data>
+  <data name="WthBrightnessDay" xml:space="preserve">
+    <value>Brightness Day</value>
+  </data>
+  <data name="WthBrightnessFactor" xml:space="preserve">
+    <value>Factor Brightness</value>
+  </data>
+  <data name="WthBrightnessNight" xml:space="preserve">
+    <value>Brightness Night</value>
+  </data>
+  <data name="WthCaption" xml:space="preserve">
+    <value>Caption (Text for Weather Selection)</value>
+  </data>
+  <data name="WthDawnBegin" xml:space="preserve">
+    <value>Begin Dawn</value>
+  </data>
+  <data name="WthDawnEnd" xml:space="preserve">
+    <value>End Dawn</value>
+  </data>
+  <data name="WthDeleteTimerange" xml:space="preserve">
+    <value>Delete Timerange</value>
+  </data>
+  <data name="WthDuskBegin" xml:space="preserve">
+    <value>Begin Dusk</value>
+  </data>
+  <data name="WthDuskEnd" xml:space="preserve">
+    <value>End Dusk</value>
+  </data>
+  <data name="WthIllumination" xml:space="preserve">
+    <value>Illumination</value>
+  </data>
+  <data name="WthSightDirColon" xml:space="preserve">
+    <value>Sightdirection:</value>
+  </data>
+  <data name="WthSightdistance" xml:space="preserve">
+    <value>Sightdistance</value>
+  </data>
+  <data name="WthSkybox" xml:space="preserve">
+    <value>Skybox</value>
+  </data>
+  <data name="WthSkyboxTexAbove" xml:space="preserve">
+    <value>Texture above</value>
+  </data>
+  <data name="WthSkyboxTexEast" xml:space="preserve">
+    <value>Texture on the right (East)</value>
+  </data>
+  <data name="WthSkyboxTexNorth" xml:space="preserve">
+    <value>Texture ahead (North)</value>
+  </data>
+  <data name="WthSkyboxTexSouth" xml:space="preserve">
+    <value>Texture behind (South)</value>
+  </data>
+  <data name="WthSkyboxTexWest" xml:space="preserve">
+    <value>Texture on the left (West)</value>
+  </data>
+  <data name="WthTimeRanges" xml:space="preserve">
+    <value>Timeranges</value>
+  </data>
+  <data name="WthTimeToTestColon" xml:space="preserve">
+    <value>Time to test:</value>
+  </data>
+  <data name="WthVarsDescription" xml:space="preserve">
+    <value>You can define custom variables or use predefined ones.
+Variables can be used to control the visibility of objects or sounds.</value>
+  </data>
+  <data name="AboutWndDateColon" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="AboutWndProdVersColon" xml:space="preserve">
+    <value>Product Version:</value>
+  </data>
+  <data name="AboutWndTitle" xml:space="preserve">
+    <value>About WeatherEdit</value>
+  </data>
+  <data name="AboutWndTxt" xml:space="preserve">
+    <value>Loksim3D is a freeware application and can be used at no charge. A commercial usage, leasing or sale of the product is prohibited. The copyright owners of this program are Ralf Gryga, Lukas Haselsteiner, Uwe Klein and Martin Mory.
+
+Für irgendwelche Schäden, die sich aus der Nutzung des Simulators ergeben sollten, wird keinerlei Haftung übernommen.</value>
+  </data>
+  <data name="LoksimWebsite" xml:space="preserve">
+    <value>http://www.loksim3d.de</value>
+  </data>
+  <data name="MainMenuHelp" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="MainMenuHelpAbout" xml:space="preserve">
+    <value>Info about Loksim WeatherEdit</value>
+  </data>
+  <data name="MainMenuEditSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsDefaultFileAuthorColon" xml:space="preserve">
+    <value>Default author:</value>
+  </data>
+  <data name="SettingsDefaultFileInfoColon" xml:space="preserve">
+    <value>Default fileinfo:</value>
+  </data>
+  <data name="SettingsLanguageColon" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsLanguageRestart" xml:space="preserve">
+    <value>Change requires restart of application</value>
+  </data>
+  <data name="UacDlgBtnAdmin" xml:space="preserve">
+    <value>Start as Admin</value>
+  </data>
+  <data name="UacDlgBtnNoAdmin" xml:space="preserve">
+    <value>Do not start as Admin</value>
+  </data>
+  <data name="UacDlgCaption" xml:space="preserve">
+    <value>No write permission</value>
+  </data>
+  <data name="UacDlgCheckBoxText" xml:space="preserve">
+    <value>Save choice and do not ask again</value>
+  </data>
+  <data name="UacDlgInstructionText" xml:space="preserve">
+    <value>WeatherEdit does not have wright permissions in the current directory</value>
+  </data>
+  <data name="UacDlgText" xml:space="preserve">
+    <value>For saving files write permissions are needed.
+Do you want to restart WetherEdit with administrative privileges to gain write permissions?</value>
+  </data>
+  <data name="SettingsUacStartMode" xml:space="preserve">
+    <value>If no write permissions...</value>
+  </data>
+  <data name="SettingsUacStartModeAsk" xml:space="preserve">
+    <value>Ask what to do</value>
+  </data>
+  <data name="DrivingCabFile" xml:space="preserve">
+    <value>Driving Cab File</value>
+  </data>
+  <data name="DrivingCabFileDescription" xml:space="preserve">
+    <value>Defines the driving cab of an engine</value>
+  </data>
+  <data name="PositiveIntegerValidation" xml:space="preserve">
+    <value>Please insert a positive integer</value>
+  </data>
+  <data name="WthSkyboxDescTexture" xml:space="preserve">
+    <value>Texturefile</value>
+  </data>
+  <data name="WthSkyboxDescTextureTileU" xml:space="preserve">
+    <value>h. tiles</value>
+  </data>
+  <data name="WthSkyboxDescTextureTileV" xml:space="preserve">
+    <value>v. tiles</value>
+  </data>
+  <data name="WthSkyboxDescToolTipTextureTileU" xml:space="preserve">
+    <value>Number of horizontal tiles</value>
+  </data>
+  <data name="WthSkyboxDescToolTipTextureTileV" xml:space="preserve">
+    <value>Number of vertical tiles</value>
+  </data>
+  <data name="PositiveFloatValidation" xml:space="preserve">
+    <value>Please insert a positive number</value>
+  </data>
+  <data name="DokuColon" xml:space="preserve">
+    <value>Documentation:</value>
+  </data>
+  <data name="FilesDoku" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="WeatherFileDown" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="WeatherFileUp" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="Precipitation" xml:space="preserve">
+    <value>Precipitation (Alpha)</value>
+  </data>
+  <data name="PrecipitationDescription" xml:space="preserve">
+    <value>Controls Precipitation in this timespan</value>
+  </data>
+  <data name="Snowfall" xml:space="preserve">
+    <value>Snowfall</value>
+  </data>
+</root>

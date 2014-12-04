@@ -1,0 +1,64 @@
+﻿<Window x:Class="Loksim3D.WetterEdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{x:Static res:Strings.AppName}" Height="768" Width="1024" Loaded="Window_Loaded"
+        xmlns:res="clr-namespace:Loksim3D.WetterEdit.Resources" xmlns:my="clr-namespace:Loksim3D.WetterEdit.ViewModels" Closing="Window_Closing"
+        Icon="Resources/WetterEditIcon.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CommandNew_CanExecute" Executed="CommandNew_Executed" />
+        <CommandBinding Command="Open" CanExecute="CommandOpen_CanExecute" Executed="CommandOpen_Executed" />
+        <CommandBinding Command="Save" CanExecute="CommandSave_CanExecute" Executed="CommandSave_Executed" />
+        <CommandBinding Command="SaveAs" CanExecute="CommandSaveAs_CanExecute" Executed="CommandSaveAs_Executed" />
+        <CommandBinding Command="Properties" CanExecute="CommandProperties_CanExecute" Executed="CommandProperties_Executed" />
+        <CommandBinding Command="Close" CanExecute="CommandClose_CanExecute" Executed="CommandClose_Executed" />
+
+        <CommandBinding Command="Undo" CanExecute="CommandUndo_CanExecute" Executed="CommandUndo_Executed" />
+        <CommandBinding Command="Redo" CanExecute="CommandRedo_CanExecute" Executed="CommandRedo_Executed" />
+        
+        <CommandBinding Command="Help" Executed="CommandHelp_Executed" />
+    </Window.CommandBindings>
+    
+    <DockPanel x:Name="mainDock">
+        
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Stretch" Name="mainMenu" IsMainMenu="True" VerticalAlignment="Top">
+            <MenuItem Header="{x:Static res:Strings.MainMenuFile}" x:Name="menuFile">
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileNew}" Command="New" />
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileOpen}" Command="Open" />
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileSave}" Command="Save"/>
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileSaveAs}" Command="SaveAs"/>
+                <Separator />
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileProperties}" Command="Properties" />
+                <Separator x:Name="separatorBeforeFiles" />
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileRecent}"  x:Name="recentFilesMenuItem">
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="{x:Static res:Strings.MainMenuFileClose}" Command="Close" />
+            </MenuItem>
+
+            <MenuItem Header="{x:Static res:Strings.MainMenuEdit}">
+                <MenuItem Command="Undo" />
+                <MenuItem Command="Redo" />
+                <Separator />
+                <MenuItem Header="{x:Static res:Strings.MainMenuEditSettings}"  Click="MenuItemEditSettings_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="{x:Static res:Strings.MainMenuHelp}">
+                <MenuItem Command="Help" />
+                <MenuItem Header="{x:Static res:Strings.MainMenuHelpAbout}" Click="MenuItemHelpAbout_Click" />
+            </MenuItem>
+        </Menu>
+
+
+        <!--
+        <my:FilePathControl x:Name="debugCtrl" FilePath="{Binding Path=DebugPath, Mode=TwoWay}"/>
+        -->
+        <!--<TextBox Text="{Binding Path=DebugRange.Texture.Filename, Mode=OneWay}" />-->
+        <!--
+        <my:WeatherFileEdit x:Name="weatherFileEdit1" />
+        -->
+        <!--
+        <DataGrid AutoGenerateColumns="True" x:Name="testGrid" />
+            -->
+
+    </DockPanel>
+</Window>

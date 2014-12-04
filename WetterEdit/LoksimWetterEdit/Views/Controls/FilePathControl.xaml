@@ -1,0 +1,31 @@
+﻿<!-- Test Comment -->
+<UserControl x:Class="Loksim3D.WetterEdit.Views.Controls.FilePathControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:toolkitprev="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             mc:Ignorable="d" 
+             x:Name="FilePathControlName"
+             d:DesignHeight="50" d:DesignWidth="300">
+   
+    <UserControl.Resources>
+        <Style x:Key="ToolTipErrorStyle" TargetType="{x:Type FrameworkElement}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self},
+                                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <Button Content="..." DockPanel.Dock="Right" MinWidth="35" VerticalAlignment="Center" Margin="5,0,0,0" Click="Button_Click" 
+                IsEnabled="{Binding ElementName=FilePathControlName, Path=IsEnabled}" />
+        <toolkitprev:AutoCompleteBox Text="{Binding ElementName=FilePathControlName, Path=TbText, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch" x:Name="tbPath" Style="{StaticResource ToolTipErrorStyle}" 
+                 IsEnabled="{Binding ElementName=FilePathControlName, Path=IsEnabled}" LostFocus="tbPath_LostFocus" />
+
+    </DockPanel>
+</UserControl>

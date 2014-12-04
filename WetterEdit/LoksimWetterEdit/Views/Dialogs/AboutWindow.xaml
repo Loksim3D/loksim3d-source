@@ -1,0 +1,28 @@
+﻿<Window x:Class="Loksim3D.WetterEdit.Views.Dialogs.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:Loksim3D.WetterEdit.Resources"
+        Title="{x:Static res:Strings.AboutWndTitle}"  Width="328" Loaded="Window_Loaded" MaxWidth="350" WindowStartupLocation="CenterOwner" WindowStyle="SingleBorderWindow" ShowInTaskbar="False" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <StackPanel Margin="5">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="{x:Static res:Strings.AboutWndProdVersColon}" />
+            <Label Grid.Row="0" Grid.Column="1" Content="xxx" FontWeight="Bold" x:Name="txtProductVersion"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="{x:Static res:Strings.AboutWndDateColon}" />
+            <Label Grid.Row="1" Grid.Column="1" Content="xxx" FontWeight="Bold" x:Name="txtDate" />
+        </Grid>
+        <TextBlock >
+            <TextBlock TextWrapping="Wrap" Text="{x:Static res:Strings.AboutWndTxt}" />
+            <LineBreak /><LineBreak />
+            <Bold><Hyperlink TargetName="Loksim 3D" Click="Hyperlink_Click"><TextBlock Text="{x:Static res:Strings.LoksimWebsite}" /></Hyperlink></Bold>
+        </TextBlock>
+        <Button Content="OK" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" MinWidth="60" Margin="10" IsDefault="True" Click="Button_Click" />
+    </StackPanel>
+</Window>
