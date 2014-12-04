@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D4E410D4-EA1F-4C3E-8243-7044FECF770F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>L3dPackageInstaller</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Loksim\L3D_Props.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Loksim\L3D_Props.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\lhWinApi\Include;..\lhStd\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>..\libD;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+    <TargetName>PackageManager_Debug</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <OutDir>..\..\..\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\lhWinApi\Include;..\lhStd\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
+    <TargetName>PackageManager</TargetName>
+    <OutDir>..\..\..\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>KompexSQLiteWrapper_Static_d.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\debug</AdditionalLibraryDirectories>
+      <OutputFile>..\..\..\PackageManager_Debug.exe</OutputFile>
+    </Link>
+    <Manifest>
+      <AdditionalManifestFiles>L3dPackageInstaller.exe.manifest %(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <EnableDPIAwareness>true</EnableDPIAwareness>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>KompexSQLiteWrapper_Static.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\release</AdditionalLibraryDirectories>
+      <OutputFile>..\..\..\PackageManager.exe</OutputFile>
+    </Link>
+    <Manifest>
+      <EnableDPIAwareness>true</EnableDPIAwareness>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="go-down.ico" />
+    <None Include="go-up.ico" />
+    <None Include="README Implementierung.txt" />
+    <None Include="L3dPackageInstaller.ico" />
+    <None Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgentCommand.h" />
+    <ClInclude Include="BaseL3dFile.h" />
+    <ClInclude Include="ComHelper.h" />
+    <ClInclude Include="DBDependencyEntry.h" />
+    <ClInclude Include="DBFileEntry.h" />
+    <ClInclude Include="DBHelper.h" />
+    <ClInclude Include="DBPackageEntry.h" />
+    <ClInclude Include="DBUnOrInstallPkgInfo.h" />
+    <ClInclude Include="DlgDbUpdate.h" />
+    <ClInclude Include="DeinstallManager.h" />
+    <ClInclude Include="Dialog.h" />
+    <ClInclude Include="DlgAbout.h" />
+    <ClInclude Include="DlgDeInstallSelectFiles.h" />
+    <ClInclude Include="DlgDeinstallSelectPkg.h" />
+    <ClInclude Include="DlgFileDependencies.h" />
+    <ClInclude Include="DlgInstallSelectFiles.h" />
+    <ClInclude Include="DlgPackageInstall.h" />
+    <ClInclude Include="DlgSettings.h" />
+    <ClInclude Include="DlgUndo.h" />
+    <ClInclude Include="FileDlgHelper.h" />
+    <ClInclude Include="BackgroundOperatorDlg.h" />
+    <ClInclude Include="FileSearch.h" />
+    <ClInclude Include="FileSystemUtils.h" />
+    <ClInclude Include="FileToDeinstall.h" />
+    <ClInclude Include="InstallerException.h" />
+    <ClInclude Include="InstallHelperStructs.h" />
+    <ClInclude Include="InstallManager.h" />
+    <ClInclude Include="InstallPkgDBAgent.h" />
+    <ClInclude Include="FileDropTarget.h" />
+    <ClInclude Include="KTM.h" />
+    <ClInclude Include="L3dConsts.h" />
+    <ClInclude Include="L3dPackageInfo.h" />
+    <ClInclude Include="L3dPackageInstaller.h" />
+    <ClInclude Include="MainDlg.h" />
+    <ClInclude Include="OpenFileDlg.h" />
+    <ClInclude Include="PackageFileNameUtils.h" />
+    <ClInclude Include="PackageInfo.h" />
+    <ClInclude Include="PackageSearch.h" />
+    <ClInclude Include="PreInstallWorker.h" />
+    <ClInclude Include="pugixml\pugiconfig.hpp" />
+    <ClInclude Include="pugixml\pugixml.hpp" />
+    <ClInclude Include="RegistryAccess.h" />
+    <ClInclude Include="ResizeableDialog.h" />
+    <ClInclude Include="ResizeableDialogHelper.h" />
+    <ClInclude Include="ResizeableDialogHelperTypes.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="sha\SHA1.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TimeUtils.h" />
+    <ClInclude Include="VistaFileDlg.h" />
+    <ClInclude Include="VistaOpenFileDlg.h" />
+    <ClInclude Include="XpOpenFileDlg.h" />
+    <ClInclude Include="Zip\unzip.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseL3dFile.cpp" />
+    <ClCompile Include="DBDependencyEntry.cpp" />
+    <ClCompile Include="DBFileEntry.cpp" />
+    <ClCompile Include="DBHelper.cpp" />
+    <ClCompile Include="DBPackageEntry.cpp" />
+    <ClCompile Include="DBUnOrInstallPkgInfo.cpp" />
+    <ClCompile Include="DlgDbUpdate.cpp" />
+    <ClCompile Include="DeinstallManager.cpp" />
+    <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="DlgAbout.cpp" />
+    <ClCompile Include="DlgDeInstallSelectFiles.cpp" />
+    <ClCompile Include="DlgDeinstallSelectPkg.cpp" />
+    <ClCompile Include="DlgFileDependencies.cpp" />
+    <ClCompile Include="DlgInstallSelectFiles.cpp" />
+    <ClCompile Include="DlgPackageInstall.cpp" />
+    <ClCompile Include="DlgSettings.cpp" />
+    <ClCompile Include="DlgUndo.cpp" />
+    <ClCompile Include="FileDlgHelper.cpp" />
+    <ClCompile Include="FileSearch.cpp" />
+    <ClCompile Include="FileSystemUtils.cpp" />
+    <ClCompile Include="InstallerException.cpp" />
+    <ClCompile Include="InstallHelperStructs.cpp" />
+    <ClCompile Include="InstallManager.cpp" />
+    <ClCompile Include="InstallPkgDBAgent.cpp" />
+    <ClCompile Include="FileDropTarget.cpp" />
+    <ClCompile Include="KTM.cpp" />
+    <ClCompile Include="L3dPackageInfo.cpp" />
+    <ClCompile Include="L3dPackageInstaller.cpp" />
+    <ClCompile Include="MainDlg.cpp" />
+    <ClCompile Include="PackageFileNameUtils.cpp" />
+    <ClCompile Include="PackageSearch.cpp" />
+    <ClCompile Include="PreInstallWorker.cpp" />
+    <ClCompile Include="pugixml\pugixml.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RegistryAccess.cpp" />
+    <ClCompile Include="ResizeableDialog.cpp" />
+    <ClCompile Include="sha\SHA1.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TimeUtils.cpp" />
+    <ClCompile Include="VistaFileDlg.cpp" />
+    <ClCompile Include="VistaOpenFileDlg.cpp" />
+    <ClCompile Include="XpOpenFileDlg.cpp" />
+    <ClCompile Include="Zip\unzip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="L3dPackageInstaller.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="L3dPackageInstaller.exe.manifest">
+      <SubType>Designer</SubType>
+    </Manifest>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Zip">
+      <UniqueIdentifier>{81ec9b68-d561-40c9-a925-d0b513f7fbee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{082e3467-0e08-4537-849e-aeaf5fee97ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sha">
+      <UniqueIdentifier>{fc6e11d7-ac16-4b71-a089-61abe4efb58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{fdc79b54-c30f-4292-b2b7-66cbfd269280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\Header Files">
+      <UniqueIdentifier>{36ba23d4-f586-4c4f-ad17-5c2e25b8430f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db\Source Files">
+      <UniqueIdentifier>{8a915324-7a5d-40bf-8cbe-645b850afe5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui\Header Files">
+      <UniqueIdentifier>{056d745a-c5e1-4ce3-9917-187694108097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui\Source Files">
+      <UniqueIdentifier>{8900e766-df60-4ba5-b1e9-64cf8df69ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pugixml">
+      <UniqueIdentifier>{dc720ef5-8d6c-4934-a442-6bea99d83bf5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="L3dPackageInstaller.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="go-down.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="go-up.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="README Implementierung.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L3dPackageInstaller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zip\unzip.h">
+      <Filter>Zip</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageFileNameUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PreInstallWorker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallerException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallHelperStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sha\SHA1.h">
+      <Filter>sha</Filter>
+    </ClInclude>
+    <ClInclude Include="DBHelper.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallPkgDBAgent.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialog.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPackageInstall.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDlgHelper.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgInstallSelectFiles.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VistaFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VistaOpenFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XpOpenFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeinstallManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageSearch.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBPackageEntry.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDeinstallSelectPkg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDeInstallSelectFiles.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundOperatorDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSettings.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgAbout.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystemUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgUndo.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBUnOrInstallPkgInfo.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistryAccess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizeableDialog.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizeableDialogHelper.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizeableDialogHelperTypes.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseL3dFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L3dPackageInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugiconfig.hpp">
+      <Filter>pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugixml.hpp">
+      <Filter>pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="L3dConsts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileToDeinstall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBFileEntry.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBDependencyEntry.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSearch.h">
+      <Filter>db\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgFileDependencies.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDropTarget.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgDbUpdate.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="L3dPackageInstaller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zip\unzip.cpp">
+      <Filter>Zip</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageFileNameUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PreInstallWorker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallerException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallHelperStructs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sha\SHA1.cpp">
+      <Filter>sha</Filter>
+    </ClCompile>
+    <ClCompile Include="DBHelper.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallPkgDBAgent.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPackageInstall.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgInstallSelectFiles.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDlgHelper.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VistaFileDlg.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XpOpenFileDlg.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VistaOpenFileDlg.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeinstallManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageSearch.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBPackageEntry.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDeinstallSelectPkg.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDeInstallSelectFiles.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainDlg.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSettings.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgAbout.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystemUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgUndo.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBUnOrInstallPkgInfo.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistryAccess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResizeableDialog.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseL3dFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="L3dPackageInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml\pugixml.cpp">
+      <Filter>pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="DBFileEntry.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBDependencyEntry.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSearch.cpp">
+      <Filter>db\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgFileDependencies.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDropTarget.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgDbUpdate.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="L3dPackageInstaller.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="L3dPackageInstaller.exe.manifest" />
+  </ItemGroup>
+</Project>
