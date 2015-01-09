@@ -22,9 +22,7 @@ namespace l3d
 				void DoDbUpdateAndPostAfterFinish(const std::wstring& l3dPath, HWND hwndDlg)
 				{
 					db::DBHelper::instance().UpdateDb(l3dPath);
-					auto ret = PostMessage(hwndDlg, WM_FINISHED_UPDATE, 0, 0);
-					auto str = lhWinAPI::GetLastErrorS();
-
+					PostMessage(hwndDlg, WM_FINISHED_UPDATE, 0, 0);
 				}
 			}
 
