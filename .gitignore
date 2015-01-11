@@ -181,3 +181,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+PackageManager/lib/lhStd.lib
+PackageManager/lib/lhWinAPI.lib
+PackageManager/libD/lhStd.lib
+PackageManager/libD/lhWinAPI.lib

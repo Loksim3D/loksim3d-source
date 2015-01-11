@@ -83,6 +83,9 @@ protected:
 private:
 	void SetCheckStateAllChilds(HTREEITEM parent, BOOL fCheck);
 
+	void ExportInstallInformation(const std::wstring& exportToFile);
+	void WriteFileToExportList(const insthelper::FileInstallInfo& fii, std::wofstream& os);
+
 	template <class Func>
 	void ForAllTvItems(Func func);
 	template <class Func>

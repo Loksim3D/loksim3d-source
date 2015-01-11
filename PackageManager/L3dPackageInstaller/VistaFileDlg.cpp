@@ -85,16 +85,26 @@ HRESULT VistaFileDlg::SetTitle(const std::wstring& title)
 	return fileDlg->SetTitle(title.c_str());
 }
 
+HRESULT VistaFileDlg::SetDefaultExtension(const std::wstring& extension)
+{
+	return fileDlg->SetDefaultExtension(extension.c_str());
+}
+
 HRESULT VistaFileDlg::Show(HWND hwndOwner)
 {
 	resultShow = fileDlg->Show(hwndOwner);
 	return resultShow;
 }
 
-vector<wstring> VistaFileDlg::GetResult()
+HRESULT VistaFileDlg::SetClientGuid(const GUID& guid)
+{
+	return fileDlg->SetClientGuid(guid);
+}
+
+wstring VistaFileDlg::GetResult()
 {
 	HRESULT hr;
-	vector<wstring> ret;
+	std::wstring ret;
 	if (SUCCEEDED(resultShow))
 	{
 		// Obtain the result of the user's interaction with the dialog.
@@ -107,7 +117,7 @@ vector<wstring> VistaFileDlg::GetResult()
 			hr = psiResult->GetDisplayName(SIGDN_FILESYSPATH, &path);
 			if (SUCCEEDED(hr))
 			{
-				ret.push_back(path);
+				ret = path;
 				CoTaskMemFree(path);
 			}
 		}

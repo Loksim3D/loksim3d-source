@@ -219,6 +219,15 @@
     <ClInclude Include="DlgDbUpdate.h">
       <Filter>ui\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VistaSaveFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveFileDlg.h">
+      <Filter>ui\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -345,6 +354,9 @@
       <Filter>ui\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DlgDbUpdate.cpp">
+      <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VistaSaveFileDlg.cpp">
       <Filter>ui\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -70,11 +70,13 @@ void DlgPackageInstall::DoAddFilesDlg()
 	filter[0].pszName = filterName.c_str();
 	filter[0].pszSpec = filterExt.c_str();
 
+	static const GUID dlgGuid =	{ 0x21f280a6, 0x5d5b, 0x44c0, { 0x97, 0x67, 0x2, 0x30, 0x94, 0xed, 0x9c, 0xbb } };
+	dlg->SetClientGuid(dlgGuid);
 	
 	dlg->SetFileTypes(filter);
 	if (SUCCEEDED(dlg->Show(GetHwnd())))
 	{
-		DoAddFiles(dlg->GetResult());
+		DoAddFiles(dlg->GetResults());
 	}
 }
 

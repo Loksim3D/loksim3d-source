@@ -14,11 +14,11 @@ VistaOpenFileDlg::~VistaOpenFileDlg(void)
 {
 }
 
-vector<wstring> VistaOpenFileDlg::GetResult()
+vector<wstring> VistaOpenFileDlg::GetResults()
 {
+	vector<wstring> ret;
 	if (SUCCEEDED(resultShow) && ((GetOptions() & FOS_ALLOWMULTISELECT) != 0))
 	{
-		vector<wstring> ret;
 		HRESULT hr;
 		CComPtr<IFileOpenDialog> pOpenDlg;
 
@@ -57,6 +57,7 @@ vector<wstring> VistaOpenFileDlg::GetResult()
 	}
 	else
 	{
-		return VistaFileDlg::GetResult();
+		ret.push_back(VistaFileDlg::GetResult());
 	}
+	return ret;
 }

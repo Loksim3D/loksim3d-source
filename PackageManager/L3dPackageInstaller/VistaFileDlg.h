@@ -29,9 +29,13 @@ public:
 
 	HRESULT SetFileTypes(const std::vector<COMDLG_FILTERSPEC>& filterSpec);
 
+	HRESULT SetDefaultExtension(const std::wstring& extension);
+
+	HRESULT SetClientGuid(const GUID& guid);
+
 	virtual HRESULT Show(HWND hwndOwner);
 
-	virtual std::vector<std::wstring> GetResult();
+	virtual std::wstring GetResult();
 
 protected:
 	CComPtr<IFileDialog> fileDlg;

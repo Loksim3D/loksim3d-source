@@ -26,7 +26,9 @@ public:
 
 	HRESULT Show(HWND hwndOwner);
 
-	std::vector<std::wstring> GetResult();
+	virtual std::vector<std::wstring> GetResults() override;
+
+	HRESULT SetDefaultExtension(const std::wstring& extension) { return E_NOTIMPL; }
 
 private:
 	OPENFILENAME options;

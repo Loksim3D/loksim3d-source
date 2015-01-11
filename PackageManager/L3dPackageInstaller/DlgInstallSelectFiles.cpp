@@ -2,14 +2,18 @@
 #include "L3dPackageInstaller.h"
 #include "DlgInstallSelectFiles.h"
 #include "TimeUtils.h"
+#include "VistaSaveFileDlg.h"
 
 #include "DBHelper.h"
+
+#include <fstream>
 
 #include <Shellapi.h>
 #include <windowsx.h>
 
 #include <boost/filesystem.hpp>
 #include <boost/format.hpp>
+
 #include <lhWinAPI.h>
 
 #include <time.h>
@@ -50,19 +54,18 @@ INT_PTR DlgInstallSelectFiles::Show(HINSTANCE hInstance, HWND hWndParent)
 
 INT_PTR DlgInstallSelectFiles::OnInitDlg(WPARAM wParam, LPARAM lParam)
 {
-	if (userShouldSelect)
-	{
+	if (userShouldSelect) {
 		hwndTree = GetDlgItem(GetHwnd(), IDC_TREEFILESCHECKABLE);
 		SetWindowText(GetHwnd(), strTable.Load(IDS_HEADERINSTALLSELECTFILES));
 	}
-	else
-	{
+	else {
 		hwndTree = GetDlgItem(GetHwnd(), IDC_TREEFILESNOTCHECKABLE);
 		SetWindowText(GetHwnd(), strTable.Load(IDS_HEADERINSTALLSHOWFILES));
 	}
 	ShowWindow(GetDlgItem(GetHwnd(), IDC_TREEFILESCHECKABLE), userShouldSelect ? SW_SHOW : SW_HIDE);
 	ShowWindow(GetDlgItem(GetHwnd(), IDC_STATICSELECTINSTALLFILES), userShouldSelect ? SW_SHOW : SW_HIDE);
 	ShowWindow(GetDlgItem(GetHwnd(), IDCANCEL), userShouldSelect ? SW_SHOW : SW_HIDE);
+	ShowWindow(GetDlgItem(GetHwnd(), IDC_EXPORTFILELIST), userShouldSelect ? SW_SHOW : SW_HIDE);
 	ShowWindow(GetDlgItem(GetHwnd(), IDC_TREEFILESNOTCHECKABLE), userShouldSelect ? SW_HIDE : SW_SHOW);
 	ShowWindow(GetDlgItem(GetHwnd(), IDC_STATICSHOWINSTALLFILES), userShouldSelect ? SW_HIDE : SW_SHOW);
 
@@ -319,9 +322,89 @@ INT_PTR DlgInstallSelectFiles::OnCommand(WPARAM wParam, LPARAM lParam)
 	{
 		EndDialog(GetHwnd(), LOWORD(wParam));
 	}
+	else if (LOWORD(wParam) == IDC_EXPORTFILELIST) {
+		// Keine XP-Kompatibilitaet mehr => direkt VistaDlg verwenden
+		VistaSaveFileDlg dlg;
+		vector<COMDLG_FILTERSPEC> filter(1);
+		filter[0].pszName = L"Text";
+		filter[0].pszSpec = L"*.txt";
+		dlg.SetFileTypes(filter);
+		dlg.SetDefaultExtension(L"txt");
+
+		static const GUID dlgGuid =	{ 0x66bb5eeb, 0x3c67, 0x445f, { 0xb9, 0xfc, 0x9b, 0x11, 0xf, 0x74, 0x91, 0x83 } };
+		dlg.SetClientGuid(dlgGuid);
+
+		if (SUCCEEDED(dlg.Show(GetHwnd()))) {
+			auto r = dlg.GetResult();
+			if (!r.empty()) {
+				ExportInstallInformation(r);
+			}
+		}
+	}
 	return Dialog::OnCommand(wParam, lParam);
 }
 
+
+void DlgInstallSelectFiles::WriteFileToExportList(const FileInstallInfo& fii, std::wofstream& os)
+{
+	os << fii.fileName << std::endl;
+	if (fii.IsFileToInstall()) {
+		os << '\t' << strTable.LoadS(IDS_EXPORTLISTTIMEPKG) << FormatUnixTime(fii.modifiedTimePackage);
+		if (fii.FileExistsOnDisk()) {
+			os << '\t' << strTable.LoadS(IDS_EXPORTLISTTIMEFS) << FormatUnixTime(fii.modifiedTimeFileSystem);
+		}
+		os << std::endl;
+	}
+}
+
+void DlgInstallSelectFiles::ExportInstallInformation(const std::wstring& exportToFile)
+{
+	std::wofstream of(exportToFile);
+	for (const auto& pkg : *fileMap) {
+		const auto& pi = *pkg.second;
+		boost::filesystem::path pathPkg(pkg.first);
+		of << L"********************************" << std::endl;
+		of << L"*** " << pathPkg.filename().generic_wstring() << L" ***" << std::endl;
+		of << L"********************************" << std::endl;
+		if (!pi.writeProtectedFilesToInstall.empty()) {
+			of << L"--- " << strTable.LoadS(IDS_SELECTFILESTVWRITEPROTINSTALL) << L" ---" << std::endl;
+			for (const auto& fii : pi.writeProtectedFilesToInstall) {
+				WriteFileToExportList(fii, of);
+			}
+		}
+		if (!pi.writeProtectedFilesToDelete.empty()) {
+			of << L"--- " << strTable.LoadS(IDS_SELECTFILESTVWRITEPROTDELETE) << L" ---" << std::endl;
+			for (const auto& fii : pi.writeProtectedFilesToDelete) {
+				WriteFileToExportList(fii, of);
+			}
+		}
+		if (!pi.filesToInstall.empty() && std::any_of(pi.filesToInstall.cbegin(), pi.filesToInstall.cend(), 
+			[](const FileInstallInfo& fii) { return fii.FileExistsOnDisk();	})) {
+			of << L"--- " << strTable.LoadS(IDS_SELECTFILESTVINSTALLEXISTING) << L" ---" << std::endl;
+			for (const auto& fii : pi.filesToInstall) {
+				if (fii.FileExistsOnDisk()) {
+					WriteFileToExportList(fii, of);
+				}
+			}
+		}
+		if (!pi.filesToInstall.empty() && std::any_of(pi.filesToInstall.cbegin(), pi.filesToInstall.cend(),
+			[](const FileInstallInfo& fii) { return !fii.FileExistsOnDisk(); })) {
+			of << L"--- " << strTable.LoadS(IDS_SELECTFILESTVINSTALLNEW) << L" ---" << std::endl;
+			for (const auto& fii : pi.filesToInstall) {
+				if (!fii.FileExistsOnDisk()) {
+					WriteFileToExportList(fii, of);
+				}
+			}
+		}
+		if (!pi.filesToDelete.empty()) {
+			of << L"--- " << strTable.LoadS(IDS_SELECTFILESTVDELETE) << L" ---" << std::endl;
+			for (const auto& fii : pi.filesToDelete) {
+				WriteFileToExportList(fii, of);
+			}
+		}
+		of << std::endl;
+	}
+}
 
 }
 }

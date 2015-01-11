@@ -94,7 +94,7 @@ HRESULT XpOpenFileDlg::Show(HWND hwndOwner)
 	return E_FAIL;
 }
 
-vector<wstring> XpOpenFileDlg::GetResult()
+vector<wstring> XpOpenFileDlg::GetResults()
 {
 	vector<wstring> ret;
 	if (filenameBuf)

@@ -131,6 +131,7 @@
     <ClInclude Include="DlgPackageInstall.h" />
     <ClInclude Include="DlgSettings.h" />
     <ClInclude Include="DlgUndo.h" />
+    <ClInclude Include="FileDlg.h" />
     <ClInclude Include="FileDlgHelper.h" />
     <ClInclude Include="BackgroundOperatorDlg.h" />
     <ClInclude Include="FileSearch.h" />
@@ -158,12 +159,14 @@
     <ClInclude Include="ResizeableDialogHelper.h" />
     <ClInclude Include="ResizeableDialogHelperTypes.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SaveFileDlg.h" />
     <ClInclude Include="sha\SHA1.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeUtils.h" />
     <ClInclude Include="VistaFileDlg.h" />
     <ClInclude Include="VistaOpenFileDlg.h" />
+    <ClInclude Include="VistaSaveFileDlg.h" />
     <ClInclude Include="XpOpenFileDlg.h" />
     <ClInclude Include="Zip\unzip.h" />
   </ItemGroup>
@@ -217,6 +220,7 @@
     <ClCompile Include="TimeUtils.cpp" />
     <ClCompile Include="VistaFileDlg.cpp" />
     <ClCompile Include="VistaOpenFileDlg.cpp" />
+    <ClCompile Include="VistaSaveFileDlg.cpp" />
     <ClCompile Include="XpOpenFileDlg.cpp" />
     <ClCompile Include="Zip\unzip.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
