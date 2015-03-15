@@ -40,9 +40,6 @@ INT_PTR DlgUndo::OnInitDlg(WPARAM wParam, LPARAM lParam)
 
 	//InsertListViewItems(hListSelectablePkgs, selectableItems.size());
 
-	SetTimer(GetHwnd(), 0, 500, nullptr);
-
-	
 	using l3d::packageinstaller::ui::resizeabledlghelper::ANCHOR;
 	AddAnchor(ANCHOR(IDC_LISTUNDOPACKAGES,	resizeabledlghelper::AF_LEFT_AND_RIGHT | resizeabledlghelper::AF_TOP_AND_BOTTOM));
 	AddAnchor(ANCHOR(IDC_BUTTONCANCELUNDO,	resizeabledlghelper::AF_RIGHT | resizeabledlghelper::AF_BOTTOM));
@@ -176,6 +173,7 @@ INT_PTR DlgUndo::OnCommand(WPARAM wParam, LPARAM lParam)
 				deinstallMgmt.reset(new DeinstallManager(l3dPath, std::move(v)));
 				deinstallMgmt->SetUndoInstallation(true);
 				deinstallMgmt->StartDeinstall();
+				SetTimer(GetHwnd(), 0, 500, nullptr);
 			}
 		}
 		break;
@@ -189,15 +187,32 @@ INT_PTR DlgUndo::OnCommand(WPARAM wParam, LPARAM lParam)
 
 INT_PTR DlgUndo::OnTimer(WPARAM wParam, LPARAM lParam)
 {
-	if (deinstallMgmt)
+	if (deinstallMgmt && deinstallMgmt->IsFinished())
 	{
-		if (deinstallMgmt->IsFinished())
-		{
-			//EnableWindow(GetDlgItem(GetHwnd(), IDC_BUTTONUNDO), TRUE);
-			EnableWindow(GetDlgItem(GetHwnd(), IDC_BUTTONCANCELUNDO), FALSE);
-			deinstallMgmt.reset(nullptr);
-			SearchSelectableItems();
+		KillTimer(GetHwnd(), 0);
+		if (deinstallMgmt->GetState() == DeinstallManager::DeinstallError) {
+			DeinstallException *ex = deinstallMgmt->GetDeinstallError();
+			wchar_t buf[2048];
+			if (ex != nullptr) {
+				if (!ex->GetProcessedFilename().empty()) {
+					swprintf_s(buf, strTable.Load(IDS_DEINSTALLERRORFILETXT), ex->GetProcessedFilename().c_str(), ex->GetMsg().c_str());
+				}
+				else {
+					std::wstring st = strTable.LoadS(IDS_DEINSTALLERRORTXT);
+					swprintf_s(buf, st.c_str(), ex->GetMsg().c_str());
+				}
+			}
+			else {
+				wcscpy_s(buf, strTable.Load(IDS_DEINSTALLERRORUNKWOWN));
+			}
+			MessageBox(GetHwnd(), buf, strTable.Load(IDS_DEINSTALLERRORHEADER), MB_OK | MB_ICONERROR);
 		}
+
+
+		//EnableWindow(GetDlgItem(GetHwnd(), IDC_BUTTONUNDO), TRUE);
+		EnableWindow(GetDlgItem(GetHwnd(), IDC_BUTTONCANCELUNDO), FALSE);
+		deinstallMgmt.reset(nullptr);
+		SearchSelectableItems();
 	}
 	return Dialog::OnTimer(wParam, lParam);
 }
