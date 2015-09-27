@@ -135,7 +135,7 @@ void OnSize(HWND hdlg, AnchorBidirectionalIterator firstAnchor, AnchorBidirectio
 				break;
 			}
 
-			MoveWindow(hwndControl, rcNewPos.left, rcNewPos.top, rcNewPos.right - rcNewPos.left,  rcNewPos.bottom - rcNewPos.top, TRUE);
+			//MoveWindow(hwndControl, rcNewPos.left, rcNewPos.top, rcNewPos.right - rcNewPos.left,  rcNewPos.bottom - rcNewPos.top, TRUE);
 
 			DeferWindowPos(hdwp, hwndControl, 0, rcNewPos.left, rcNewPos.top, rcNewPos.right - rcNewPos.left,  rcNewPos.bottom - rcNewPos.top, SWP_NOZORDER | SWP_NOACTIVATE);
 		}
