@@ -281,7 +281,8 @@ namespace l3d
 				if (fileExists && userInstSel == nullptr && !IsInDeleteList(fname, *installInfo))
 				{
 					// Falls nur ältere Dateien ersetzen werden sollen, Modified Times von Disk und Zip prüfen
-					if(replaceOnlyOlder && !IsInDeinstallList(fname))
+					// TODO Bug bei Deinstallation - auch neue Dateien werden ueberschrieben
+					if(replaceOnlyOlder  && !IsInDeinstallList(fname))
 					{
 						FILETIME diskTime = diskFileAttr.ftLastWriteTime;
 						FILETIME zipTime = ze.mtime;

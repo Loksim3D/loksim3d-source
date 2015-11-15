@@ -53,7 +53,9 @@ bool L3dPackageInfo::LoadFromFile(const std::wstring& filePath)
 					auto attr = n.attribute(cPKGINFODeinstallPackageHash);
 					if (attr)
 					{
-						_pkgsToDeinstall.emplace_back(attr.value());
+						// TODO Bug Package Deinstallation bei Installation (auch neue Dateien werden ueberschrieben)
+						// fuer den Moment Package Deinstallation deaktivieren
+						//_pkgsToDeinstall.emplace_back(attr.value());
 					}
 				}
 			}
