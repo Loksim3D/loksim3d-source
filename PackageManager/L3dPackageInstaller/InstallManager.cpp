@@ -282,7 +282,7 @@ namespace l3d
 				{
 					// Falls nur ältere Dateien ersetzen werden sollen, Modified Times von Disk und Zip prüfen
 					// TODO Bug bei Deinstallation - auch neue Dateien werden ueberschrieben
-					if(replaceOnlyOlder  && !IsInDeinstallList(fname))
+					if(replaceOnlyOlder /*&& !IsInDeinstallList(fname)*/)
 					{
 						FILETIME diskTime = diskFileAttr.ftLastWriteTime;
 						FILETIME zipTime = ze.mtime;
@@ -443,6 +443,15 @@ namespace l3d
 
 		void InstallManager::InstallPackage(size_t numThreads, const RootPackageInfo& rootPkg, const PackageInfo& pkgInfo, InstallInformation* instInfo)
 		{
+			for (const auto& instData : installData) {
+				auto itPkg = instData.second->GetPackagGuidsToDeinstall().find(L"@" + rootPkg.hash);
+				if (itPkg != instData.second->GetPackagGuidsToDeinstall().end()) {
+					// Package wuerde deinstalliert werden
+					// => bei Installation ignorieren
+					return;
+				}
+			}
+
 			size_t itemsPerThread = pkgInfo.numElements / numThreads;
 			for (size_t t = 0; t < numThreads; ++t)
 			{

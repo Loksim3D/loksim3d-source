@@ -19,6 +19,7 @@
 #include "DlgDeinstallSelectPkg.h"
 #include "DBHelper.h"
 #include "MainDlg.h"
+#include "TestMain.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp> 
@@ -244,14 +245,19 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			return 1;
 		}
 
-		db::DBHelper::instance().InitDb((l3dPath / L"l3dpackagemanager.sqlite").wstring(), l3dPath);
-
-
 		std::vector<std::wstring> args;
 		for (int i = 1; i < __argc; ++i)
 		{
 			args.emplace_back(__wargv[i]);
 		}
+
+		if (!args.empty() && boost::iequals(args[0], L"/unittests")) {
+			l3d::packageinstaller::tests::TestMain tests(l3dPath);
+			tests.RunTests();
+			return 0;
+		}
+
+		db::DBHelper::instance().InitDb((l3dPath / L"l3dpackagemanager.sqlite").wstring(), l3dPath);
 
 		if (args.size() >= 2)
 		{

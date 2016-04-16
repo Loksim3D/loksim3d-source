@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package-Settings>
+	<Props Create_Update-Package="FALSE" DeleteList="@93 FA E8 F0 A4 95 FE 27 7F A9 40 2B 9F 7D DE EC E0 F3 55 D7/n" ExludePackages="" Files="\install-test1\fstnewer-a2.txt/n\install-test1\fstnewer-a3.txt/n\install-test1\fstolder-a1.txt/n\install-test1\fstolder-a4.txt/n\install-test1\sndpackage-a5.txt" Info="Deinstallation bei Installation Bug/nPackage 2" Span_Package="FALSE"/>
+	<PackageFiles>
+		<PackageFile>
+			<Props FileName="\install-test1\fstnewer-a3.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\fstnewer-a2.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\sndpackage-a5.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\fstolder-a4.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\fstolder-a1.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+	</PackageFiles>
+</Package-Settings>

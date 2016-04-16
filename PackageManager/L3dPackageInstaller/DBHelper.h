@@ -38,6 +38,8 @@ public:
 	 */
 	void InitDb(const boost::filesystem::path& dbPath, const boost::filesystem::path& l3dPath);
 
+	void Close();
+
 	/**
 	 * Erstellt eine neue Connection zur DB die mittels InitDb initialisiert wurde
 	 */

@@ -33,12 +33,7 @@ namespace packageinstaller
 
 		DBHelper::~DBHelper(void)
 		{
-			try {
-				db.Close();
-			}
-			catch (const SQLiteException& ex) {
-				ex.Show();
-			}
+			Close();
 		}
 
 		unique_ptr<SQLiteDatabase> DBHelper::GetOwnDbConnection()
@@ -412,6 +407,16 @@ void DBHelper::InitDb(const boost::filesystem::path& dbPath, const boost::filesy
 	}
 
 	dbStmt.reset(new SQLiteStatement(&db));
+}
+
+void DBHelper::Close()
+{
+	try {
+		db.Close();
+	}
+	catch (const SQLiteException& ex) {
+		ex.Show();
+	}
 }
 
 bool DBHelper::IsDbUpdateRequired()

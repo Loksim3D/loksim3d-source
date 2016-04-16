@@ -210,6 +210,8 @@ void PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
 								auto res = pkgSearch.GetByGuid(s.substr(1));
 								copy(begin(res), end(res), inserter(packagesToDeinstall, packagesToDeinstall.begin()));
 							});
+
+							copy(inf.GetPkgsToDeinstall().begin(), inf.GetPkgsToDeinstall().end(), inserter(packageGuidsToDeinstall, packageGuidsToDeinstall.begin()));
 						}
 					}
 				}

@@ -40,6 +40,9 @@
     <Filter Include="pugixml">
       <UniqueIdentifier>{dc720ef5-8d6c-4934-a442-6bea99d83bf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{7fd41fcf-2434-492c-808c-9f4dc3afe222}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="small.ico">
@@ -228,6 +231,9 @@
     <ClInclude Include="SaveFileDlg.h">
       <Filter>ui\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TestMain.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -358,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="VistaSaveFileDlg.cpp">
       <Filter>ui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMain.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

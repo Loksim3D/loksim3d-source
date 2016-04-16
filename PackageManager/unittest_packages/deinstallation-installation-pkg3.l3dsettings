@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package-Settings>
+	<Props Create_Update-Package="FALSE" DeleteList="" ExludePackages="" Files="\install-test1\fstnewer-a2.txt/n\install-test1\fstolder-a4.txt/n\install-test1\fstpackage-a6.txt/n\install-test1\trdpackage-a7.txt" Info="Unittest-Package 3/nInstalliert Files gemischt um zu testen was passiert wenn bei gemeinsamer/nInstallation von Packages ein package dateien deinstallieren will das /nanderes installieren will" Span_Package="FALSE"/>
+	<PackageFiles>
+		<PackageFile>
+			<Props FileName="\install-test1\fstpackage-a6.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\fstnewer-a2.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\fstolder-a4.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+		<PackageFile>
+			<Props FileName="\install-test1\trdpackage-a7.txt" NotSelected="FALSE" Selected="TRUE"/>
+		</PackageFile>
+	</PackageFiles>
+</Package-Settings>

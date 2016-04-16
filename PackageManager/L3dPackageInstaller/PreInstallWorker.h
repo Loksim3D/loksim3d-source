@@ -65,6 +65,8 @@ public:
 	 */
 	inline const std::set<db::DBPackageEntry>& GetPackagesToDeinstall() const { return packagesToDeinstall; }
 
+	inline const std::set<std::wstring>& GetPackagGuidsToDeinstall() const { return packageGuidsToDeinstall; }
+
 private:
 	void DoInnerWork(PackageInfo& curPkgInfo);
 
@@ -81,6 +83,9 @@ private:
 	std::vector<std::wstring> filesToDelete;
 
 	std::set<db::DBPackageEntry> packagesToDeinstall;
+
+	std::set<std::wstring> packageGuidsToDeinstall;
+
 private:
 	PreInstallWorker(const PreInstallWorker&);
 	PreInstallWorker& operator=(const PreInstallWorker&);
