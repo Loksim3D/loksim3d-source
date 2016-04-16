@@ -185,29 +185,6 @@ namespace l3d
 			return found || find_if(begin(installInfo.writeProtectedFilesToDelete), end(installInfo.writeProtectedFilesToDelete), func) != end(installInfo.writeProtectedFilesToDelete);
 		}
 
-		bool InstallManager::IsInDeinstallList(const std::wstring& fname)
-		{
-			if (!filesToDeinstall)
-			{
-				return false;
-			}
-			boost::filesystem::path bpath = fname;
-			if (!fname.empty() && fname[0] != '/' && fname[0] != '\\')
-			{
-				bpath = L"/" / bpath;
-			}
-			bpath = bpath.make_preferred();
-			return find_if(begin(*filesToDeinstall), begin(*filesToDeinstall), [&bpath](const pair<int, std::vector<FileToDeinstall>>& en) -> bool
-			{
-				const auto& bp = bpath;
-				return find_if(begin(en.second), end(en.second), [&bp](const FileToDeinstall& ftd) -> bool
-				{
-					auto p = boost::filesystem::path(ftd.filename).make_preferred();
-					return bp == p;
-				}) != end(en.second);
-			})  != end(*filesToDeinstall);
-		}
-
 		void InstallManager::InstallFiles(size_t startIndex, size_t end, const RootPackageInfo& rootPkg, const PackageInfo& pkgInfo, insthelper::InstallInformation* installInfo)
 		{
 			size_t zipBufSize = 131072;
@@ -281,8 +258,7 @@ namespace l3d
 				if (fileExists && userInstSel == nullptr && !IsInDeleteList(fname, *installInfo))
 				{
 					// Falls nur ältere Dateien ersetzen werden sollen, Modified Times von Disk und Zip prüfen
-					// TODO Bug bei Deinstallation - auch neue Dateien werden ueberschrieben
-					if(replaceOnlyOlder /*&& !IsInDeinstallList(fname)*/)
+					if(replaceOnlyOlder)
 					{
 						FILETIME diskTime = diskFileAttr.ftLastWriteTime;
 						FILETIME zipTime = ze.mtime;
@@ -581,7 +557,6 @@ namespace l3d
 
 					m->installState = InstallManager::InstallPassTwoRunning;
 
-					//TODO
 					vector<int> deinstallPkgIds = m->DetermineFilesToDeinstall();
 
 					// einen core explizit für db operationen "reservieren"
