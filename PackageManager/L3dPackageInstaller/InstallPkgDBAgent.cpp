@@ -266,12 +266,26 @@ void InstallPkgDBAgent::PrepareDbBeforeInstall(RootPackageInfo& rootPkgInfo)
 		outStr << L"BackupDirectory " << l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(rootPkgInfo.backupDirectory, l3dDir) << endl;
 		outStr << L"********************************" << endl;
 	}
-	stmtOther->Sql("INSERT INTO Packages(Filename, InstallTimestamp, Readme, Checksum, BackupDirectory) VALUES(@filename, @time, @readme, @checksum, @backupdir);");
+
+	/*
+		stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN AddonId VARCHAR");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN AddonVersion INTEGER");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN Packageauthors VARCHAR");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN DisplayName VARCHAR");
+
+	*/
+
+	stmtOther->Sql("INSERT INTO Packages(Filename, InstallTimestamp, Readme, Checksum, BackupDirectory, AddonId, AddonVersion, Packageauthors, DisplayName) "
+				   "VALUES(@filename, @time, @readme, @checksum, @backupdir, @addonid, @addonversion, @authors, @displayname);");
 	stmtOther->BindString16(1, rootPkgInfo.packageName.c_str());
 	stmtOther->BindInt64(2, t);
 	stmtOther->BindString16(3, rootPkgInfo.readme.c_str());
 	stmtOther->BindString16(4, rootPkgInfo.hash.c_str());
 	stmtOther->BindString16(5, l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(rootPkgInfo.backupDirectory, l3dDir).c_str());
+	stmtOther->BindString16(6, rootPkgInfo.addonId_.c_str());
+	stmtOther->BindInt(7, rootPkgInfo.addonVersion_);
+	stmtOther->BindString16(8, rootPkgInfo.packageAuthors_.c_str());
+	stmtOther->BindString16(9, rootPkgInfo.displayName_.c_str());
 	try {
 		try {
 			stmtOther->ExecuteAndFree();

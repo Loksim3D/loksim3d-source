@@ -234,6 +234,15 @@
     <ClInclude Include="TestMain.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="FileDescriptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="L3dPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -367,6 +376,12 @@
     </ClCompile>
     <ClCompile Include="TestMain.cpp">
       <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="L3dPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlHelper.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

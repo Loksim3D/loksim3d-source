@@ -1,15 +1,18 @@
 #include "stdafx.h"
 #include "L3dPackageInfo.h"
-#include "L3dConsts.h"
 
 #include <algorithm>
+
+#include "pugixml/pugixml.hpp"
+
+#include "L3dConsts.h"
 
 namespace l3d
 {
 
 using namespace std;
 
-L3dPackageInfo::L3dPackageInfo(void) : _versionCode(l3d::LOKSIM3D_VERSION_CODE)
+L3dPackageInfo::L3dPackageInfo(void)
 {
 }
 
@@ -21,16 +24,27 @@ L3dPackageInfo::~L3dPackageInfo(void)
 bool L3dPackageInfo::LoadFromFile(const std::wstring& filePath)
 {
 	pugi::xml_document xmlDoc;
-	if (ReadFromFile(filePath, xmlDoc))
+	
+	ReadFromFile(filePath, xmlDoc);
+
 	{
 		pugi::xml_node rootNode = xmlDoc.child(cPKGINFORoot);
 
 		if (rootNode)
 		{
+			Clear();
+
+			pugi::xml_node propsNode = rootNode.child(cFileProps);
+			if (propsNode) {
+				displayName_ = propsNode.attribute(cPKGINFODisplayName).value();
+				addonId_ = propsNode.attribute(cPKGINFOAddonID).value();
+				addonVersion_ = propsNode.attribute(cPKGINFOAddonVersion).as_int();
+			}
+
 			pugi::xml_node versNode = rootNode.child(cPKGINFOVersionInfo);
-			if (versNode)
+			if (versNode && this->GetFileEditorVersion() == 0)
 			{
-				_versionCode = versNode.attribute(cPKGINFOVersionInfoCode).as_int();
+				fileEditorVersion_ = versNode.attribute(cPKGINFOVersionInfoCode).as_int();
 			}
 			auto delFilesNode = rootNode.child(cPKGINFODeleteFilesNode);
 			if (delFilesNode)
@@ -40,7 +54,7 @@ bool L3dPackageInfo::LoadFromFile(const std::wstring& filePath)
 					auto attr = n.attribute(cPKGINFODeleteFileName);
 					if (attr)
 					{
-						_filesToDelete.emplace_back(attr.value());
+						filesToDelete_.emplace_back(attr.value());
 					}
 				}
 			}
@@ -53,7 +67,12 @@ bool L3dPackageInfo::LoadFromFile(const std::wstring& filePath)
 					auto attr = n.attribute(cPKGINFODeinstallPackageHash);
 					if (attr)
 					{
-						_pkgsToDeinstall.emplace_back(attr.value());
+						pkgsToDeinstall_.emplace_back(attr.value());
+					}
+
+					attr = n.attribute(cPKGINFODeinstallAddonID);
+					if (attr) {
+						addonIdsToDeinstall_.emplace_back(attr.value());
 					}
 				}
 			}
@@ -64,31 +83,34 @@ bool L3dPackageInfo::LoadFromFile(const std::wstring& filePath)
 }
 
 
-void L3dPackageInfo::SaveDataToDoc(pugi::xml_document& targetDoc) const
+//void L3dPackageInfo::SaveDataToDoc(pugi::xml_document& targetDoc) const
+//{
+//	assert(false);
+//}
+//
+//void files::L3dPackageInfo::SaveDataToXmlNode(const l3d::common::L3dPath &, pugi::xml_node &) const
+//{
+//	assert(false);
+//}
+
+void L3dPackageInfo::SaveDataToXmlNode(const l3d::common::L3dPath&, pugi::xml_node&) const
 {
-	pugi::xml_node root = targetDoc.first_child();
-	pugi::xml_node versProps = root.append_child(cPKGINFOVersionInfo);
-	pugi::xml_attribute attr = versProps.append_attribute(cPKGINFOVersionInfoCode);	
-	attr.set_value(_versionCode);
-
-	pugi::xml_node allDel = root.append_child(cPKGINFODeleteFilesNode);
-	for_each(begin(_filesToDelete), end(_filesToDelete), [&allDel](const wstring& f)
-	{
-		auto n = allDel.append_child(cPKGINFODeleteFileNode);
-		n.append_attribute(cPKGINFODeleteFileName).set_value(f.c_str());
-	});
-
-	pugi::xml_node allDeinst = root.append_child(cPKGINFODeinstallPackages);
-	for_each(begin(_pkgsToDeinstall), end(_pkgsToDeinstall), [&allDeinst](const wstring& h)
-	{
-		auto n = allDeinst.append_child(cPKGINFODeinstallPackageNode);
-		n.append_attribute(cPKGINFODeinstallPackageHash).set_value(h.c_str());
-	});
+	assert(false);
 }
 
 std::wstring L3dPackageInfo::GetRootNodeName() const
 {
 	return cPKGINFORoot;
+}
+
+void L3dPackageInfo::Clear()
+{
+	filesToDelete_.clear();
+	pkgsToDeinstall_.clear(); // Identified by Hash
+	addonIdsToDeinstall_.clear(); // Identified by User-chosen ID
+	displayName_.clear();
+	addonId_.clear();
+	addonVersion_ = 0;
 }
 
 }

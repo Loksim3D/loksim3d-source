@@ -54,6 +54,11 @@ struct RootPackageInfo : public PackageInfo
 	* Backup Directory for install
 	*/
 	std::wstring backupDirectory;
+
+	std::wstring displayName_;
+	std::wstring addonId_;
+	int addonVersion_;
+	std::wstring packageAuthors_;
 };
 
 }

@@ -133,6 +133,7 @@
     <ClInclude Include="DlgPackageInstall.h" />
     <ClInclude Include="DlgSettings.h" />
     <ClInclude Include="DlgUndo.h" />
+    <ClInclude Include="FileDescriptions.h" />
     <ClInclude Include="FileDlg.h" />
     <ClInclude Include="FileDlgHelper.h" />
     <ClInclude Include="BackgroundOperatorDlg.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="L3dConsts.h" />
     <ClInclude Include="L3dPackageInfo.h" />
     <ClInclude Include="L3dPackageInstaller.h" />
+    <ClInclude Include="L3dPath.h" />
     <ClInclude Include="MainDlg.h" />
     <ClInclude Include="OpenFileDlg.h" />
     <ClInclude Include="PackageFileNameUtils.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="VistaFileDlg.h" />
     <ClInclude Include="VistaOpenFileDlg.h" />
     <ClInclude Include="VistaSaveFileDlg.h" />
+    <ClInclude Include="XmlHelper.h" />
     <ClInclude Include="XpOpenFileDlg.h" />
     <ClInclude Include="Zip\unzip.h" />
   </ItemGroup>
@@ -202,6 +205,7 @@
     <ClCompile Include="KTM.cpp" />
     <ClCompile Include="L3dPackageInfo.cpp" />
     <ClCompile Include="L3dPackageInstaller.cpp" />
+    <ClCompile Include="L3dPath.cpp" />
     <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="PackageFileNameUtils.cpp" />
     <ClCompile Include="PackageSearch.cpp" />
@@ -225,6 +229,7 @@
     <ClCompile Include="VistaFileDlg.cpp" />
     <ClCompile Include="VistaOpenFileDlg.cpp" />
     <ClCompile Include="VistaSaveFileDlg.cpp" />
+    <ClCompile Include="XmlHelper.cpp" />
     <ClCompile Include="XpOpenFileDlg.cpp" />
     <ClCompile Include="Zip\unzip.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

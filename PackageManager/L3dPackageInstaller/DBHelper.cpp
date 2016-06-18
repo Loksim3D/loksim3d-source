@@ -12,6 +12,20 @@
 
 using namespace Kompex;
 
+namespace
+{
+
+//void CreateAddonIdsToDeleteTable(SQLiteStatement& stmt)
+//{
+//	stmt.SqlStatement("CREATE TABLE AddonIdsToDelete ("
+//					  "OwningPackageId INTEGER NOT NULL, "
+//					  "AddonIdOfPkgToDelete VARCHAR NOT NULL, "
+//					  "PRIMARY KEY(OwningPackageId, AddonIdOfPkgToDelete) "
+//					  ")");
+//}
+
+}
+
 namespace l3d
 {
 namespace packageinstaller
@@ -132,6 +146,23 @@ void DBHelper::SetPreference(const std::wstring& prefName, const std::wstring& v
 		dbStmt->FreeQuery();
 		throw ex;
 	}
+}
+
+void DBHelper::Update15To16()
+{
+	SQLiteStatement stmt(&db);
+	stmt.BeginTransaction();
+
+	//CreateAddonIdsToDeleteTable(stmt);
+
+	stmt.SqlStatement("UPDATE VersionInfo SET Major=1, Minor=6 WHERE Component='Database'");
+
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN AddonId VARCHAR");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN AddonVersion INTEGER");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN Packageauthors VARCHAR");
+	stmt.SqlStatement("ALTER TABLE Packages ADD COLUMN DisplayName VARCHAR");
+
+	stmt.CommitTransaction();
 }
 
 void DBHelper::Update14To15()
@@ -350,7 +381,22 @@ void DBHelper::InitDb(const boost::filesystem::path& dbPath, const boost::filesy
 			SQLiteStatement stmt(&db);
 			stmt.BeginTransaction();
 			stmt.SqlStatement("CREATE TABLE Files (ID INTEGER PRIMARY KEY NOT NULL, Filename VARCHAR NOT NULL UNIQUE, ExistedBefore INTEGER NOT NULL DEFAULT 0, UsageCount INTEGER NOT NULL DEFAULT 0)");
-			stmt.SqlStatement("CREATE TABLE Packages (ID INTEGER PRIMARY KEY NOT NULL, Filename VARCHAR NOT NULL, InstallTimestamp Integer NOT NULL, Readme VARCHAR, Checksum INTEGER NOT NULL UNIQUE, BackupDirectory VARCHAR)");
+			
+			stmt.SqlStatement("CREATE TABLE Packages ("
+							  "ID INTEGER PRIMARY KEY NOT NULL, "
+							  "Filename VARCHAR NOT NULL, "
+							  "InstallTimestamp INTEGER NOT NULL, "
+							  "Readme VARCHAR, "
+							  "Checksum INTEGER NOT NULL UNIQUE, "
+							  "BackupDirectory VARCHAR, "
+							  "AddonId VARCHAR, "			// from here and below columns added with 2.9.3
+							  "AddonVersion INTEGER, "
+							  "Packageauthors VARCHAR, "
+							  "DisplayName VARCHAR "
+							  ")");
+
+			//CreateAddonIdsToDeleteTable(stmt);
+			
 			stmt.SqlStatement("CREATE TABLE Dependencies (FileID INTEGER NOT NULL, PackageID INTEGER NOT NULL, Installed INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(FileID, PackageID))");
 			stmt.SqlStatement("CREATE TABLE VersionInfo (Component VARCHAR NOT NULL, Major INTEGER NOT NULL, Minor INTEGER NOT NULL, UNIQUE(Component))");
 			stmt.SqlStatement("CREATE TABLE Preferences (Name VARCHAR NOT NULL PRIMARY KEY, Value VARCHAR NOT NULL)");
@@ -394,8 +440,8 @@ void DBHelper::InitDb(const boost::filesystem::path& dbPath, const boost::filesy
 							  "END ");
 			*/
 
-			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Database', 1, 5)");
-			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Programm', 2, 8)");
+			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Database', 1, 6)");
+			stmt.SqlStatement("INSERT INTO VersionInfo(Component, Major, Minor) VALUES('Programm', 2, 9)");
 			stmt.CommitTransaction();
 
 			newDbCreated = true;
@@ -424,7 +470,7 @@ bool DBHelper::IsDbUpdateRequired()
 	SQLiteStatement stmt(&db);
 	int major = stmt.GetSqlResultInt("SELECT Major FROM VersionInfo WHERE Component='Database'", -1);
 	int minor = stmt.GetSqlResultInt("SELECT Minor FROM VersionInfo WHERE Component='Database'", -1);
-	return major == 1 && minor < 5;
+	return major == 1 && minor < 6;
 }
 
 void DBHelper::UpdateDb(const boost::filesystem::path& l3dPath)
@@ -446,6 +492,9 @@ void DBHelper::UpdateDb(const boost::filesystem::path& l3dPath)
 	}
 	if (major == 1 && minor <= 4) {
 		Update14To15();
+	}
+	if (major == 1 && minor <= 5) {
+		Update15To16();
 	}
 }
 

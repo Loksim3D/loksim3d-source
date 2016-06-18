@@ -6,6 +6,7 @@
 
 #include <ppl.h>
 
+#include "L3dPackageInfo.h"
 #include "PackageInfo.h"
 #include "DBPackageEntry.h"
 
@@ -68,7 +69,7 @@ public:
 	inline const std::set<std::wstring>& GetPackagGuidsToDeinstall() const { return packageGuidsToDeinstall; }
 
 private:
-	void DoInnerWork(PackageInfo& curPkgInfo);
+	L3dPackageInfo DoInnerWork(PackageInfo& curPkgInfo);
 
 	RootPackageInfo packageInfo;
 

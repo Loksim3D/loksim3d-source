@@ -66,6 +66,7 @@ public:
 	 */
 	void SetPreference(const std::wstring& prefName, const std::wstring& value);
 
+
 	/**
 	 * Liefert Einstellung aus DB wobei der als String gespeicherte Wert in einen anderen Typ konvertiert wird
 	 */
@@ -103,6 +104,7 @@ protected:
 	void Update12To13(const boost::filesystem::path& l3dPath);
 	void Update13To14();
 	void Update14To15();
+	void Update15To16();
 
 private:
 	Kompex::SQLiteDatabase db;

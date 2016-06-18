@@ -17,6 +17,9 @@ namespace l3d
 
 	// Konstanten in der PackageInfo.xml Datei
 	const wchar_t cPKGINFORoot[] = L"PackageInfo";
+	const wchar_t cPKGINFODisplayName[] = L"DisplayName";
+	const wchar_t cPKGINFOAddonID[] = L"AddonID";
+	const wchar_t cPKGINFOAddonVersion[] = L"AddonVersion";
 	const wchar_t cPKGINFOVersionInfo[] = L"VersionInfo";
 	const wchar_t cPKGINFOVersionInfoCode[] = L"Code";
 	const wchar_t cPKGINFODeleteFilesNode[] = L"DeleteFiles";
@@ -25,5 +28,5 @@ namespace l3d
 	const wchar_t cPKGINFODeinstallPackages[] = L"DeinstallPackages";
 	const wchar_t cPKGINFODeinstallPackageNode[] = L"DeinstallPackage";
 	const wchar_t cPKGINFODeinstallPackageHash[] = L"Hash";
-
+	const wchar_t cPKGINFODeinstallAddonID[] = L"AddonID";
 }

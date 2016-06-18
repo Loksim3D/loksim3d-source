@@ -1,101 +1,168 @@
 #include "stdafx.h"
+
 #include "BaseL3dFile.h"
 
-#include "L3dConsts.h"
+#include <chrono>
+#include <sstream>
+
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/trim.hpp>
+
+#include "pugixml/pugixml.hpp"
+
+#include "FileDescriptions.h"
+#include "XmlHelper.h"
 
 namespace l3d
+{
+namespace files
 {
 
 using namespace std;
 
-BaseL3dFile::BaseL3dFile(void)
+/**
+* Lädt die Basisdaten die bei allen Dateien gleich sind
+*/
+void BaseL3dFile::LoadBaseFileData(const common::L3dPath& filePath)
 {
+	pugi::xml_document d;
+	ReadFromFile(filePath, d);
 }
 
-
-BaseL3dFile::~BaseL3dFile(void)
+void BaseL3dFile::ReadFromFile(const common::L3dPath& filePath, pugi::xml_document& xmlDoc)
 {
-}
+	helper::ReadFromFile(filePath, xmlDoc);
+	filePath_ = filePath;
 
-bool BaseL3dFile::ReadFromFile(const wstring& filePath, pugi::xml_document& xmlDoc)
-{
-	_filePath = filePath;
-
-	pugi::xml_parse_result result = xmlDoc.load_file(filePath.c_str());
-
-	if (result.status != pugi::status_ok)
-	{
-		return false;
-	} 
-	else 
-	{
-		pugi::xml_node propsNode = xmlDoc.first_child().child(cFileProps);
-		if (propsNode)
-		{
-			_fileAuthor = propsNode.attribute(cFileAutor).value();
-			_fileInfo = propsNode.attribute(cFileInfo).value();
-			_filePicture = propsNode.attribute(cFilePicture).value();
-		}
-		return true;
+	pugi::xml_node propsNode = xmlDoc.first_child().child(FILE_GENERAL_PROPS);
+	if (propsNode) {
+		fileAuthors_ = helper::ReadStringVector(propsNode, FILE_GENERAL_AUTHOR);
+		fileInfo_ = propsNode.attribute(FILE_GENERAL_INFO).value();
+		filePicture_ = propsNode.attribute(FILE_GENERAL_PICTURE).value();
+		fileDoc_ = propsNode.attribute(FILE_GENERAL_DOC).value();
+		fileEditorVersion_ = propsNode.attribute(FILE_GENERAL_EDITOR_VERSION).as_int();
+		//if (fileEditorVersion_ > L3D_VERSION_CODE) {
+		//	LOG_INFO << L"File was created with newer Loksim Version " << fileEditorVersion_ << L" > " << L3D_VERSION_CODE
+		//		<< ", File: " << filePath.GetL3dDirRelativePath();
+		//}
 	}
 }
 
-bool BaseL3dFile::WriteToFile(const std::wstring& filePath)
+void BaseL3dFile::WriteToXmlNode(pugi::xml_node& nRoot)
+{
+	WriteToXmlNode(nRoot, filePath_);
+}
+
+void BaseL3dFile::WriteToXmlNode(pugi::xml_node& nRoot, const common::L3dPath& filePath)
+{
+	assert(false);
+}
+
+bool BaseL3dFile::WriteToFile(const common::L3dPath& filePath)
 {
 	pugi::xml_document doc;
 	pugi::xml_node nRoot = doc.append_child(GetRootNodeName().c_str());
-	pugi::xml_node nProps = nRoot.append_child(cFileProps);
-	nProps.append_attribute(cFileAutor).set_value(_fileAuthor.c_str());
-	nProps.append_attribute(cFileInfo).set_value(_fileInfo.c_str());
-	nProps.append_attribute(cFilePicture).set_value(_filePicture.c_str());
 
-	SaveDataToDoc(doc);
-	bool r = doc.save_file(filePath.c_str());
-	if (r)
-	{
-		_filePath = filePath;
+	WriteToXmlNode(nRoot, filePath);
+
+	if (helper::SaveToFile(doc, filePath)) {
+		filePath_ = filePath;
+		return true;
 	}
-	return r;
+	return false;
 }
 
-
-/*pugi::xml_document&  BaseL3dFile::GetXmlDoc()
+const common::L3dPath& BaseL3dFile::GetFilePath() const
 {
-	return xmlDoc;
-}
-*/
-
-
-const wstring& BaseL3dFile::GetFilePath() const
-{
-	return _filePath;
+	return filePath_;
 }
 
 const std::wstring& BaseL3dFile::GetFileInfo() const
 {
-	return _fileInfo;
+	return fileInfo_;
 }
 void BaseL3dFile::SetFileInfo(const std::wstring& fileInfo)
 {
-	_fileInfo = fileInfo;
+	fileInfo_ = fileInfo;
 }
 
-const std::wstring& BaseL3dFile::GetFileAuthor() const
+const std::vector<std::wstring>& BaseL3dFile::GetFileAuthors() const
 {
-	return _fileAuthor;
+	return fileAuthors_;
 }
-void BaseL3dFile::SetFileAuthor(const std::wstring& fileAuthor)
+
+std::wstring BaseL3dFile::GetFileAuthorsStr() const
 {
-	_fileAuthor = fileAuthor;
+	if (fileAuthors_.empty()) {
+		return L"";
+	}
+	else {
+		std::wstringstream str;
+		for (const auto& el : fileAuthors_) {
+			str << el;
+			str << L"; ";
+		}
+		auto s = str.str();
+		return s.substr(0, s.size() - 2);
+	}
+}
+
+void BaseL3dFile::SetFileAuthors(std::vector<std::wstring> fileAuthors)
+{
+	fileAuthors_ = std::move(fileAuthors);
+}
+
+void BaseL3dFile::SetFileAuthors(const std::wstring& fileAuthors)
+{
+	fileAuthors_.clear();
+	if (!fileAuthors.empty()) {
+		boost::split(fileAuthors_, fileAuthors, [](wchar_t t) { return t == ';'; }, boost::algorithm::token_compress_on);
+		for (auto& a : fileAuthors_) {
+			boost::trim(a);
+		}
+	}
+}
+
+bool BaseL3dFile::IsAuthor(std::wstring author)
+{
+	boost::trim(author);
+	for (auto& a : fileAuthors_) {
+		if (boost::algorithm::iequals(a, author)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 const wstring& BaseL3dFile::GetFilePicture() const
 {
-	return _filePicture;
+	return filePicture_;
 }
 void BaseL3dFile::SetFilePicture(const std::wstring& filePicture)
 {
-	_filePicture = filePicture;
+	filePicture_ = filePicture;
 }
 
+const wstring& BaseL3dFile::GetFileDoc() const
+{
+	return fileDoc_;
+}
+void BaseL3dFile::SetFileDoc(const std::wstring& fileDoc)
+{
+	fileDoc_ = fileDoc;
+}
+
+int BaseL3dFile::GetFileEditorVersion() const
+{
+	return fileEditorVersion_;
+}
+
+void BaseL3dFile::SetFilePath(common::L3dPath filePath)
+{
+	filePath_ = std::move(filePath);
+}
+
+}
 }

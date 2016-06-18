@@ -66,7 +66,13 @@ PreInstallWorker::~PreInstallWorker(void)
 
 void PreInstallWorker::DoPreInstallWork()
 {
-	DoInnerWork(packageInfo);
+	L3dPackageInfo pkgInfo = DoInnerWork(packageInfo);
+
+	packageInfo.addonId_ = pkgInfo.GetAddonID();
+	packageInfo.addonVersion_ = pkgInfo.GetAddonVersion();
+	packageInfo.displayName_ = pkgInfo.GetDisplayName();
+	packageInfo.packageAuthors_ = pkgInfo.GetFileAuthorsStr();
+
 	CSHA1 hasher;
 	if (hasher.HashFile(packageInfo.packageName.c_str()))
 	{
@@ -88,8 +94,10 @@ void ThrowZipException(ZRESULT zipRes, const PackageInfo& pkgInfo, const char *e
 	throw InstallerException(errInfo, exMsg);
 }
 
-void PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
+L3dPackageInfo PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
 {
+	L3dPackageInfo pkgInfo;
+
 	unique_handle<HZIP, hzip_traits> hZip = unique_handle<HZIP, hzip_traits>(OpenZip(curPkgInfo.packageName.c_str(), nullptr));
 	if (!hZip)
 	{
@@ -185,10 +193,10 @@ void PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
 			{
 				UnzipItem(hZip.get(), i, tempName.c_str());
 				{
-					L3dPackageInfo inf;
+					L3dPackageInfo& inf = pkgInfo;
 					if (inf.LoadFromFile(tempName))
 					{
-						versCode = inf.GetVersionCode();
+						versCode = inf.GetMinimumLoksimVersion();
 						wstring r = inf.GetFileInfo();
 						if (packageInfo.readme.find(r) == wstring::npos)
 						{
@@ -229,6 +237,7 @@ void PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
 			++curPkgInfo.numFilesToInstall;
 		}
 	}
+	return pkgInfo;
 }
 
 }
