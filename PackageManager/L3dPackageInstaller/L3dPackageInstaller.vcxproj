@@ -34,11 +34,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Loksim\L3D_Props.props" />
+    <Import Project="..\..\..\Loksim\L3D_Props.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Loksim\L3D_Props.props" />
+    <Import Project="..\..\..\Loksim\L3D_Props.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -66,14 +66,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Libs\HeaderOnlyLibs;..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>KompexSQLiteWrapper_Static_d.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\debug</AdditionalLibraryDirectories>
-      <OutputFile>..\..\..\PackageManager_Debug.exe</OutputFile>
+      <OutputFile>..\..\..\..\PackageManager_Debug.exe</OutputFile>
     </Link>
     <Manifest>
       <AdditionalManifestFiles>L3dPackageInstaller.exe.manifest %(AdditionalManifestFiles)</AdditionalManifestFiles>
@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Libs\HeaderOnlyLibs;..\..\Libs\KompexSQLiteWrapper\inc;..\..\Libs\CrashRpt\include;..\..\Libs\HeaderOnlyLibs</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -100,7 +100,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>KompexSQLiteWrapper_Static.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\release</AdditionalLibraryDirectories>
-      <OutputFile>..\..\..\PackageManager.exe</OutputFile>
+      <OutputFile>..\..\..\..\PackageManager.exe</OutputFile>
     </Link>
     <Manifest>
       <EnableDPIAwareness>true</EnableDPIAwareness>

@@ -185,3 +185,9 @@ PackageManager/lib/lhStd.lib
 PackageManager/lib/lhWinAPI.lib
 PackageManager/libD/lhStd.lib
 PackageManager/libD/lhWinAPI.lib
+
+Libs/CrashRpt/bin_x64/
+Libs/CrashRpt/lib_x64/
+Libs/KompexSQLiteWrapper/Kompex SQLite Wrapper/DebugStaticLib/
+Libs/KompexSQLiteWrapper/Kompex SQLite Wrapper/ReleaseStaticLib/
+*.db
