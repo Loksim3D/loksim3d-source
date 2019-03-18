@@ -12,8 +12,8 @@ namespace crashreport
 {
 
 //const wchar_t CRASH_REPORT_MAIL[] = L"loksim@lukas-haselsteiner.at";	//TODO andere Mail-Adresse?
-const wchar_t CRASH_REPORT_URL[] = L"http://loksim3d.lukas-haselsteiner.at/crashrpt/crashrpt.php?version=" L3D_TOSTRING(L3D_VERSION_CODE);
-const wchar_t CRASH_REPORT_PRIVACY_POLICY_URL[] = L"http://loksim3d.lukas-haselsteiner.at/crashrpt/privacypolicy.html";    
+const wchar_t CRASH_REPORT_URL[] = L"https://www.loksim3d.de/crashrpt/crashrpt.php?version=" L3D_TOSTRING(L3D_VERSION_CODE);
+const wchar_t CRASH_REPORT_PRIVACY_POLICY_URL[] = L"https://www.loksim3d.de/crashrpt/privacypolicy.html";    
 
 }
 }
