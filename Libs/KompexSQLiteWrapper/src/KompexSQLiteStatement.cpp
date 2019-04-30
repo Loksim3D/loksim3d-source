@@ -651,14 +651,14 @@ void SQLiteStatement::CommitTransaction()
 	{
 		try
 		{
-			int i = 0;
+			size_t i = 0;
 			// check wheter we have sql statements with different data types
 			if(!mTransactionSQL.empty() && !mTransactionSQL16.empty())
 			{
 				TTransactionSQL::iterator transIter;
 				TTransactionSQL16::iterator trans16Iter;
 
-				unsigned short transactions = mTransactionSQL.size() + mTransactionSQL16.size();
+				auto transactions = mTransactionSQL.size() + mTransactionSQL16.size();
 
 				while(i < transactions)
 				{

@@ -693,9 +693,9 @@ namespace Kompex
 		SQLiteDatabase *mDatabase;
 
 		//! typedef for UTF-8 transaction statements
-		typedef std::map<unsigned short /* transaction id */, std::pair<const char* /* sql */, bool /* memory allocated */> > TTransactionSQL;
+		typedef std::map<size_t /* transaction id */, std::pair<const char* /* sql */, bool /* memory allocated */> > TTransactionSQL;
 		//! typedef for UTF-16 transaction statements
-		typedef std::map<unsigned short /* transaction id */, std::pair<const wchar_t* /* sql */, bool /*  is memory allocated */> > TTransactionSQL16;
+		typedef std::map<size_t /* transaction id */, std::pair<const wchar_t* /* sql */, bool /*  is memory allocated */> > TTransactionSQL16;
 	
 		//! Stores UTF-8 transaction statements
 		TTransactionSQL mTransactionSQL;

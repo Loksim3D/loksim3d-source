@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "L3dPackageInstaller", "L3dPackageInstaller\L3dPackageInstaller.vcxproj", "{D4E410D4-EA1F-4C3E-8243-7044FECF770F}"
 	ProjectSection(ProjectDependencies) = postProject
+		{855DE711-855E-4BC0-9023-E8D92D45A4A5} = {855DE711-855E-4BC0-9023-E8D92D45A4A5}
 		{2E22763D-EBF8-4E05-A948-4D03E2C53B48} = {2E22763D-EBF8-4E05-A948-4D03E2C53B48}
 		{5C7BBE5B-50C1-43B3-8A1F-0CFE27B8E25B} = {5C7BBE5B-50C1-43B3-8A1F-0CFE27B8E25B}
-		{855DE711-855E-4BC0-9023-E8D92D45A4A5} = {855DE711-855E-4BC0-9023-E8D92D45A4A5}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lhWinAPI", "lhWinAPI\lhWinAPI.vcxproj", "{2E22763D-EBF8-4E05-A948-4D03E2C53B48}"
@@ -16,6 +18,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lhStd", "lhStd\lhStd.vcxproj", "{5C7BBE5B-50C1-43B3-8A1F-0CFE27B8E25B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "L3dEditLauncher", "L3dEditLauncher\L3dEditLauncher.vcxproj", "{33023AFB-28F4-4C4D-B870-4FD15C2A1E7B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2E22763D-EBF8-4E05-A948-4D03E2C53B48} = {2E22763D-EBF8-4E05-A948-4D03E2C53B48}
+		{5C7BBE5B-50C1-43B3-8A1F-0CFE27B8E25B} = {5C7BBE5B-50C1-43B3-8A1F-0CFE27B8E25B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kompex SQLite Wrapper", "..\Libs\KompexSQLiteWrapper\Kompex SQLite Wrapper\Kompex SQLite Wrapper.vcxproj", "{855DE711-855E-4BC0-9023-E8D92D45A4A5}"
 EndProject
@@ -48,6 +54,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9B690A7-2AA3-4350-885A-3E037311EA85}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = e01ad203-5329-4265-8d6a-ee61ba05a4ee
