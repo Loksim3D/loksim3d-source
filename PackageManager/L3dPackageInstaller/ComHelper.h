@@ -482,7 +482,7 @@ public:
 	_Check_return_ HRESULT InvokeN(
 		_In_ DISPID dispid, 
 		_In_ VARIANT* pvarParams, 
-		_In_ int nParams, 
+		_In_ UINT nParams, 
 		_Out_opt_ VARIANT* pvarRet = NULL) throw()
 	{
 		DISPPARAMS dispparams = { pvarParams, NULL, static_cast<UINT>(nParams), 0};
