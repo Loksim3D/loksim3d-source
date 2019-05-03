@@ -191,3 +191,4 @@ Libs/CrashRpt/lib_x64/
 Libs/KompexSQLiteWrapper/Kompex SQLite Wrapper/DebugStaticLib/
 Libs/KompexSQLiteWrapper/Kompex SQLite Wrapper/ReleaseStaticLib/
 *.db
+PackageManager/.vs
