@@ -51,7 +51,7 @@ INT_PTR DlgAbout::OnCommand(WPARAM wParam, LPARAM lParam)
 		return TRUE;
 
 	case IDC_ABOUT_LOKSIM:
-		ShellExecute(GetHwnd(), NULL, L"http://www.loksim3d.de", NULL, NULL, SW_SHOW);  
+		ShellExecute(GetHwnd(), NULL, L"https://www.loksim3d.de", NULL, NULL, SW_SHOW);
 		return TRUE;
 	}
 	return FALSE;
@@ -59,8 +59,8 @@ INT_PTR DlgAbout::OnCommand(WPARAM wParam, LPARAM lParam)
 
 
 /**
- * Hilfsfrozedur für den Info-Menüpunkt<br>
- * Anzeige HAnd beim Fahren über URLs
+ * Hilfsfrozedur fÃ¼r den Info-MenÃ¼punkt<br>
+ * Anzeige HAnd beim Fahren Ã¼ber URLs
  */
 static LRESULT CALLBACK UrlProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
