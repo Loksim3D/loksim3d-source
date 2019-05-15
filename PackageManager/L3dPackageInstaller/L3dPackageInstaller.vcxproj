@@ -48,7 +48,7 @@
     <LibraryPath>..\libD;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
     <TargetName>PackageManager_Debug</TargetName>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\..\</OutDir>
     <ExecutablePath>$(WindowsSdkDir)bin\x86;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -56,7 +56,7 @@
     <IncludePath>..\lhWinApi\Include;..\lhStd\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(LibraryPath)</LibraryPath>
     <TargetName>PackageManager</TargetName>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\..\</OutDir>
     <ExecutablePath>$(WindowsSdkDir)bin\x86;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
