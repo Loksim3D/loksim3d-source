@@ -88,7 +88,7 @@ namespace Loksim3D.WetterEdit.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loksim3D is a freeware application and can be used at no charge. A commercial usage, leasing or sale of the product is prohibited. The copyright owners of this program are Ralf Gryga, Lukas Haselsteiner, Uwe Klein and Martin Mory.
+        ///   Looks up a localized string similar to Loksim3D is a freeware application and can be used at no charge. A commercial usage, leasing or sale of the product is prohibited. The copyright owners of this program are Lukas Haselsteiner, Uwe Klein and Martin Mory.
         ///
         ///Für irgendwelche Schäden, die sich aus der Nutzung des Simulators ergeben sollten, wird keinerlei Haftung übernommen..
         /// </summary>

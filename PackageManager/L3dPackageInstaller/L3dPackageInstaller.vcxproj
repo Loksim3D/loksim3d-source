@@ -72,7 +72,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>KompexSQLiteWrapper_Static_d.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>KompexSQLiteWrapper_Static_d.lib;crashrpt1403.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\debug</AdditionalLibraryDirectories>
       <OutputFile>..\..\..\..\PackageManager_Debug.exe</OutputFile>
     </Link>
@@ -99,7 +99,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>KompexSQLiteWrapper_Static.lib;crashrpt1402.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>KompexSQLiteWrapper_Static.lib;crashrpt1403.lib;Shlwapi.lib;lhStd.lib;lhWinAPI.lib;comctl32.lib;KompexSQLiteWrapper_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\Libs\CrashRpt\lib;..\..\Libs\KompexSQLiteWrapper\lib\release</AdditionalLibraryDirectories>
       <OutputFile>..\..\..\..\PackageManager.exe</OutputFile>
     </Link>
