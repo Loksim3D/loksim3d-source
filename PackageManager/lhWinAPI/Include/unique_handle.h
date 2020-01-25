@@ -15,7 +15,7 @@ struct handle_traits
 ;
 
 /**
- * unique_handle verhält sich für handles wie std::unique_ptr<br>
+ * unique_handle verhÃ¤lt sich fÃ¼r handles wie std::unique_ptr<br>
  * Details siehe http://msdn.microsoft.com/en-us/magazine/hh288076.aspx
  */
 template <typename Type, typename Traits>

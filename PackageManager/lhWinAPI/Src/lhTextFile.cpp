@@ -12,7 +12,7 @@
 
 
 //********************************************************************************************************
-// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile); die anderen Parameter sind 0)
+// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile); die anderen Parameter sind 0)
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::TextFile::TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, DWORD dwCreationDisposition) : 
 			File(fileName, dwDesiredAccess, dwShareMode, dwCreationDisposition)
@@ -20,7 +20,7 @@ lhWinAPI::TextFile::TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD
 }
 
 //********************************************************************************************************
-// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile)
+// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile)
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::TextFile::TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes,
 						 DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) : 
@@ -29,14 +29,14 @@ lhWinAPI::TextFile::TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD
 }
 
 //********************************************************************************************************
-// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prüft auf INVALID_HANDLE_VALUE
+// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prÃ¼ft auf INVALID_HANDLE_VALUE
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::TextFile::TextFile(HANDLE hFile) : File(hFile)
 {
 }
 
 //******************************
-// Löscht die FileKlasse (Handle)
+// LÃ¶scht die FileKlasse (Handle)
 lhWinAPI::TextFile::~TextFile(void)
 {
 	Close();
@@ -146,7 +146,7 @@ lhWinAPI::TextFile::ENCODING lhWinAPI::TextFile::GetEncoding(const PBYTE pBuffer
 
 //*****************************************************************
 // Schreibt den String text in die Datei mit der Codierung Encoding
-// Liefert die Anzahl geschriebener Bytes zurück
+// Liefert die Anzahl geschriebener Bytes zurÃ¼ck
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
  DWORD lhWinAPI::TextFile::WriteText(std::wstring& text, ENCODING Encoding,  bool *pUsedDefaultChar) const
 {
@@ -159,7 +159,7 @@ lhWinAPI::TextFile::ENCODING lhWinAPI::TextFile::GetEncoding(const PBYTE pBuffer
 	{
 	case UTF8:
 		{
-			//BYTE dwByteOrderMark[] = {0xEF, 0xBB, 0xBF };							//ByteOrderMark für UTF8
+			//BYTE dwByteOrderMark[] = {0xEF, 0xBB, 0xBF };							//ByteOrderMark fÃ¼r UTF8
 			//WriteFile(m_hFile, (LPCVOID)dwByteOrderMark, 3, &dwBytesWritten, NULL);
 			lhWinAPI::WideCharToMultiByte(CP_UTF8, 0, text.c_str(), asciiDest, 0, 0);
 			bWrite = WriteFile(m_hFile, asciiDest.data(), static_cast<DWORD>(asciiDest.length()), &dwBytesWritten, NULL);
@@ -168,7 +168,7 @@ lhWinAPI::TextFile::ENCODING lhWinAPI::TextFile::GetEncoding(const PBYTE pBuffer
 
 	case UTF16:									//!!!!*****!!!!!!!!
 		{
-			BYTE dwByteOrderMark[] = {0xFF, 0xFE };									//ByteOrderMark für UTF16
+			BYTE dwByteOrderMark[] = {0xFF, 0xFE };									//ByteOrderMark fÃ¼r UTF16
 			WriteFile(m_hFile, (LPCVOID)dwByteOrderMark, 2, &dwBytesWritten, NULL);
 			bWrite = WriteFile(m_hFile, text.data(), static_cast<DWORD>(text.length() * 2), &dwBytesWritten, NULL);
 		}
@@ -176,7 +176,7 @@ lhWinAPI::TextFile::ENCODING lhWinAPI::TextFile::GetEncoding(const PBYTE pBuffer
  
 	case UTF16BE:
 		{
-			BYTE dwByteOrderMark[] = {0xFE, 0xFF };									//ByteOrderMark für UTF16BE
+			BYTE dwByteOrderMark[] = {0xFE, 0xFF };									//ByteOrderMark fÃ¼r UTF16BE
 			WriteFile(m_hFile, (LPCVOID)dwByteOrderMark, 2, &dwBytesWritten, NULL);
 			std::unique_ptr<BYTE> pBuffer(new BYTE[text.length() * 2]);
 			StringCbCopy(reinterpret_cast<wchar_t*>(pBuffer.get()), text.length() * 2, text.c_str());

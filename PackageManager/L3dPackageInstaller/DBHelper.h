@@ -20,7 +20,7 @@ namespace db
 {
 
 /**
- * Klasse welche Zugriffe auf DB kapselt / ermöglicht
+ * Klasse welche Zugriffe auf DB kapselt / ermÃ¶glicht
  */
 class DBHelper
 {
@@ -33,7 +33,7 @@ public:
 	static DBHelper& instance();
 
 	/**
-	 * Initialisiert die Datenbankverbindung und führt ev. notwendige DB-Update bzw DB-Create Operationen aus
+	 * Initialisiert die Datenbankverbindung und fÃ¼hrt ev. notwendige DB-Update bzw DB-Create Operationen aus
 	 * @throws SQLiteException bei DB-Fehler
 	 */
 	void InitDb(const boost::filesystem::path& dbPath, const boost::filesystem::path& l3dPath);
@@ -53,7 +53,7 @@ public:
 	std::wstring GetPackageBackupDir(int packageId);
 
 	/**
-	 * Falls die DB beim letzten Aufruf von InitDb neu angelegt wurde, wird hier true zurückgeliefert (entspricht erstem App-Start)
+	 * Falls die DB beim letzten Aufruf von InitDb neu angelegt wurde, wird hier true zurÃ¼ckgeliefert (entspricht erstem App-Start)
 	 */
 	bool IsDbNewCreated() const { return newDbCreated; }
 
@@ -74,7 +74,7 @@ public:
 	ValueType GetPreferenceValue(const std::wstring& prefName, ValueType defaultValue);
 
 	/**
-	 * Speichert Einstellung in DB, wobei der als beliebiger Typ übergebenen Wert von dieser Methode in einen String konvertiert wird
+	 * Speichert Einstellung in DB, wobei der als beliebiger Typ Ã¼bergebenen Wert von dieser Methode in einen String konvertiert wird
 	 */
 	template <class ValueType>
 	void SetPreferenceValue(const std::wstring& prefName, const ValueType& value);
@@ -98,7 +98,7 @@ public:
 protected:
 	DBHelper(void);
 	
-	// Update Methoden für DB von einer Version zur nächsten
+	// Update Methoden fÃ¼r DB von einer Version zur nÃ¤chsten
 	void Update10To11();
 	void Update11To12();
 	void Update12To13(const boost::filesystem::path& l3dPath);

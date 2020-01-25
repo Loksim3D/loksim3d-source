@@ -8,7 +8,7 @@
 
 
 //********************************************************************************************************
-// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile); die anderen Parameter sind 0)
+// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile); die anderen Parameter sind 0)
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::File::File(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, DWORD dwCreationDisposition)
 {
@@ -17,7 +17,7 @@ lhWinAPI::File::File(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShare
 }
 
 //********************************************************************************************************
-// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile)
+// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile)
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::File::File(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes,
 		   DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile)
@@ -28,7 +28,7 @@ lhWinAPI::File::File(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShare
 }
 
 //********************************************************************************************************
-// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prüft auf INVALID_HANDLE_VALUE
+// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prÃ¼ft auf INVALID_HANDLE_VALUE
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 lhWinAPI::File::File(HANDLE hFile) : m_hFile(hFile)
 {
@@ -37,7 +37,7 @@ lhWinAPI::File::File(HANDLE hFile) : m_hFile(hFile)
 }
 
 //******************************
-// Löscht die FileKlasse (Handle)
+// LÃ¶scht die FileKlasse (Handle)
 lhWinAPI::File::~File(void)
 {
 	Close();
@@ -45,7 +45,7 @@ lhWinAPI::File::~File(void)
 
 //*************************************************************
 // Liest die gesamte Datei in den ASCII-String dest (byteweise)
-// Liefert die Anzahl gelesener Bytes zurück
+// Liefert die Anzahl gelesener Bytes zurÃ¼ck
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 DWORD lhWinAPI::File::ReadBytes(std::string& dest) const
 {
@@ -60,8 +60,8 @@ DWORD lhWinAPI::File::ReadBytes(std::string& dest) const
 }
 
 //***********************************************************
-// Schreibt Byte für Byte des ASCII-String src in die Datei 
-// Liefert die Anzahl geschriebener Bytes zurück
+// Schreibt Byte fÃ¼r Byte des ASCII-String src in die Datei 
+// Liefert die Anzahl geschriebener Bytes zurÃ¼ck
 // wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 DWORD lhWinAPI::File::WritesBytes(std::string& src) const
 {
@@ -74,7 +74,7 @@ DWORD lhWinAPI::File::WritesBytes(std::string& src) const
 }
 
 //*********************************************************
-// Schließt den FileHandle(wird von Destruktor auto. gemacht
+// SchlieÃŸt den FileHandle(wird von Destruktor auto. gemacht
 void lhWinAPI::File::Close()
 {
 	if (m_hFile != INVALID_HANDLE_VALUE)
@@ -87,8 +87,8 @@ void lhWinAPI::File::Close()
 
 //**************************************************************************************************
 // Liest die gesamte Datei auf ppBuffer und schreibt die Anzahl gelesener Bytes in dwBytesRead
-// (hängt automatisch zweil NUL hinten an
-// ppBuffer muss mit delete gelöscht werden!!!
+// (hÃ¤ngt automatisch zweil NUL hinten an
+// ppBuffer muss mit delete gelÃ¶scht werden!!!
 void lhWinAPI::File::ReadUnsafe(PBYTE* ppBuffer, PDWORD pdwBytesRead) const
 {
 	int iFileLength = 0;

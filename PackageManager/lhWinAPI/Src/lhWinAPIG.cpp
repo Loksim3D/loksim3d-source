@@ -4,14 +4,14 @@
 #include <memory>
 
 //*********************************************
-//* Erstellt eine Class MenuDis fürs Menü menu 
+//* Erstellt eine Class MenuDis fÃ¼rs MenÃ¼ menu 
 //*********************************************
 lhWinAPI::MenuDis::MenuDis(HMENU menu) : hMenu(menu), vec(0)
 {
 }
 
 //****************************************
-//* Grayed alle gesetzten Menüpunkte aus *
+//* Grayed alle gesetzten MenÃ¼punkte aus *
 //****************************************
 void lhWinAPI::MenuDis::Disable() const
 {
@@ -20,7 +20,7 @@ void lhWinAPI::MenuDis::Disable() const
 }
 
 //*************************************
-//* enabled alle gesetzten Menüpunkte *
+//* enabled alle gesetzten MenÃ¼punkte *
 //*************************************
 void lhWinAPI::MenuDis::Enable() const
 {
@@ -29,7 +29,7 @@ void lhWinAPI::MenuDis::Enable() const
 }
 
 //*********************************
-//* Setzt das zu verwaltende Menü *
+//* Setzt das zu verwaltende MenÃ¼ *
 //*********************************
 void lhWinAPI::MenuDis::SetMenu(HMENU hMenu)
 {
@@ -37,7 +37,7 @@ void lhWinAPI::MenuDis::SetMenu(HMENU hMenu)
 }
 
 //**********************************************
-//* Fügt einen zu verwaltenden Menüpunkt hinzu *
+//* FÃ¼gt einen zu verwaltenden MenÃ¼punkt hinzu *
 //**********************************************
 void lhWinAPI::MenuDis::AddPoint(int point)
 {
@@ -45,7 +45,7 @@ void lhWinAPI::MenuDis::AddPoint(int point)
 }
 
 //**************************
-//* Löscht alle Menüpunkte *
+//* LÃ¶scht alle MenÃ¼punkte *
 //**************************
 void lhWinAPI::MenuDis::Clear()
 {

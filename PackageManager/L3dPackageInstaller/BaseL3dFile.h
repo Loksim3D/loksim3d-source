@@ -17,7 +17,7 @@ namespace files
 {
 
 /**
-* Basisklasse für alle Loksim3D XML-basierten Dateien
+* Basisklasse fÃ¼r alle Loksim3D XML-basierten Dateien
 */
 class BaseL3dFile
 {
@@ -30,7 +30,7 @@ public:
 	virtual ~BaseL3dFile(void) = default;
 
 	/**
-	* Lädt die Basisdaten die bei allen Dateien gleich sind
+	* LÃ¤dt die Basisdaten die bei allen Dateien gleich sind
 	*/
 	void LoadBaseFileData(const common::L3dPath& filePath);
 
@@ -58,7 +58,7 @@ public:
 	void SetFileAuthors(const std::wstring& fileAuthors);
 
 	/**
-	* Prüft ob der übergebene String (Mit-)Autor der Datei ist
+	* PrÃ¼ft ob der Ã¼bergebene String (Mit-)Autor der Datei ist
 	*/
 	bool IsAuthor(std::wstring author);
 
@@ -75,7 +75,7 @@ public:
 	void SetFileDoc(const std::wstring& fileDoc);
 
 	/**
-	* Liefert Version des Editors mit welchem Datei zuletzt geändert wurde
+	* Liefert Version des Editors mit welchem Datei zuletzt geÃ¤ndert wurde
 	*/
 	int GetFileEditorVersion() const;
 
@@ -85,7 +85,7 @@ public:
 
 protected:
 	/**
-	* Lädt den gesamten Inhalt der Datei in den Speicher in xmlDoc<br>
+	* LÃ¤dt den gesamten Inhalt der Datei in den Speicher in xmlDoc<br>
 	*/
 	void ReadFromFile(const common::L3dPath& filePath, pugi::xml_document& xmlDoc);
 

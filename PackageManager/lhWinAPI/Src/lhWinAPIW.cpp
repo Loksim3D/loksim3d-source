@@ -15,7 +15,7 @@ using namespace std;
 #if defined(UNICODE) || defined(_UNICODE)
 
 //****************************************
-//* Fügt Element zu Treeview hwndTV hinzu
+//* FÃ¼gt Element zu Treeview hwndTV hinzu
 //****************************************
 HTREEITEM lhWinAPI::AddItemToTree(HWND hwndTV, std::basic_string<wchar_t> nameItem, int nLevel, LPARAM lParam, int image)
 { 
@@ -201,21 +201,21 @@ std::wstring lhWinAPI::GetWindowString(HWND hwnd)
 }
 
 //**************************************************************************************************
-// Konvertiert den TCHAR-String src in den char-String dest; Liefert Anzahl umgewandelter Zeichen zurück
+// Konvertiert den TCHAR-String src in den char-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck
 int lhWinAPI::TcharToChar(std::string& dest, const std::wstring& src)
 {
 	return WideCharToMultiByte(0, 0, src, dest, 0, 0);
 }
 
 //**************************************************************************************************
-// Konvertiert den Char-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+// Konvertiert den Char-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 int lhWinAPI::CharToTchar(std::wstring& dest, const std::string& src)
 {
 	return MultiByteToWideChar(0, 0, src, dest);
 }
 
 //**************************************************************************************************
-// Konvertiert den Wchar-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+// Konvertiert den Wchar-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 int lhWinAPI::WcharToTchar(std::wstring& dest, const std::wstring& src)
 {
 	dest = src;
@@ -223,7 +223,7 @@ int lhWinAPI::WcharToTchar(std::wstring& dest, const std::wstring& src)
 }
 
 //**************************************************************************************************
-// Konvertiert den Tchar-String src in den Wchar-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+// Konvertiert den Tchar-String src in den Wchar-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 int lhWinAPI::TcharToWchar(std::wstring& dest, const std::wstring& src)
 {
 	dest = src;

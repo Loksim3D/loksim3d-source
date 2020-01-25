@@ -53,9 +53,9 @@ public:
 	void WaitUntilFinished();
 
 	/**
-	 * Fügt Package zum Installieren hinzu.<br>
+	 * FÃ¼gt Package zum Installieren hinzu.<br>
 	 * Diese Methode startet im Hintergrund das Auslesen von Informationen aus dem Package<br>
-	 * Diese Methode darf nicht mehr ausgeführt werrden, wenn die Installation bereits begonnen wurde!
+	 * Diese Methode darf nicht mehr ausgefÃ¼hrt werrden, wenn die Installation bereits begonnen wurde!
 	 * @param fileName Pfad zum Package
 	 * @return liefert false falls schon jetzt erkannt wird, dass dieses Package nicht installiert werden kann (zB schon in der Liste vorhanden)
 	 */
@@ -63,7 +63,7 @@ public:
 
 	/**
 	 * Entfernt ein Package aus der Liste zu installierender Packages<br>
-	 * Diese Methode darf nicht mehr ausgeführt werrden, wenn die Installation bereits begonnen wurde!
+	 * Diese Methode darf nicht mehr ausgefÃ¼hrt werrden, wenn die Installation bereits begonnen wurde!
 	 * @param fileName Pfad zum Package
 	 * @return liefert true falls package entfernt wurde; false falls es nicth in der liste vorhanden ist
 	 */
@@ -84,10 +84,10 @@ public:
 
 	/**
 	 * Startet zweiten Durchgang der Installation<br>
-	 * Installiert / Löscht alle Dateien die im übergebenen Argument gesetzt sind<br>
-	 * Setzt das EventInstallFinished zurück. Dieses Event kann nun wieder verwendet werden, um auf den Abschluss der Installation zu warten
-	 * Aufruf nur gültig falls IsAlwaysAsk() true liefert
-	 * @param userSelection Auswahl des Benutzers welche Dateien in welchem Package zu installieren sind. Dateien müssen sortiert sein!!! (Std operator< auf wstrings)
+	 * Installiert / LÃ¶scht alle Dateien die im Ã¼bergebenen Argument gesetzt sind<br>
+	 * Setzt das EventInstallFinished zurÃ¼ck. Dieses Event kann nun wieder verwendet werden, um auf den Abschluss der Installation zu warten
+	 * Aufruf nur gÃ¼ltig falls IsAlwaysAsk() true liefert
+	 * @param userSelection Auswahl des Benutzers welche Dateien in welchem Package zu installieren sind. Dateien mÃ¼ssen sortiert sein!!! (Std operator< auf wstrings)
 	 */
 	void StartInstallUserSelection(std::shared_ptr<std::map<std::wstring, insthelper::UserSelection>> userSelection);
 
@@ -95,7 +95,7 @@ public:
 	 * Liefert Informationen zum aktuellen Informationsvortschritt
 	 * @param cntProcessedFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der bereits verarbeiteten Dateien hineingeschrieben
 	 * @param cntTotalFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der insgesamt zu verarbeiteten Dateien hineingeschrieben
-	 * @return Fortschritt in Prozent (ungefährer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
+	 * @return Fortschritt in Prozent (ungefÃ¤hrer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
 	 */
 	size_t GetInstallationProgress(size_t *cntProcessedFiles, size_t *cntTotalFiles);
 
@@ -147,9 +147,9 @@ private:
 	std::vector<int> DetermineFilesToDeinstall();
 	bool IsInDeinstallList(const std::wstring& fname);
 
-	// Erzeugt Liste zu deinstallierender Dateien zur Anzeige für User
+	// Erzeugt Liste zu deinstallierender Dateien zur Anzeige fÃ¼r User
 	void GenerateFilesToDeinstallList(std::vector<int> deinstallPkgIds);
-	// Prüft ob eine Datei in installInformation drinnen ist
+	// PrÃ¼ft ob eine Datei in installInformation drinnen ist
 	bool IsInInstallList(const std::wstring& fname) const;
 
 	std::vector<std::wstring> selectedFilesToInstall;
@@ -185,10 +185,10 @@ private:
 
 	std::shared_ptr<std::map<int, std::vector<std::wstring>>> deinstalledFiles;
 
-	// Mapping ID -> Name für Packages die zu deinstallieren sind
+	// Mapping ID -> Name fÃ¼r Packages die zu deinstallieren sind
 	std::shared_ptr<std::map<int,  db::DBPackageEntry>> packagesToDeinstall;
 
-	// Liste zu deinstallierender Dateien zur Anzeige für User
+	// Liste zu deinstallierender Dateien zur Anzeige fÃ¼r User
 	// vector<pair<PackageName, Liste zu deinstalierender Dateien>>
 	std::shared_ptr<std::vector<std::pair<db::DBPackageEntry, std::vector<std::wstring>>>> userFilesToDeinstall;
 

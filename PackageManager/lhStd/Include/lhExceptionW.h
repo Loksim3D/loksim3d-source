@@ -27,7 +27,7 @@ namespace lhstd
 	};
 
 	//****************************************************
-	// Logische Fehler (durch Argumentprüfung verhinderbar
+	// Logische Fehler (durch ArgumentprÃ¼fung verhinderbar
 	class logic_error : public exception
 	{
 	public:
@@ -37,7 +37,7 @@ namespace lhstd
 	};
 
 	//****************************************
-	// Out of range (index zu groß/klein
+	// Out of range (index zu groÃŸ/klein
 	class out_of_range : public logic_error
 	{
 	public:
@@ -47,7 +47,7 @@ namespace lhstd
 	};
 
 	//*****************************************
-	// Falsches Argument / Aufruf nicht möglich
+	// Falsches Argument / Aufruf nicht mÃ¶glich
 	class invalid_argument : public logic_error
 	{
 	public:
@@ -57,7 +57,7 @@ namespace lhstd
 	};
 
 	//***********************************************************
-	// Logische Fehler (NICHT durch Argumentprüfung verhinderbar)
+	// Logische Fehler (NICHT durch ArgumentprÃ¼fung verhinderbar)
 	class runtime_error : public exception
 	{
 	public:

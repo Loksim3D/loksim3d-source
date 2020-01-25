@@ -111,7 +111,7 @@ namespace l3d
 
 		/**
 		 * Entfernt ein Package aus der Liste zu installierender Packages<br>
-		 * Diese Methode darf nicht mehr ausgeführt werrden, wenn die Installation bereits begonnen wurde!
+		 * Diese Methode darf nicht mehr ausgefÃ¼hrt werrden, wenn die Installation bereits begonnen wurde!
 		 * @param fileName Pfad zum Package
 		 * @return liefert true falls package entfernt wurde; false falls es nicth in der liste vorhanden ist
 		 */
@@ -242,7 +242,7 @@ namespace l3d
 
 				if (userInstSel != nullptr && !binary_search(userInstSel->filesToInstall.begin(), userInstSel->filesToInstall.end(), fname)) 
 				{
-					// wir befinden uns im pass two und der user hat unsere datei nicht ausgewählt => continue
+					// wir befinden uns im pass two und der user hat unsere datei nicht ausgewÃ¤hlt => continue
 					if (fileExists)
 					{
 						send(dbAgent.GetFileInfoTarget(), make_shared<db::DbInstallFileInfo>(FileInstallInfo(fname, ze.mtime, diskFileAttr.ftLastWriteTime), false)); 
@@ -257,7 +257,7 @@ namespace l3d
 				bool installFile = true;
 				if (fileExists && userInstSel == nullptr && !IsInDeleteList(fname, *installInfo))
 				{
-					// Falls nur ältere Dateien ersetzen werden sollen, Modified Times von Disk und Zip prüfen
+					// Falls nur Ã¤ltere Dateien ersetzen werden sollen, Modified Times von Disk und Zip prÃ¼fen
 					if(replaceOnlyOlder)
 					{
 						FILETIME diskTime = diskFileAttr.ftLastWriteTime;
@@ -275,7 +275,7 @@ namespace l3d
 
 						if ((diskFileAttr.nFileSizeHigh << sizeof (DWORD) | diskFileAttr.nFileSizeLow) == ze.unc_size)
 						{
-							// Falls filesize gleich, müssen wir den Inhalt vergleichen
+							// Falls filesize gleich, mÃ¼ssen wir den Inhalt vergleichen
 							handle h (transactFs.CreateFile(diskPath.c_str(), GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
 							if (h.get() == INVALID_HANDLE_VALUE)
 							{
@@ -308,7 +308,7 @@ namespace l3d
 							} while (bytesRead > 0);
 							if (!installFile)
 							{
-								// prüfen ob gelesene anzahl bytes != bytes in zipfile sind
+								// prÃ¼fen ob gelesene anzahl bytes != bytes in zipfile sind
 								installFile = overallRead != ze.unc_size;
 							}
 						}
@@ -338,7 +338,7 @@ namespace l3d
 						}
 						else if (fileExists)
 						{
-							// File existiert, ist aber nicht schreibgeschützt
+							// File existiert, ist aber nicht schreibgeschÃ¼tzt
 							installInfo->filesToInstall.push_back(FileInstallInfo(fname, ze.mtime, diskFileAttr.ftLastWriteTime));
 						}
 						else
@@ -349,7 +349,7 @@ namespace l3d
 
 						if (alwaysAskBeforeOverwrite)
 						{
-							// Benutzer will für jede Datei explizit gefragt werden =>
+							// Benutzer will fÃ¼r jede Datei explizit gefragt werden =>
 							// nur in Liste aufnehmen
 							continue;
 						}
@@ -366,7 +366,7 @@ namespace l3d
 
 					if (fileExists && (diskFileAttr.dwFileAttributes & FILE_ATTRIBUTE_READONLY) != 0)
 					{
-						// Schreibgeschützt => Schreibschutz aufheben
+						// SchreibgeschÃ¼tzt => Schreibschutz aufheben
 						transactFs.SetFileAttributes(diskPath.c_str(), diskFileAttr.dwFileAttributes & ~FILE_ATTRIBUTE_READONLY);
 					}
 
@@ -392,7 +392,7 @@ namespace l3d
 						SetFileTime(h.get(), nullptr, nullptr, &ze.mtime);
 						if (fileExists && (diskFileAttr.dwFileAttributes & FILE_ATTRIBUTE_READONLY) != 0)
 						{
-							// Datei war schreibgeschützt != Schreibschutz wieder setzen
+							// Datei war schreibgeschÃ¼tzt != Schreibschutz wieder setzen
 							transactFs.SetFileAttributes(diskPath.c_str(), diskFileAttr.dwFileAttributes);
 						}
 					}
@@ -525,9 +525,9 @@ namespace l3d
 
 		/**
 		 * Startet zweiten Durchgang der Installation<br>
-		 * Installiert / Löscht alle Dateien die im übergebenen Argument gesetzt sind<br>
-		 * Setzt das EventInstallFinished zurück. Dieses Event kann nun wieder verwendet werden, um auf den Abschluss der Installation zu warten
-		 * Aufruf nur gültig falls IsAlwaysAsk() true liefert
+		 * Installiert / LÃ¶scht alle Dateien die im Ã¼bergebenen Argument gesetzt sind<br>
+		 * Setzt das EventInstallFinished zurÃ¼ck. Dieses Event kann nun wieder verwendet werden, um auf den Abschluss der Installation zu warten
+		 * Aufruf nur gÃ¼ltig falls IsAlwaysAsk() true liefert
 		 * @param userSelection Auswahl des Benutzers welche Dateien in welchem Package zu installieren sind
 		 */
 		void InstallManager::StartInstallUserSelection(std::shared_ptr<std::map<std::wstring, insthelper::UserSelection>> userSelection)
@@ -559,7 +559,7 @@ namespace l3d
 
 					vector<int> deinstallPkgIds = m->DetermineFilesToDeinstall();
 
-					// einen core explizit für db operationen "reservieren"
+					// einen core explizit fÃ¼r db operationen "reservieren"
 					size_t numThreads = max(1, boost::thread::hardware_concurrency() - 1);
 					for (auto fileName = selFiles.begin(); fileName != selFiles.end() && !m->workerTskGrp.is_canceling(); ++fileName)
 					{
@@ -603,8 +603,8 @@ namespace l3d
 							m->dbAgent.SetAgentCommand(AgentCancelAndRollback);
 						}
 	
-						// Falls filesystem rollback fehlschlägt, speichern wir die installation in der db
-						// damit eine deinstallation möglich ist
+						// Falls filesystem rollback fehlschlÃ¤gt, speichern wir die installation in der db
+						// damit eine deinstallation mÃ¶glich ist
 						m->dbAgent.SetAgentCommand(AgentCancelAndCommit);
 						agent::wait(&m->dbAgent);
 						m->dbAgent.ThrowExceptionIfAvailable();
@@ -738,8 +738,8 @@ namespace l3d
 
 					vector<int> deinstallPkgIds = m->DetermineFilesToDeinstall();
 
-					// einen core explizit für db operationen "reservieren"
-					// außer wir machen in diesem pass nix mit der db
+					// einen core explizit fÃ¼r db operationen "reservieren"
+					// auÃŸer wir machen in diesem pass nix mit der db
 					size_t numThreads = max(1, boost::thread::hardware_concurrency() - (m->alwaysAskBeforeOverwrite ? 0 : 1));
 					for (auto fileName = selFiles.begin(); fileName != selFiles.end() && !m->workerTskGrp.is_canceling(); ++fileName)
 					{
@@ -779,7 +779,7 @@ namespace l3d
 						}
 						if (!m->cancelled)
 						{
-							// Sorieren für den User, bzw in weiterer folge auch wichtig für die userSelection
+							// Sorieren fÃ¼r den User, bzw in weiterer folge auch wichtig fÃ¼r die userSelection
 							sort(pInf->filesToDelete.begin(), pInf->filesToDelete.end());
 							sort(pInf->filesToInstall.begin(), pInf->filesToInstall.end());
 							sort(pInf->writeProtectedFilesToDelete.begin(), pInf->writeProtectedFilesToDelete.end());
@@ -802,8 +802,8 @@ namespace l3d
 							m->dbAgent.SetAgentCommand(AgentCancelAndRollback);
 						} else if (!m->alwaysAskBeforeOverwrite)
 						{
-							// Falls filesystem rollback fehlschlägt, speichern wir die installation in der db
-							// damit eine deinstallation möglich ist
+							// Falls filesystem rollback fehlschlÃ¤gt, speichern wir die installation in der db
+							// damit eine deinstallation mÃ¶glich ist
 							m->dbAgent.SetAgentCommand(AgentCancelAndCommit);
 							agent::wait(&m->dbAgent);
 							m->dbAgent.ThrowExceptionIfAvailable();
@@ -994,7 +994,7 @@ namespace l3d
 			return ret;
 		}
 
-		// Prüft ob eine Datei in installInformation drinnen ist
+		// PrÃ¼ft ob eine Datei in installInformation drinnen ist
 		bool InstallManager::IsInInstallList(const std::wstring& fname) const
 		{
 			boost::filesystem::path bpath = boost::to_lower_copy(fname);
@@ -1026,7 +1026,7 @@ namespace l3d
 			return false;
 		}
 
-		// Erzeugt Liste zu deinstallierender Dateien zur Anzeige für User
+		// Erzeugt Liste zu deinstallierender Dateien zur Anzeige fÃ¼r User
 		void InstallManager::GenerateFilesToDeinstallList(vector<int> deinstallPkgIds)
 		{
 			userFilesToDeinstall = make_shared<vector<pair<db::DBPackageEntry, vector<wstring>>>>();

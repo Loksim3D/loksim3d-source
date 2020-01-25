@@ -11,7 +11,7 @@ namespace common
 {
 
 /**
- * Repräsentiert einen Pfad
+ * ReprÃ¤sentiert einen Pfad
  */
 class L3dPath
 {
@@ -44,9 +44,9 @@ public:
 	const boost::filesystem::path& GetAbsolutePath() const;
 
 	/**
-	 * Liefert Pfad "Loksim-relativ" zu übergebenen parentPath
+	 * Liefert Pfad "Loksim-relativ" zu Ã¼bergebenen parentPath
 	 * Falls Datei in Hierachie weiter oben liegt, wird
-	 * GetL3dDirRelativePath() zurückgeliefert
+	 * GetL3dDirRelativePath() zurÃ¼ckgeliefert
 	 */
 	std::wstring GetRelativePath(const L3dPath& parentPath) const;
 
@@ -98,7 +98,7 @@ namespace std {
 	{
 	public:
 		/**
-		 * Hasher um L3dPath als Key in Hash-Table verwenden zu können
+		 * Hasher um L3dPath als Key in Hash-Table verwenden zu kÃ¶nnen
 		 */
 		size_t operator()(const l3d::common::L3dPath &path ) const
 		{

@@ -17,7 +17,7 @@ public:
 };
 
 /**
- * Klasse welche als "DropTarget" für Packages (d.h. Dateinamen)agiert
+ * Klasse welche als "DropTarget" fÃ¼r Packages (d.h. Dateinamen)agiert
  */
 class FileDropTarget :
 	public IDropTarget

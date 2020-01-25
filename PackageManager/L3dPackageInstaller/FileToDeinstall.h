@@ -9,8 +9,8 @@ namespace packageinstaller
 {
 
 /**
- * Kapselt Informationen über eine zu deinstallierende Datei<br>
- * Diese Infos werden dem Benutzer angezeigt, falls er eine explizitie Auswahl an Dateien vornehmen möchte
+ * Kapselt Informationen Ã¼ber eine zu deinstallierende Datei<br>
+ * Diese Infos werden dem Benutzer angezeigt, falls er eine explizitie Auswahl an Dateien vornehmen mÃ¶chte
  */
 struct FileToDeinstall
 {
@@ -23,7 +23,7 @@ struct FileToDeinstall
 	 */
 	std::wstring filename;
 	/**
-	 * Ist Datei schreibgeschützt?
+	 * Ist Datei schreibgeschÃ¼tzt?
 	 */
 	bool writeProtected;
 	/**

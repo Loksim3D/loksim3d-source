@@ -145,7 +145,7 @@ size_t DeinstallAgent::GetProgress(size_t *cntProcessedFiles, size_t *cntTotalFi
 }
 
 /**
- * Liefert zurück ob es "eigene Transaktion" ist oder Transaktion von außen gesteuert wird
+ * Liefert zurÃ¼ck ob es "eigene Transaktion" ist oder Transaktion von auÃŸen gesteuert wird
  */
 bool DeinstallAgent::IsOwnTransaction() const
 {
@@ -412,8 +412,8 @@ void FilesToDeinstallGathererAgent::run()
 
 		dbStmt.BeginTransaction();
 
-		// In einer Transaktion die Dependencies löschen
-		// Damit wird der Trigger ausgelöst, der Files.UsageCount verringert
+		// In einer Transaktion die Dependencies lÃ¶schen
+		// Damit wird der Trigger ausgelÃ¶st, der Files.UsageCount verringert
 		for (auto it = begin(pkgIdsToDelete); it != end(pkgIdsToDelete); ++it)
 		{
 			pkgId = *it;
@@ -422,7 +422,7 @@ void FilesToDeinstallGathererAgent::run()
 			dbStmt.ExecuteAndFree();
 		}
 
-		// Jetzt holen wir uns alle Dateien die gelöscht werden können
+		// Jetzt holen wir uns alle Dateien die gelÃ¶scht werden kÃ¶nnen
 		std::set<int> filesToDelete;
 		dbStmt.Sql("SELECT ID FROM Files WHERE UsageCount == 0 AND ExistedBefore == 0 ORDER BY Filename");
 		while (dbStmt.FetchRow())
@@ -430,10 +430,10 @@ void FilesToDeinstallGathererAgent::run()
 			filesToDelete.insert(dbStmt.GetColumnInt(0));
 		}		
 		dbStmt.FreeQuery();
-		// Wir machen das Löschen der Dateien in der DB rückgängig
+		// Wir machen das LÃ¶schen der Dateien in der DB rÃ¼ckgÃ¤ngig
 		dbStmt.RollbackTransaction();
 	
-		// Jetzt fehlt noch die Zuordnung welche Datei zu welchem Package gehört
+		// Jetzt fehlt noch die Zuordnung welche Datei zu welchem Package gehÃ¶rt
 		// Dazu holen wir uns die Dateien der Packages und schauen ob sie im filesToDelete Set sind
 		dbStmt.BeginTransaction();
 		for (auto it = begin(pkgIdsToDelete); it != end(pkgIdsToDelete); ++it)
@@ -513,7 +513,7 @@ size_t RemoveFilesAgent::GetCntProcessedFiles()
 }
 
 /**
- * Liefert zurück ob es eine eigene Transaktion ist oder ob Transaktion von außen gesteuert wird
+ * Liefert zurÃ¼ck ob es eine eigene Transaktion ist oder ob Transaktion von auÃŸen gesteuert wird
  */
 bool RemoveFilesAgent::IsOwnTransaction() const
 {
@@ -744,7 +744,7 @@ void DeinstallManager::CancelDeinstall()
 }
 
 /**
- * Bricht alle laufenden Operationen ab, und wartet bis sämtliche BG-Tasks beendet sind
+ * Bricht alle laufenden Operationen ab, und wartet bis sÃ¤mtliche BG-Tasks beendet sind
  */
 void DeinstallManager::CancelAndWaitForTasks()
 {

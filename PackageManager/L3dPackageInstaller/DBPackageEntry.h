@@ -12,7 +12,7 @@ namespace db
 {
 
 /**
- * Kapselt eine DB-Zeile welche ein installiertes Package in der DB repr‰sentiert
+ * Kapselt eine DB-Zeile welche ein installiertes Package in der DB repr√§sentiert
  */
 class DBPackageEntry
 {
@@ -26,7 +26,7 @@ public:
 
 	int GetId() const { return id; }
 	/**
-	 * Liefert vollst‰ndigen Dateinamen des Package
+	 * Liefert vollst√§ndigen Dateinamen des Package
 	 */
 	const std::wstring& GetPackagePath() const { return filepath; }
 	const time_t& GetInstalledTimestamp() const { return installedTimestamp; }

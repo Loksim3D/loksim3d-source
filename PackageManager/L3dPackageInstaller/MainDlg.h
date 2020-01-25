@@ -20,7 +20,7 @@ namespace ui
 {
 
 /**
- * Hauptdialog (verwaltet Tab-Control + Menü)
+ * Hauptdialog (verwaltet Tab-Control + MenÃ¼)
  */
 class MainDlg :
 	public ResizeableDialog

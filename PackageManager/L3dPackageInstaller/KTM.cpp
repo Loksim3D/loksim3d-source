@@ -10,8 +10,8 @@
 bool KTMTransaction::m_TxFsDisabled = false;
 
 
-// Prüft ob TxFs in Verzeichnis 'path' eingesetzt werden kann
-// Aktiviert bzw. deaktiviert TxFs abhängig von Ergebnis
+// PrÃ¼ft ob TxFs in Verzeichnis 'path' eingesetzt werden kann
+// Aktiviert bzw. deaktiviert TxFs abhÃ¤ngig von Ergebnis
 // liefert true falls txfs verwendet werden kann, ansonsten
 // false
 bool KTMTransaction::TestIfTxFsAvailableInDir(LPCTSTR path)

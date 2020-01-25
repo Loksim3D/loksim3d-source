@@ -115,7 +115,7 @@ vector<wstring> XpOpenFileDlg::GetResults()
 			}
 			if (ret.empty())
 			{
-				// Nur eine Datei ausgewählt => keine explizite Trennung von Datei- und Pfadname
+				// Nur eine Datei ausgewÃ¤hlt => keine explizite Trennung von Datei- und Pfadname
 				ret.push_back(dir);
 			}
 		}

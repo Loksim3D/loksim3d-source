@@ -31,7 +31,7 @@ struct DbInstallFileInfo
 	}
 
 	/** 
-	 * Infos über Datei
+	 * Infos Ã¼ber Datei
 	 */
 	l3d::packageinstaller::insthelper::FileInstallInfo fileInfo;
 	/**
@@ -41,7 +41,7 @@ struct DbInstallFileInfo
 };
 
 /**
- * Agent welcher die Dateien eines Package in die DB einfügt
+ * Agent welcher die Dateien eines Package in die DB einfÃ¼gt
  */
 class InstallPkgDBAgent : public Concurrency::agent
 {
@@ -50,16 +50,16 @@ public:
 	~InstallPkgDBAgent(void);
 
 	/**
-	 * Liefert Puffer in welchen die zu installierenden Package-Informationen geschrieben werden können
+	 * Liefert Puffer in welchen die zu installierenden Package-Informationen geschrieben werden kÃ¶nnen
 	 */
 	Concurrency::ITarget<RootPackageInfo*>* GetPkgBeginTarget() { return &pkgBeginBuffer; }
 	/**
-	 * Liefert Puffer in welchen die einzelnen Datei-Infos geschrieben werden können
+	 * Liefert Puffer in welchen die einzelnen Datei-Infos geschrieben werden kÃ¶nnen
 	 */
 	Concurrency::ITarget<std::shared_ptr<DbInstallFileInfo>>* GetFileInfoTarget() { return &fileInfoBuffer; }
 
 	/**
-	 * Aus diesem Puffer kann die Package-ID ausgelesen werden (nachdem eine Package-Info hinzugefügt wurde)
+	 * Aus diesem Puffer kann die Package-ID ausgelesen werden (nachdem eine Package-Info hinzugefÃ¼gt wurde)
 	 */
 	Concurrency::ISource<int>* GetPkgDbIdSource() { return &pkgDbIdBuffer; }
 	/**
@@ -68,7 +68,7 @@ public:
 	Concurrency::ISource<size_t>* GetCntProcessedFilesSource() { return &cntProcessedFilesBuffer; }
 
 	/**
-	 * Setzt ob Transaktion verwendet werden soll (ist abhängig davon ob auch NTFS-Transaktionen verwendet werden oder nicht)
+	 * Setzt ob Transaktion verwendet werden soll (ist abhÃ¤ngig davon ob auch NTFS-Transaktionen verwendet werden oder nicht)
 	 */
 	void SetUseTransaction(bool useTrans) { this->useTransaction = useTrans; }
 
@@ -92,8 +92,8 @@ protected:
 
 private:
 	/**
-	 * Nimmt die nötigen Queries an der DB vor, bevor die Installation der Dateien beginnen kann<br>
-	 * Fügt das übergebene Package in die Package-Tabelle ein und setzt ID des Packages in rootPkgInfo
+	 * Nimmt die nÃ¶tigen Queries an der DB vor, bevor die Installation der Dateien beginnen kann<br>
+	 * FÃ¼gt das Ã¼bergebene Package in die Package-Tabelle ein und setzt ID des Packages in rootPkgInfo
 	 * @param rootPkgInfo Package das verarbeitet werden soll
 	 */
 	void PrepareDbBeforeInstall(l3d::packageinstaller::RootPackageInfo& rootPkgInfo);

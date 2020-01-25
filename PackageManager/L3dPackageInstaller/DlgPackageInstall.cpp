@@ -493,7 +493,7 @@ INT_PTR DlgPackageInstall::OnTimer(WPARAM wParam, LPARAM lParam)
 						msg.append(pkgPath.filename().wstring());
 						msg.append(L": ");
 
-						// Lösche das Package welches den Fehler verursacht hat
+						// LÃ¶sche das Package welches den Fehler verursacht hat
 						selectedPackages.erase(remove_if(begin(selectedPackages), end(selectedPackages), 
 							[&pkgPath](const PkgDispInfo& disp) { return disp.completePath == pkgPath.wstring(); } ), end(selectedPackages));
 					}

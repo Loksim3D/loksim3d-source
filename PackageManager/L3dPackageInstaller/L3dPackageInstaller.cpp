@@ -61,7 +61,7 @@ void SetLanguage()
 			//SetThreadUILanguage(0x0409/*MAKELANGID (LANG_ENGLISH, SUBLANG_NEUTRAL)*/);	//0x0409 = English (US)
 		}
 
-		//Vista oder hˆher
+		//Vista oder h√∂her
 		SetThreadUILanguage(langId);
 	}
 }
@@ -106,7 +106,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	cri.dwFlags |= CR_INST_SHOW_ADDITIONAL_INFO_FIELDS;
 
 
-	// Language File f¸r CrashRpt abh‰ngig von eingestellter Sprache
+	// Language File f√ºr CrashRpt abh√§ngig von eingestellter Sprache
 	auto lang = l3d::packageinstaller::RegistryAccess::GetUiCulture();
 	if (boost::istarts_with(lang, L"en"))
 	{
@@ -168,7 +168,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			GetTokenInformation(hToken, TokenElevation, &elevation, sizeof(elevation), &infoLen);
 			if (!elevation.TokenIsElevated)
 			{
-				// Wir sind nicht "elevated" => runas ausf¸hren damit wir admin rechte zum schreiben bekommen
+				// Wir sind nicht "elevated" => runas ausf√ºhren damit wir admin rechte zum schreiben bekommen
 				GetModuleFileName(nullptr, tempOut, MAX_PATH);
 				ShellExecute(nullptr,  
 					L"runas",   
@@ -196,7 +196,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	//l3dPath /= L"\\";
 
-	// "Testf‰lle" f¸r Absolut in Relativ umwandlung
+	// "Testf√§lle" f√ºr Absolut in Relativ umwandlung
 	//auto r1 = l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(L"D:\\LoksimDevelopment\\Loksim-Data\\Objekte", l3dPath);
 	//auto r2 = l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(L"D:\\LoksimDevelopment\\Loksim-Data\\Objekte\\", l3dPath);
 	//auto r3 = l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(L"D:\\LoksimDevelopment/Loksim-Data\\Objekte\\test.l3dobj", l3dPath);

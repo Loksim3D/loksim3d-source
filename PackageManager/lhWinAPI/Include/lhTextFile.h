@@ -15,20 +15,20 @@ public:
 	enum ENCODING { ASCII, UTF8, UTF16, UTF16BE, UTF32, UTF32BE, FORCEENCODING = 32 };
 
 	//********************************************************************************************************
-	// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile); die anderen Parameter sind 0)
+	// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile); die anderen Parameter sind 0)
 	// wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 	TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, DWORD dwCreationDisposition);
 	//*************************************<*******************************************************************
-	// Öfnet die Datei fileName mit den gewünschten Attributen (wie CreateFile)
+	// Ã–fnet die Datei fileName mit den gewÃ¼nschten Attributen (wie CreateFile)
 	// wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 	TextFile(std::wstring fileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes,
 		 DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
 	//********************************************************************************************************
-	// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prüft auf INVALID_HANDLE_VALUE
+	// Initialisiert die FileKlasse mit dem Handle hFile zu einer Datei (prÃ¼ft auf INVALID_HANDLE_VALUE
 	// wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 	TextFile(HANDLE hFile);
 	//******************************
-	// Löscht die FileKlasse (Handle)
+	// LÃ¶scht die FileKlasse (Handle)
 	virtual ~TextFile(void);
 
 	//*****************************************************************************
@@ -40,7 +40,7 @@ public:
 
 	//*****************************************************************
 	// Schreibt den String text in die Datei mit der Codierung Encoding
-	// Liefert die Anzahl geschriebener Bytes zurück
+	// Liefert die Anzahl geschriebener Bytes zurÃ¼ck
 	// wirft lhstd::file_io_error mit Fehlerbeschreibung von lhWinAPI::GetLastErrorS() falls etwas schiefgeht
 	DWORD WriteText(std::wstring& text, ENCODING Encoding = ASCII, bool *pUsedDefaultChar=0) const;
 

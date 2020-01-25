@@ -10,7 +10,7 @@ namespace ui
 {
 
 /**
- * Dialog welcher Hintergrund Operationen ausführt
+ * Dialog welcher Hintergrund Operationen ausfÃ¼hrt
  */
 class BackgroundOperatorDlg : virtual public Dialog
 {

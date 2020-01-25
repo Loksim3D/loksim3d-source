@@ -19,8 +19,8 @@ public:
 	HWND GetHwnd() { return hDlg; }
 
 	/**
-	 * Setzt minimale größe des Dialogs
-	 * -1 bedeutet beliebige minimal größe (kann bei x und/oder y gesetzt werden)
+	 * Setzt minimale grÃ¶ÃŸe des Dialogs
+	 * -1 bedeutet beliebige minimal grÃ¶ÃŸe (kann bei x und/oder y gesetzt werden)
 	 */
 	void SetMinSize(const POINT& _minSize) { minSize = _minSize; }
 
@@ -30,7 +30,7 @@ protected:
 
 	/**
 	 * Zeit den Dialog an<br>
-	 * siehe DialogBoxParam für Parameterbeschreibung
+	 * siehe DialogBoxParam fÃ¼r Parameterbeschreibung
 	 */
 	INT_PTR Show(__in_opt HINSTANCE hInstance,
 				 __in LPCWSTR lpTemplateName,
@@ -38,14 +38,14 @@ protected:
 
 	/**
 	 * Erzeugt einen modeless dialog<br>
-	 * siehe CreateDialogParam für Parameterbeschreibung
+	 * siehe CreateDialogParam fÃ¼r Parameterbeschreibung
 	 */
 	HWND CreateModeless(__in_opt  HINSTANCE hInstance,
 						__in      LPCTSTR lpTemplateName,
 						__in_opt  HWND hWndParent);
 
 	/**
-	 * Window-Prozedur die überschrieben werden kann<br>
+	 * Window-Prozedur die Ã¼berschrieben werden kann<br>
 	 * Jedoch sollte immer diese Methode aufgerufen werden, damit die Nachrichten an die entsprechenden anderen Methoden weitergeleitet werden
 	 */
 	virtual INT_PTR DlgWndProc(UINT message, WPARAM wParam, LPARAM lParam);

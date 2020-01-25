@@ -16,7 +16,7 @@ namespace l3d
 			public:
 				DBFileEntry(int id, int usageCount, std::wstring filepath, bool existedBefore);
 
-				// Liest Daten aus Statement aus. Spalten müssen in folgender Reiehenfolge sein:
+				// Liest Daten aus Statement aus. Spalten mÃ¼ssen in folgender Reiehenfolge sein:
 				// ID, Filename, ExistedBefore, UsageCount 
 				explicit DBFileEntry(Kompex::SQLiteStatement& stmt);
 

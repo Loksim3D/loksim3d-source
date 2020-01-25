@@ -5,7 +5,7 @@ namespace l3d
 namespace packageinstaller
 {
 	/**
-	 * Diverse Commands für Agenten
+	 * Diverse Commands fÃ¼r Agenten
 	 */
 	enum AgentCommand
 	{
@@ -14,19 +14,19 @@ namespace packageinstaller
 		 */
 		AgentContinueWork, 
 		/**
-		 * Sofort abbrechen aber bisher durchgeführte Änderungen commiten
+		 * Sofort abbrechen aber bisher durchgefÃ¼hrte Ã„nderungen commiten
 		 */
 		AgentCancelAndCommit, 
 		/**
-		 * Sofort abbrechen und Änderungen zurückrollen
+		 * Sofort abbrechen und Ã„nderungen zurÃ¼ckrollen
 		 */
 		AgentCancelAndRollback, 
 		/**
-		 * Arbeit fortsetzen bis keine neue Arbeit mehr da ist, dann Änderungen commiten und Agent stoppen
+		 * Arbeit fortsetzen bis keine neue Arbeit mehr da ist, dann Ã„nderungen commiten und Agent stoppen
 		 */
 		AgentStopAndCommit, 
 		/**
-		 * Arbeit fortsetzen bis keine neue Arbeit mehr da ist, dann Änderungen zurückrollen und Agent stoppen
+		 * Arbeit fortsetzen bis keine neue Arbeit mehr da ist, dann Ã„nderungen zurÃ¼ckrollen und Agent stoppen
 		 */
 		AgentStopAndRollback
 	};

@@ -5,8 +5,8 @@
 #include <memory>
 
 /**
- * Factory-Methode für OpenFileDialog Objekt
- * Liefert unter Vista oder höher den VistaOpenFileDlg und sonst XpOpenFileDlg
+ * Factory-Methode fÃ¼r OpenFileDialog Objekt
+ * Liefert unter Vista oder hÃ¶her den VistaOpenFileDlg und sonst XpOpenFileDlg
  */
 std::unique_ptr<OpenFileDlg> GetOpenFileDlg();
 

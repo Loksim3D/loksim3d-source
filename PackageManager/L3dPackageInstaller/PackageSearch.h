@@ -18,7 +18,7 @@ namespace db
 {
 
 /**
- * Ermöglicht Suche nach Packages in DB
+ * ErmÃ¶glicht Suche nach Packages in DB
  */
 class PackageSearch : boost::noncopyable
 {

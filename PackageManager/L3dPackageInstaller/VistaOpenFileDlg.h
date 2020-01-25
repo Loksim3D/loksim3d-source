@@ -8,7 +8,7 @@
 #include "OpenFileDlg.h"
 
 /**
- * Datei-Öffnen Dialog im Vista Style (Common Items Dialog)
+ * Datei-Ã–ffnen Dialog im Vista Style (Common Items Dialog)
  */
 class VistaOpenFileDlg : public VistaFileDlg, public OpenFileDlg
 {

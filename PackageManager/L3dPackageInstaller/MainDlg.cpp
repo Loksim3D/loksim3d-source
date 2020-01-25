@@ -277,7 +277,7 @@ static int InsertTabItem(HWND hTab, LPTSTR pszText, int iid)
 
 
 
-// Hier werden die Dialoge für das TabCtrl vorbereitet. Noetig ist
+// Hier werden die Dialoge fÃ¼r das TabCtrl vorbereitet. Noetig ist
 // das nur unter XP. Aber da das Programm unter alenn aktuellen
 // Plattformen vernuenftig laufen soll, habe ich das hier mit
 // aufgenommen.

@@ -16,7 +16,7 @@ namespace lhstd
 }
 
 //*****************************************************************
-//* Fügt einen String und einen beliebigen anderen Wert aneinander   
+//* FÃ¼gt einen String und einen beliebigen anderen Wert aneinander   
 template<class T> std::basic_string<TCHAR> operator&(const std::basic_string<TCHAR>& s, const T& v);
 
 
@@ -58,7 +58,7 @@ template<class T> T lhstd::Read(const TCHAR *string, const T init)
 }
 
 //*****************************************************************
-//* Fügt einen String und einen beliebigen anderen Wert aneinander 
+//* FÃ¼gt einen String und einen beliebigen anderen Wert aneinander 
 template<class T> std::basic_string<TCHAR> operator&(const std::basic_string<TCHAR>& s, const T& v)
 {
 	std::basic_stringstream<TCHAR> str;

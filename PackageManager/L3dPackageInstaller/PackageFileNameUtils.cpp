@@ -52,7 +52,7 @@ wstring PackageFileNameToFileName(const wstring& packageFileName)
 {
 	wstringstream strBuf;
 
-	//Jetzt die Escapes auflösen
+	//Jetzt die Escapes auflÃ¶sen
 	for(size_t i = 0; i < packageFileName.length(); ++i)
 	{
 		wchar_t hexValue;

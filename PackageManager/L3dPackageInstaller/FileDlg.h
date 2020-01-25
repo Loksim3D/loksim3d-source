@@ -8,7 +8,7 @@
 #include <string>
 
 /**
- * Interface f¸r s‰mtliche Datei Dialoge zum ÷ffnen bzw. Speichern von Dateien
+ * Interface f√ºr s√§mtliche Datei Dialoge zum √ñffnen bzw. Speichern von Dateien
  */
 class FileDlg
 {
@@ -16,13 +16,13 @@ public:
 	virtual ~FileDlg() {}
 
 	/**
-	 * Legt fest ob ausgew‰hlte Datei (und damit auch Pfad) existieren muss
+	 * Legt fest ob ausgew√§hlte Datei (und damit auch Pfad) existieren muss
 	 * @param bMustExist legt fest ob datei existieren muss
 	 * @return S_OK im Erfolgsfall
 	 */
 	virtual HRESULT SetPathAndFileMustExist(bool bMustExist) = 0;
 	/**
-	 * Gibt die FileTypes (den Filter) an, die der User ausw‰hlen kann
+	 * Gibt die FileTypes (den Filter) an, die der User ausw√§hlen kann
 	 * @param filterSpec Vector von Filterspezifikationen
 	 * @return S_OK im Erfolgsfall
 	 */

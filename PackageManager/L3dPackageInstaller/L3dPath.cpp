@@ -74,7 +74,7 @@ L3dPath CreateRelativeToFileIntern(const std::basic_string<T>& relativePath, con
 
 	if (relativePath.empty())
 	{
-		// leeren Pfad zurückliefern
+		// leeren Pfad zurÃ¼ckliefern
 		return L3dPath();
 	}
 	if (relativePath[0] == '\\' || relativePath[0] == '/')

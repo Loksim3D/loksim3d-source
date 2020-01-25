@@ -167,7 +167,7 @@ namespace fs
 		return localAppDataPath.wstring();
 	}
 
-	// Liefert vollen Pfad für Datei in Local-Settings Ordner des Loksims (LOCAL_APPDATA/Loksim3D)
+	// Liefert vollen Pfad fÃ¼r Datei in Local-Settings Ordner des Loksims (LOCAL_APPDATA/Loksim3D)
 	// Erstellt Verzeichnis falls es nicht existiert
 	std::wstring GetFilenameInLocalSettingsDir(const std::wstring& file)
 	{

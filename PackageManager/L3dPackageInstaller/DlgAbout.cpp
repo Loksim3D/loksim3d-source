@@ -59,8 +59,8 @@ INT_PTR DlgAbout::OnCommand(WPARAM wParam, LPARAM lParam)
 
 
 /**
- * Hilfsfrozedur für den Info-Menüpunkt<br>
- * Anzeige HAnd beim Fahren über URLs
+ * Hilfsfrozedur fÃ¼r den Info-MenÃ¼punkt<br>
+ * Anzeige HAnd beim Fahren Ã¼ber URLs
  */
 static LRESULT CALLBACK UrlProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {

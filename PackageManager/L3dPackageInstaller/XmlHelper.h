@@ -35,9 +35,9 @@ template <class T>
 T ReadIntEnum(const pugi::xml_node& n, const::pugi::char_t* name, const T minValue, const T maxValue, const T defaultValue);
 
 // Speichert ein pugi::xml_document auf sichere Weise:
-// Speichert das Dokument zuerst in eine temporäre Datei
+// Speichert das Dokument zuerst in eine temporÃ¤re Datei
 // und verschiebt diese Datei dann an den richtigen Ort
-// Dies verhindert ''halb-überschriebene'' Dateien bei einem Absturz
+// Dies verhindert ''halb-Ã¼berschriebene'' Dateien bei einem Absturz
 bool SaveToFile(const pugi::xml_document& doc, const common::L3dPath& fileName);
 
 // Liest von Datei

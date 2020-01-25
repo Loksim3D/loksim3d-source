@@ -10,7 +10,7 @@
 #include "FileDlg.h"
 
 /**
- * Interface f¸r s‰mtliche Datei Dialoge zum Speichern von Dateien
+ * Interface f√ºr s√§mtliche Datei Dialoge zum Speichern von Dateien
  */
 class SaveFileDlg : public FileDlg
 {
@@ -18,8 +18,8 @@ public:
 	virtual ~SaveFileDlg() {}
 
 	/**
-	* Liefert die ausgew‰hlte Datei, falls User welche gew‰hlt hat<br>
-	* Falls nichts ausgew‰hlt, empty string
+	* Liefert die ausgew√§hlte Datei, falls User welche gew√§hlt hat<br>
+	* Falls nichts ausgew√§hlt, empty string
 	* @return bsoluter Datei-Pfad
 	*/
 	virtual std::wstring GetResult() = 0;

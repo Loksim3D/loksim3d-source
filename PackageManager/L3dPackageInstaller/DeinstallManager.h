@@ -63,7 +63,7 @@ private:
 /*------------------------------------------------------------------------*/
 
 /**
- * Basisklasse für alle Uninstall-Agents
+ * Basisklasse fÃ¼r alle Uninstall-Agents
  */
 class BaseDeinstallAgent : boost::noncopyable, public Concurrency::agent
 {
@@ -77,7 +77,7 @@ public:
 
 protected:
 	/**
-	 * Letzter gültiger Befehl der mit SetAgentCommand gesetzt wurde
+	 * Letzter gÃ¼ltiger Befehl der mit SetAgentCommand gesetzt wurde
 	 */
 	Concurrency::overwrite_buffer<AgentCommand> cmdBuffer;
 };
@@ -85,7 +85,7 @@ protected:
 /*------------------------------------------------------------------------*/
 
 /**
- * Basisklasse für alle Agents die ThrowExceptionIfAvailable() unterstützen
+ * Basisklasse fÃ¼r alle Agents die ThrowExceptionIfAvailable() unterstÃ¼tzen
  */
 class ThrowableDeinstallAgent : public BaseDeinstallAgent
 {
@@ -97,7 +97,7 @@ public:
 
 protected:
 	/**
-	 * Error buffer der mit DeinstallException gefüllt werden kann<br>
+	 * Error buffer der mit DeinstallException gefÃ¼llt werden kann<br>
 	 * Falls etwas in diesem Buffer steht, wirft ThrowExceptionIfAvailable eine Exception beim Aufruf
 	 */
 	Concurrency::single_assignment<DeinstallException> errBuffer;
@@ -116,7 +116,7 @@ public:
 	 * Liefert Informationen zum aktuellen Fortschritt beim Bestimmen der zu deinstallierenden Dateien
 	 * @param cntProcessedFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der bereits verarbeiteten Dateien hineingeschrieben
 	 * @param cntTotalFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der insgesamt zu verarbeiteten Dateien hineingeschrieben
-	 * @return Fortschritt in Prozent (ungefährer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
+	 * @return Fortschritt in Prozent (ungefÃ¤hrer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
 	 */
 	virtual size_t GetProgress(size_t *cntProcessedFiles, size_t *cntTotalFiles);
 
@@ -130,20 +130,20 @@ protected:
 class RemoveFilesAgent;
 
 /**
- * Agent der die eigentliche Deinstallation der Dateien + Löschen aus der DB vornimmt
+ * Agent der die eigentliche Deinstallation der Dateien + LÃ¶schen aus der DB vornimmt
  */
 class DeinstallAgent : public ProgressReportableAgent
 {
 public:
 	/**
-	 * Instanziert einen DeinstallAgent der sämtliche nicht mehr verwendeten Dateien der zu löschenden Packages von der DB und Disk löscht
+	 * Instanziert einen DeinstallAgent der sÃ¤mtliche nicht mehr verwendeten Dateien der zu lÃ¶schenden Packages von der DB und Disk lÃ¶scht
 	 * @param l3dPath Pfad zum Loksim-Verzeichnis
 	 * @param pkgIdsToDelete IDs der Packages in DB die deinstalliert werden sollen
 	 */
 	DeinstallAgent(const boost::filesystem::path& l3dPath,  const std::vector<int>& pkgIdsToDelete);
 
 	/**
-	 * Instanziert einen DeinstallAgent der sämtliche nicht mehr verwendeten Dateien der zu löschenden Packages von der DB und Disk löscht
+	 * Instanziert einen DeinstallAgent der sÃ¤mtliche nicht mehr verwendeten Dateien der zu lÃ¶schenden Packages von der DB und Disk lÃ¶scht
 	 * @param l3dPath Pfad zum Loksim-Verzeichnis
 	 * @param pkgIdsToDelete IDs der Packages in DB die deinstalliert werden sollen
 	 * @param dbConnection Connection zur DB die verwendet werden soll (macht kein Rollback oder Commit!)
@@ -152,10 +152,10 @@ public:
 	DeinstallAgent(const boost::filesystem::path& l3dPath,  const std::vector<int>& pkgIdsToDelete, Kompex::SQLiteDatabase* dbConnection, KTMTransaction* transactFs);
 
 	/**
-	 * Instanziert einen DeinstallAgent der alle übergebenen Dateien von der Disk löscht, und SÄMTLICHE nicht mehr verwendeten Dateien der Packages aus der DB
+	 * Instanziert einen DeinstallAgent der alle Ã¼bergebenen Dateien von der Disk lÃ¶scht, und SÃ„MTLICHE nicht mehr verwendeten Dateien der Packages aus der DB
 	 * @param l3dPath Pfad zum Loksim-Verzeichnis
 	 * @param packagesAndFilesToDelete	Keys: IDs der Packages die deinstalliert werden sollen
-	 *									Values: Vektor mit Dateinamen (relativ zum L3D-Verzeichnis) die für jedes Package tatsächlich von der Disk gelöscht werden sollen
+	 *									Values: Vektor mit Dateinamen (relativ zum L3D-Verzeichnis) die fÃ¼r jedes Package tatsÃ¤chlich von der Disk gelÃ¶scht werden sollen
 	 */
 	DeinstallAgent(const boost::filesystem::path& l3dPath,  std::shared_ptr<std::map<int, std::vector<std::wstring>>> packagesAndFilesToDelete);
 
@@ -165,7 +165,7 @@ public:
 	 * Liefert Informationen zum aktuellen Fortschritt beim Bestimmen der zu deinstallierenden Dateien
 	 * @param cntProcessedFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der bereits verarbeiteten Dateien hineingeschrieben
 	 * @param cntTotalFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der insgesamt zu verarbeiteten Dateien hineingeschrieben
-	 * @return Fortschritt in Prozent (ungefährer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
+	 * @return Fortschritt in Prozent (ungefÃ¤hrer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
 	 */
 	virtual size_t GetProgress(size_t *cntProcessedFiles, size_t *cntTotalFiles);
 	
@@ -175,14 +175,14 @@ public:
 	void SetAgentCommand(AgentCommand cmd);
 
 	/**
-	 * Holt die gelöschten Dateien ab<br>
-	 * Aufruf nur gültig, falls Agent fertig ist<br>
-	 * @returns Map mit gelöschten Dateien. Key = PackageID, Value = Vektor mit Dateien die für dieses package gelöscht wurden
+	 * Holt die gelÃ¶schten Dateien ab<br>
+	 * Aufruf nur gÃ¼ltig, falls Agent fertig ist<br>
+	 * @returns Map mit gelÃ¶schten Dateien. Key = PackageID, Value = Vektor mit Dateien die fÃ¼r dieses package gelÃ¶scht wurden
 	 */
 	std::shared_ptr<std::map<int, std::vector<std::wstring>>> GetDeinstalledFiles() { return deletedFiles; }
 
 	/**
-	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos möglich ist
+	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos mÃ¶glich ist
 	 * @return true falls Transaktionen eingesetzt werden
 	 */
 	bool IsUsingTransactions() const;
@@ -194,7 +194,7 @@ protected:
 
 private:
 	/**
-	 * Liefert zurück ob es "eigene Transaktion" ist oder Transaktion von außen gesteuert wird
+	 * Liefert zurÃ¼ck ob es "eigene Transaktion" ist oder Transaktion von auÃŸen gesteuert wird
 	 */
 	bool IsOwnTransaction() const;
 
@@ -215,7 +215,7 @@ private:
 /*------------------------------------------------------------------------*/
 
 /**
- * Agent der sämtliche Dateien 'sammelt' die beim Deinstallieren von Packages gelöscht werden sollten
+ * Agent der sÃ¤mtliche Dateien 'sammelt' die beim Deinstallieren von Packages gelÃ¶scht werden sollten
  */
 class FilesToDeinstallGathererAgent : public ProgressReportableAgent
 {
@@ -223,14 +223,14 @@ public:
 	/**
 	 * Instanziert neuen Agent
 	 * @param l3dPath Pfad zum Loksim-Verzeichnis
-	 * @param pkgIdsToDelete IDs der Packages in DB für welche die zu deinstallierenden Dateien gesammelt werden sollen
+	 * @param pkgIdsToDelete IDs der Packages in DB fÃ¼r welche die zu deinstallierenden Dateien gesammelt werden sollen
 	 */
 	FilesToDeinstallGathererAgent(const boost::filesystem::path& l3dPath,  const std::vector<int>& pkgIdsToDelete);
 
 	/**
-	 * Holt die zu löschenden Dateien ab<br>
-	 * Aufruf nur gültig, falls Agent fertig ist<br>
-	 * @returns Map mit zu löschenden Dateien. Key = PackageID, Value = Vektor mit Dateien die für dieses package gelöscht werden sollten
+	 * Holt die zu lÃ¶schenden Dateien ab<br>
+	 * Aufruf nur gÃ¼ltig, falls Agent fertig ist<br>
+	 * @returns Map mit zu lÃ¶schenden Dateien. Key = PackageID, Value = Vektor mit Dateien die fÃ¼r dieses package gelÃ¶scht werden sollten
 	 */
 	std::shared_ptr<std::map<int, std::vector<FileToDeinstall>>> GetFilesToDeinstall() { return filesToDeinstall; }
 
@@ -247,7 +247,7 @@ private:
 /*------------------------------------------------------------------------*/
 
 /**
- * Agent der das Löschen der Dateien im Dateisystem vornimmt
+ * Agent der das LÃ¶schen der Dateien im Dateisystem vornimmt
  */
 class RemoveFilesAgent : public BaseDeinstallAgent
 {
@@ -259,29 +259,29 @@ public:
 	 * Liefert ein Pair mit folgendem Inhalt:<br>
 	 * first: Dateiname der gerade bearbeitet wurde als Fehler aufgetreten ist<br>
 	 * second: Fehlermeldung<br>
-	 * Aufruf nur gültig, falls HasError() true liefert! Ansonsten blockiert diese Funktion!
+	 * Aufruf nur gÃ¼ltig, falls HasError() true liefert! Ansonsten blockiert diese Funktion!
 	 */
 	const std::pair<std::wstring, std::wstring>& GetError() { return errBuffer.value(); }
 
 	/**
-	 * Liefert Puffer in welchen die zu löschenden Dateien geschrieben werden können. Dateinamen relativ zum L3D-Verzeichnis!<br>
-	 * Falls ein Leer-String geschrieben wird, wartet der Agent auf den abschließenden Command
+	 * Liefert Puffer in welchen die zu lÃ¶schenden Dateien geschrieben werden kÃ¶nnen. Dateinamen relativ zum L3D-Verzeichnis!<br>
+	 * Falls ein Leer-String geschrieben wird, wartet der Agent auf den abschlieÃŸenden Command
 	 */
 	Concurrency::ITarget<std::wstring>* GetFilesToDeleteTarget() { return &filesToDeleteBuffer; }
 
 	/**
-	 * Falls logDeletedFiles true übergeben wurde, liefert diese Methode die gelöschten Dateien
+	 * Falls logDeletedFiles true Ã¼bergeben wurde, liefert diese Methode die gelÃ¶schten Dateien
 	 * Methode kann nur einmal aufgerufen werden!
 	 */
 	std::shared_ptr<std::vector<std::wstring>> GetDeletedFiles() { return deletedFiles; }
 
 	/**
-	 * Liefert anzahl verarbeiteter Dateien thread-safe zurück
+	 * Liefert anzahl verarbeiteter Dateien thread-safe zurÃ¼ck
 	 */
 	size_t GetCntProcessedFiles();
 
 	/**
-	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos möglich ist
+	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos mÃ¶glich ist
 	 * @return true falls Transaktionen eingesetzt werden
 	 */
 	bool IsUsingTxFs() const;
@@ -291,7 +291,7 @@ public:
 	void SetUndoInstallation(bool undoInstallation) { this->undoInstallation = undoInstallation; }
 
 	/**
-	 * Liefert zurück ob es eine eigene Transaktion ist oder ob Transaktion von außen gesteuert wird
+	 * Liefert zurÃ¼ck ob es eine eigene Transaktion ist oder ob Transaktion von auÃŸen gesteuert wird
 	 */
 	bool IsOwnTransaction() const;
 
@@ -322,7 +322,7 @@ class DeinstallManager : boost::noncopyable
 {
 public:
 	/**
-	 * Definiert die möglichen Zustände des Managers
+	 * Definiert die mÃ¶glichen ZustÃ¤nde des Managers
 	 */
 	enum DeinstallState
 	{
@@ -334,7 +334,7 @@ public:
 	~DeinstallManager(void);
 
 	/**
-	 * Startet im Hintergrund das Sammeln der zu löschenden Dateien für die übergebenen Packages
+	 * Startet im Hintergrund das Sammeln der zu lÃ¶schenden Dateien fÃ¼r die Ã¼bergebenen Packages
 	 */
 	void StartGetFilesToDelete();
 	/**
@@ -344,11 +344,11 @@ public:
 	/**
 	 * Startet im Hintergrund die Deinstallation der Packages anhand einer benutzerdefinierten Datei-Auswahl
 	 * @param packagesAndFilesToDelete	Keys: IDs der Packages die deinstalliert werden sollen
-	 *									Values: Vektor mit Dateinamen (relativ zum L3D-Verzeichnis) die für jedes Package tatsächlich von der Disk gelöscht werden sollen
+	 *									Values: Vektor mit Dateinamen (relativ zum L3D-Verzeichnis) die fÃ¼r jedes Package tatsÃ¤chlich von der Disk gelÃ¶scht werden sollen
 	 */
 	void StartDeinstall(std::shared_ptr<std::map<int, std::vector<std::wstring>>> packagesAndFilesToDelete);
 	/**
-	 * Liefert zurück ob der aktuelle Hintergrund Task abgeschlossen ist
+	 * Liefert zurÃ¼ck ob der aktuelle Hintergrund Task abgeschlossen ist
 	 */
 	bool IsFinished();
 	/**
@@ -363,7 +363,7 @@ public:
 	 * Liefert Informationen zum aktuellen Fortschritt beim aktuellen Deinstallations-Schritt
 	 * @param cntProcessedFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der bereits verarbeiteten Dateien hineingeschrieben
 	 * @param cntTotalFiles [optional] Wenn nicht nullptr, wird hier die Anzahl der insgesamt zu verarbeiteten Dateien hineingeschrieben
-	 * @return Fortschritt in Prozent (ungefährer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
+	 * @return Fortschritt in Prozent (ungefÃ¤hrer Wert, nicht darauf verlassen, dass dieser am Ende 100 ist!)
 	 */
 	size_t GetProgress(size_t *cntProcessedFiles, size_t *cntTotalFiles);
 
@@ -378,7 +378,7 @@ public:
 	void CancelDeinstall();
 
 	/**
-	 * Bricht alle laufenden Operationen ab, und wartet bis sämtliche BG-Tasks beendet sind
+	 * Bricht alle laufenden Operationen ab, und wartet bis sÃ¤mtliche BG-Tasks beendet sind
 	 */
 	void CancelAndWaitForTasks();
 
@@ -388,30 +388,30 @@ public:
 	DeinstallException* GetDeinstallError() { return deinstallException.get(); }
 
 	/**
-	 * Holt die gelöschten Dateien ab<br>
-	 * Aufruf nur gültig, falls IsFinished true und zuvor StartDeinstall() (ohne Argumente) aufgerufen wurde<br>
+	 * Holt die gelÃ¶schten Dateien ab<br>
+	 * Aufruf nur gÃ¼ltig, falls IsFinished true und zuvor StartDeinstall() (ohne Argumente) aufgerufen wurde<br>
 	 * Diese Methode kann nur einmal aufgerufen werden!
-	 * @returns Map mit gelöschten Dateien. Key = PackageID, Value = Vektor mit Dateien die für dieses package gelöscht wurden
+	 * @returns Map mit gelÃ¶schten Dateien. Key = PackageID, Value = Vektor mit Dateien die fÃ¼r dieses package gelÃ¶scht wurden
 	 */
 	std::shared_ptr<std::map<int, std::vector<std::wstring>>> GetDeinstalledFiles();
 
 	/**
-	 * Holt die zu löschenden Dateien ab<br>
-	 * Aufruf nur gültig, falls IsFinished true und zuvor StartGetFilesToDelete() aufgerufen wurde<br>
+	 * Holt die zu lÃ¶schenden Dateien ab<br>
+	 * Aufruf nur gÃ¼ltig, falls IsFinished true und zuvor StartGetFilesToDelete() aufgerufen wurde<br>
 	 * Diese Methode kann nur einmal aufgerufen werden!
-	 * @returns Map mit zu löschenden Dateien. Key = PackageID, Value = Vektor mit Dateien die für dieses package gelöscht werden sollten
+	 * @returns Map mit zu lÃ¶schenden Dateien. Key = PackageID, Value = Vektor mit Dateien die fÃ¼r dieses package gelÃ¶scht werden sollten
 	 */
 	std::shared_ptr<std::map<int, std::vector<FileToDeinstall>>> GetFilesToDeinstall();
 
 	/**
-	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos möglich ist
+	 * Bestimmt ob der Agent Transaktionen benutzt und deshalb ein Abbruch problemlos mÃ¶glich ist
 	 * @return true falls Transaktionen eingesetzt werden
 	 */
 	bool IsUsingTransactions() const;
 
 	/**
-	 * Falls undo auf true gesetzt wird, wird eine Installation rückgängig gemacht<br>
-	 * d.h. es wird kein Backup der deinstallierten Files erstellt, sondern das Backup von der Installation zurückgespielt
+	 * Falls undo auf true gesetzt wird, wird eine Installation rÃ¼ckgÃ¤ngig gemacht<br>
+	 * d.h. es wird kein Backup der deinstallierten Files erstellt, sondern das Backup von der Installation zurÃ¼ckgespielt
 	 */
 	void SetUndoInstallation(bool undo) { this->undoInstallation = undo; }
 

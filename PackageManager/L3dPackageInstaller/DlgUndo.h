@@ -19,7 +19,7 @@ namespace ui
 {
 
 /**
- * Dialog fürs Rückgängigmachen von Installationen
+ * Dialog fÃ¼rs RÃ¼ckgÃ¤ngigmachen von Installationen
  */
 class DlgUndo :
 		public BackgroundOperatorDlg, public ResizeableDialog

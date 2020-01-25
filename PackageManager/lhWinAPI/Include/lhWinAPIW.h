@@ -20,7 +20,7 @@ namespace lhWinAPI
 	 std::wstring GetWindowString(HWND hwnd);
 
 	//****************************************
-	//* Fügt Element zu Treeview hwndTV hinzu
+	//* FÃ¼gt Element zu Treeview hwndTV hinzu
 	//****************************************
 	 HTREEITEM AddItemToTree(HWND hwndTV, std::basic_string<wchar_t> nameItem, int nLevel, LPARAM lParam, int image);
 
@@ -52,20 +52,20 @@ namespace lhWinAPI
 	bool GetFileVersion(std::wstring& sFileName, std::wstring& dest, bool* isPreRelease);
 
 	//**************************************************************************************************
-	// Konvertiert den TCHAR-String src in den char-String dest; Liefert Anzahl umgewandelter Zeichen zurück
+	// Konvertiert den TCHAR-String src in den char-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck
 	int TcharToChar(std::string& dest, const std::wstring& src);
 	//**************************************************************************************************
-	// Konvertiert den Char-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+	// Konvertiert den Char-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 	int CharToTchar(std::wstring& dest, const std::string& src);
 	//**************************************************************************************************
-	// Konvertiert den Wchar-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+	// Konvertiert den Wchar-String src in den TCHAR-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 	int WcharToTchar(std::wstring& dest, const std::wstring& src);
 	//**************************************************************************************************
-	// Konvertiert den Tchar-String src in den Wchar-String dest; Liefert Anzahl umgewandelter Zeichen zurück	
+	// Konvertiert den Tchar-String src in den Wchar-String dest; Liefert Anzahl umgewandelter Zeichen zurÃ¼ck	
 	int TcharToWchar(std::wstring& dest, const std::wstring& src);
 
 	//****************************************************************************
-	// Stellt einfach Funktionen fürs Laden von Strings auf Resource zur Verfügung
+	// Stellt einfach Funktionen fÃ¼rs Laden von Strings auf Resource zur VerfÃ¼gung
 	class StringTable
 	{
 	public:

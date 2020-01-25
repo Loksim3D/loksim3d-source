@@ -10,7 +10,7 @@ namespace ui
 {
 
 /**
- * About / Über Dialog
+ * About / Ãœber Dialog
  */
 class DlgAbout :
 	public Dialog

@@ -23,32 +23,32 @@ namespace lhWinAPI
 								   const char *psDefaultChar, LPBOOL lpUsedDefaultChar);
 
 	//**********************************************************************
-	// Class MenuDis üernimmt enablen und grayen von mehreren Menupunkten 	
+	// Class MenuDis Ã¼ernimmt enablen und grayen von mehreren Menupunkten 	
 	class MenuDis
 	{
 	public:
 		//*********************************************
-		//* Erstellt eine Class MenuDis fürs Menü menu 
+		//* Erstellt eine Class MenuDis fÃ¼rs MenÃ¼ menu 
 		//*********************************************
 		MenuDis(HMENU menu = 0);
 		//***************************************
-		// Grayed alle gesetzten Menüpunkte aus 
+		// Grayed alle gesetzten MenÃ¼punkte aus 
 		//***************************************
 		void Disable() const;
 		//***********************************
-		// enabled alle gesetzten Menüpunkte 
+		// enabled alle gesetzten MenÃ¼punkte 
 		//***********************************
 		void Enable() const;
 		//*******************************
-		// Setzt das zu verwaltende Menü 
+		// Setzt das zu verwaltende MenÃ¼ 
 		//*******************************
 		void SetMenu(HMENU hMenu);
 		//********************************************
-		// Fügt einen zu verwaltenden Menüpunkt hinzu 
+		// FÃ¼gt einen zu verwaltenden MenÃ¼punkt hinzu 
 		//********************************************
 		void AddPoint(int point);
 		//************************
-		// Löscht alle Menüpunkte 
+		// LÃ¶scht alle MenÃ¼punkte 
 		//************************
 		void Clear();
 	private:

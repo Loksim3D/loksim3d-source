@@ -15,7 +15,7 @@ namespace l3d
 				DBDependencyEntry(int fileId, int packageId, bool installed);
 
 				// Konstruiert aus Daten des Stmt
-				// Spalten müssen in folgender Reihenfolge sein:
+				// Spalten mÃ¼ssen in folgender Reihenfolge sein:
 				// FileID, PackageID, Installed
 				explicit DBDependencyEntry(Kompex::SQLiteStatement& stmt);
 

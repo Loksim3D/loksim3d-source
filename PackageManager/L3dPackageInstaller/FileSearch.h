@@ -22,7 +22,7 @@ namespace l3d
 
 
 			/**
-			* Ermöglicht Suche nach Dateien in DB
+			* ErmÃ¶glicht Suche nach Dateien in DB
 			*/
 			class FileSearch
 			{

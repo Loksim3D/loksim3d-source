@@ -23,7 +23,7 @@ namespace files
 using namespace std;
 
 /**
-* Lädt die Basisdaten die bei allen Dateien gleich sind
+* LÃ¤dt die Basisdaten die bei allen Dateien gleich sind
 */
 void BaseL3dFile::LoadBaseFileData(const common::L3dPath& filePath)
 {

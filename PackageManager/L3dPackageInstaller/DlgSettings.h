@@ -9,7 +9,7 @@ namespace ui
 {
 
 /**
- * Dialog für Einstellungen
+ * Dialog fÃ¼r Einstellungen
  */
 class DlgSettings :
 	public Dialog

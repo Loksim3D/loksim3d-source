@@ -67,7 +67,7 @@ private:
 	std::shared_ptr<std::map<int, std::vector<std::wstring>>> deinstalledFiles;
 
 	/**
-	 * Variablen in der die ausgewählten dateien gespeichert werden pro package
+	 * Variablen in der die ausgewÃ¤hlten dateien gespeichert werden pro package
 	 */
 	std::shared_ptr<std::map<int, std::vector<std::wstring>>> selectedFiles;
 

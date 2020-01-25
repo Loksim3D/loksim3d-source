@@ -11,8 +11,8 @@ namespace db
 {
 
 /**
- * Kapselt wichtige Informationen über ein installiertes bzw deinstalliertes Package welche in der DB gespeichert sind<br>
- * Info: Es wird inzwischen in der DB nicht mehr gespeichert, welche Packages deinstalliert wurden => diese Klasse ist eigentlich nicht mehr in dieser Art notwendig aber sie erfüllt immer noch ihren Zweck
+ * Kapselt wichtige Informationen Ã¼ber ein installiertes bzw deinstalliertes Package welche in der DB gespeichert sind<br>
+ * Info: Es wird inzwischen in der DB nicht mehr gespeichert, welche Packages deinstalliert wurden => diese Klasse ist eigentlich nicht mehr in dieser Art notwendig aber sie erfÃ¼llt immer noch ihren Zweck
  * (IsInstalledPkg()) wird in der Praxis immer true liefern)
  */
 class DBUnOrInstallPkgInfo
@@ -26,12 +26,12 @@ public:
 	DBUnOrInstallPkgInfo(Kompex::SQLiteStatement& dbStmt);
 
 	/**
-	 * Liefert true falls dieses Objekt ein installiertes Package repräsentiert und false falls es ein deinstalliertes Package ist
+	 * Liefert true falls dieses Objekt ein installiertes Package reprÃ¤sentiert und false falls es ein deinstalliertes Package ist
 	 */
 	bool IsInstalledPkg() const { return isInstalledPkg; }
 	int GetId() const { return id; }
 	/**
-	 * Liefert vollständigen Dateinamen des Package
+	 * Liefert vollstÃ¤ndigen Dateinamen des Package
 	 */
 	const std::wstring& GetPackagePath() const { return filepath; }
 	const time_t& GetInstalledTimestamp() const { return installedTimestamp; }

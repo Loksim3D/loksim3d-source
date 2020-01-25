@@ -40,7 +40,7 @@ struct TvItemData
 };
 
 /**
- * Dialog welcher bei Packageinstallationen die zu installierenden Dateien anzeigt bzw Auswahl ermˆglicht welche Dateien installiert werden sollen
+ * Dialog welcher bei Packageinstallationen die zu installierenden Dateien anzeigt bzw Auswahl erm√∂glicht welche Dateien installiert werden sollen
  */
 class DlgInstallSelectFiles :
 	public Dialog
@@ -65,12 +65,12 @@ public:
 
 	/**
 	 * Setzt den Pfad zum L3D-Verzeichnis:
-	 * wird benˆtigt um installierte Dateien ˆffnen zu kˆnnen
+	 * wird ben√∂tigt um installierte Dateien √∂ffnen zu k√∂nnen
 	 */
 	void SetL3dPath(const boost::filesystem::path& l3dPath) { this->l3dPath = l3dPath; }
 
 	/**
-	 * Setzt eine UserSelection welche die angezeigten Dateien einschr‰nkt
+	 * Setzt eine UserSelection welche die angezeigten Dateien einschr√§nkt
 	 */
 	void SetDisplayOnlyUserSelection(const std::shared_ptr<std::map<std::wstring, insthelper::UserSelection>>& userSel) { selectedFiles = userSel; onlyDisplayUserSelection = true; }
 
@@ -97,7 +97,7 @@ private:
 	std::vector<std::unique_ptr<TvItemData>> vecTvItemData;
 
 	/**
-	 * Variablen in der die ausgew‰hlten dateien gespeichert werden pro package
+	 * Variablen in der die ausgew√§hlten dateien gespeichert werden pro package
 	 */
 	std::shared_ptr<std::map<std::wstring, insthelper::UserSelection>> selectedFiles;
 
@@ -107,7 +107,7 @@ private:
 
 	boost::filesystem::path l3dPath;
 
-	// Falls true werden nur jene Elemente in die TV eingef¸gt, die in 'selectedFiles' ausgew‰hlt sind
+	// Falls true werden nur jene Elemente in die TV eingef√ºgt, die in 'selectedFiles' ausgew√§hlt sind
 	bool onlyDisplayUserSelection;
 
 	std::shared_ptr<std::vector<std::pair<db::DBPackageEntry, std::vector<std::wstring>>>> deinstalledFiles;

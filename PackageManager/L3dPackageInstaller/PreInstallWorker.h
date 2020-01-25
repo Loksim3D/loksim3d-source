@@ -55,14 +55,14 @@ public:
 	inline const std::wstring& GetReadme() const { return packageInfo.readme; }
 
 	/**
-	 * Liefert vector von zu löschenden Dateien (DeleteFiles.txt)
-	 * @return Liste von zu löschenden Dateien
+	 * Liefert vector von zu lÃ¶schenden Dateien (DeleteFiles.txt)
+	 * @return Liste von zu lÃ¶schenden Dateien
 	 */
 	inline const std::vector<std::wstring>& GetFilesToDelete() const { return filesToDelete; }
 	
 	/**
-	 * Liefert set von zu löschenden Packages
-	 * @return Set von zu löschenden Packages
+	 * Liefert set von zu lÃ¶schenden Packages
+	 * @return Set von zu lÃ¶schenden Packages
 	 */
 	inline const std::set<db::DBPackageEntry>& GetPackagesToDeinstall() const { return packagesToDeinstall; }
 

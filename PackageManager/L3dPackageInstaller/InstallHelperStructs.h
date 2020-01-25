@@ -16,7 +16,7 @@ namespace insthelper
 {
 
 /**
- * Auswahl von Benutzer welche Dateien installiert und welche gelöscht werden sollen
+ * Auswahl von Benutzer welche Dateien installiert und welche gelÃ¶scht werden sollen
  */
 struct UserSelection
 {
@@ -26,7 +26,7 @@ struct UserSelection
 };
 
 /**
- * Informationen über Datei welche installiert wird
+ * Informationen Ã¼ber Datei welche installiert wird
  */
 struct FileInstallInfo
 {
@@ -81,7 +81,7 @@ bool operator<(const FileInstallInfo& i1, const FileInstallInfo& i2);
 
 
 /**
- * Struct die Informationen über Installation kapselt
+ * Struct die Informationen Ã¼ber Installation kapselt
  */
 struct InstallInformation
 {

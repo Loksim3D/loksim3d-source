@@ -83,8 +83,8 @@ public:
 	LONG RegDeleteKey(HKEY hKey, LPCTSTR lpSubKey);
 	LONG RegOpenKeyEx(HKEY hKey, LPCTSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult);
 
-	// Prüft ob TxFs in Verzeichnis 'path' eingesetzt werden kann
-	// Aktiviert bzw. deaktiviert TxFs abhängig von Ergebnis
+	// PrÃ¼ft ob TxFs in Verzeichnis 'path' eingesetzt werden kann
+	// Aktiviert bzw. deaktiviert TxFs abhÃ¤ngig von Ergebnis
 	// liefert true falls txfs verwendet werden kann, ansonsten false
 	static bool TestIfTxFsAvailableInDir(LPCTSTR path);
 

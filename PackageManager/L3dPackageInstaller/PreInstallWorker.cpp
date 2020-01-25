@@ -45,8 +45,8 @@ PreInstallWorker::~PreInstallWorker(void)
 {
 	for (auto pkg = containedPackages.cbegin(); pkg != containedPackages.cend(); ++pkg)
 	{
-		// ursprüngliche boost variante eventuell nicht so gut, weil remove vermutlich exception wirft falls datei noch von virenscanner benutzt
-		// windows deletefile löscht die datei in so einem fall einfach später
+		// ursprÃ¼ngliche boost variante eventuell nicht so gut, weil remove vermutlich exception wirft falls datei noch von virenscanner benutzt
+		// windows deletefile lÃ¶scht die datei in so einem fall einfach spÃ¤ter
 		if (!pkg->packageName.empty())
 		{
 			DeleteFile(pkg->packageName.c_str());
@@ -57,8 +57,8 @@ PreInstallWorker::~PreInstallWorker(void)
 			boost::filesystem::remove(pkg->packageName);
 		} catch(...)
 		{
-			std::wcerr << L"PreInstallWorker::~PreInstallWorker - löschen von " << pkg->packageName << L" fehlgeschlagen" << endl;
-			// Temp Datei kann nicht gelöscht werden => sollte nicht sein, aber auch nicht übermäßig tragisch
+			std::wcerr << L"PreInstallWorker::~PreInstallWorker - lÃ¶schen von " << pkg->packageName << L" fehlgeschlagen" << endl;
+			// Temp Datei kann nicht gelÃ¶scht werden => sollte nicht sein, aber auch nicht Ã¼bermÃ¤ÃŸig tragisch
 		}
 		*/
 	}

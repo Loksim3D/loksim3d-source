@@ -9,7 +9,7 @@
 #include "OpenFileDlg.h"
 
 /**
- * Datei-Öffnen Dialog im Windows XP Style
+ * Datei-Ã–ffnen Dialog im Windows XP Style
  */
 class XpOpenFileDlg : public OpenFileDlg
 {

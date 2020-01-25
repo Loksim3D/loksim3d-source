@@ -317,7 +317,7 @@ void InstallPkgDBAgent::PrepareDbBeforeInstall(RootPackageInfo& rootPkgInfo)
 			stmtOther->FreeQuery();
 
 			if (updateBackupDir) {
-				// Backup-Verzeichnis ist leer => Wir müssen BackupDir jz einfügen
+				// Backup-Verzeichnis ist leer => Wir mÃ¼ssen BackupDir jz einfÃ¼gen
 				stmtOther->Sql("UPDATE Packages SET BackupDirectory=@dir WHERE ID=@id");
 				stmtOther->BindString16(1, l3d::packageinstaller::fs::AbsoluteToLoksimRelativePath(rootPkgInfo.backupDirectory, l3dDir).c_str());
 				stmtOther->BindInt(2, rootPkgInfo.dbId);
