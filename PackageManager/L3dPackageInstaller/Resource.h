@@ -172,3 +172,4 @@
 #define IDS_NO                                  40068
 #define IDS_EXPORTLISTTIMEPKG                   40069
 #define IDS_EXPORTLISTTIMEFS                    40070
+#define IDC_USE_TRANSACTIONS					40071

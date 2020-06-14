@@ -44,7 +44,7 @@ public:
 		InstallPreparing, InstallRunning, InstallPassOneFinished, InstallPassTwoRunning, InstallSuccessfullyFinished, InstallErrorOccurred, InstallCancelled
 	};
 public:
-	InstallManager(const std::wstring& loksimPath);
+	InstallManager(const std::wstring& loksimPath, bool disableTransactions = false);
 	~InstallManager(void);
 
 	/**

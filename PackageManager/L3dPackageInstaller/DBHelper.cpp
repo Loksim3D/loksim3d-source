@@ -40,6 +40,8 @@ namespace packageinstaller
 		const std::wstring DBHelper::PREF_DEINSTALL_ALWAYS_ASK = L"DEINSTALL_ALWAYS_ASK";
 		const std::wstring DBHelper::PREF_ALLOW_UNDO = L"DEINSTALL_ALLOW_UNDO";
 
+		const std::wstring DBHelper::PREF_DISABLE_TRANSACTIONS = L"DISABLE_TRANSACTIONS";
+
 		DBHelper::DBHelper(void) : newDbCreated(false)
 		{
 		}

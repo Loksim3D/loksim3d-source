@@ -31,7 +31,8 @@ namespace l3d
 		using namespace Kompex;
 		using namespace l3d::packageinstaller::fs;
 
-		InstallManager::InstallManager(const std::wstring& loksimPath) : 
+		InstallManager::InstallManager(const std::wstring& loksimPath, bool disableTransactions) :
+			transactFs(NULL, 0, NULL, NULL, !disableTransactions),
 			l3dPath(loksimPath), replaceOnlyOlder(true), alwaysAskBeforeOverwrite(false), installState(InstallPreparing), cntTotalFiles(0), cancelled(false), dbAgent(loksimPath), installInfoLock()
 		{
 			usedTransactions = transactFs.UseTransactedFunctions();

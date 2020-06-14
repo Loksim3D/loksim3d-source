@@ -94,6 +94,7 @@ public:
 	static const std::wstring PREF_INSTALL_ONLY_OLDER;
 	static const std::wstring PREF_DEINSTALL_ALWAYS_ASK;
 	static const std::wstring PREF_ALLOW_UNDO;
+	static const std::wstring PREF_DISABLE_TRANSACTIONS;
 
 protected:
 	DBHelper(void);

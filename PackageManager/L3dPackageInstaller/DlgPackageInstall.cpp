@@ -28,10 +28,12 @@ using namespace std;
 using namespace db;
 
 DlgPackageInstall::DlgPackageInstall(const std::wstring& l3dPath, const std::vector<std::wstring>& packagesToInstall) : 
-	curListSel(-1), installationStarted(false), installManager(new InstallManager(l3dPath)), hListPackages(nullptr), 
+	curListSel(-1), installationStarted(false), hListPackages(nullptr), 
 	dropTarget{ { L".zip", L".l3dpack" } }, argPackagesToInstall(packagesToInstall)
 
 {
+	bool disableTransactions = DBHelper::instance().GetPreferenceValue(DBHelper::PREF_DISABLE_TRANSACTIONS, false);
+	installManager = std::make_unique<InstallManager>(l3dPath, disableTransactions);
 	dropTarget.SetOnDropNotify(this);
 }
 

@@ -50,6 +50,9 @@ INT_PTR DlgSettings::OnInitDlg(WPARAM wParam, LPARAM lParam)
 	SendDlgItemMessage(GetHwnd(), IDC_SET_ALLOW_UNDO, BM_SETCHECK, 
 		DBHelper::instance().GetPreferenceValue(DBHelper::PREF_ALLOW_UNDO, false) ? BST_CHECKED : BST_UNCHECKED, 0);
 
+	SendDlgItemMessage(GetHwnd(), IDC_USE_TRANSACTIONS, BM_SETCHECK,
+		DBHelper::instance().GetPreferenceValue(DBHelper::PREF_DISABLE_TRANSACTIONS, false) ? BST_UNCHECKED : BST_CHECKED, 0);
+
 	HWND cb = GetDlgItem(GetHwnd(), IDC_COMBOLANG);
 	ComboBox_AddString(cb, strTab.Load(IDS_LANG_DE));
 	ComboBox_AddString(cb, strTab.Load(IDS_LANG_EN));
@@ -89,6 +92,9 @@ INT_PTR DlgSettings::OnCommand(WPARAM wParam, LPARAM lParam)
 
 			DBHelper::instance().SetPreferenceValue(DBHelper::PREF_ALLOW_UNDO,  
 				Button_GetCheck(GetDlgItem(GetHwnd(), IDC_SET_ALLOW_UNDO)) == BST_CHECKED);
+
+			DBHelper::instance().SetPreferenceValue(DBHelper::PREF_DISABLE_TRANSACTIONS,
+				Button_GetCheck(GetDlgItem(GetHwnd(), IDC_USE_TRANSACTIONS)) == BST_UNCHECKED);
 
 			int sel = ComboBox_GetCurSel(GetDlgItem(GetHwnd(), IDC_COMBOLANG));
 			wchar_t *lang = nullptr;
