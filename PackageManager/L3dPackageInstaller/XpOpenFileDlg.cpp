@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "XpOpenFileDlg.h"
 
+#include <algorithm>
 #include <memory>
 #include <sstream>
 
