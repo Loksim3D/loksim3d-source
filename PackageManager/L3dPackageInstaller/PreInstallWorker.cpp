@@ -1,5 +1,22 @@
 #include "StdAfx.h"
 
+#include <regex>
+#include <memory>
+#include <iostream>
+
+#include <Windows.h>
+
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
+
+#include <lhTextFile.h>
+#include <lhFileSystemUtils.h>
+#include <lhException.h>
+#include <unique_handle.h>
+
+#define SHA1_NO_WIPE_VARIABLES
+#include "sha/SHA1.h"
+
 #include "PreInstallWorker.h"
 #include "PackageFileNameUtils.h"
 #include "PackageSearch.h"
@@ -7,25 +24,10 @@
 #include "Zip/unzip.h"
 #include "InstallerException.h"
 #include "L3dPackageInfo.h"
+#include "VersionHelper.h"
 
 #include "L3dConsts.h"
 
-#define SHA1_NO_WIPE_VARIABLES
-#include "sha/SHA1.h"
-
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
-
-
-#include <lhTextFile.h>
-#include <lhFileSystemUtils.h>
-#include <lhException.h>
-#include <unique_handle.h>
-#include <regex>
-#include <memory>
-#include <iostream>
-
-#include <Windows.h>
 
 namespace l3d
 {
@@ -35,7 +37,7 @@ namespace packageinstaller
 using namespace std;
 using namespace Concurrency;
 
-PreInstallWorker::PreInstallWorker(const wstring& packageFileName)
+PreInstallWorker::PreInstallWorker(const wstring& packageFileName) : l3dVersionCode(GetLoksimVersionCodeFromLoksimExe())
 {
 	packageInfo.packageName = packageFileName;
 }
@@ -225,7 +227,7 @@ L3dPackageInfo PreInstallWorker::DoInnerWork(PackageInfo& curPkgInfo)
 				}
 				boost::filesystem::remove(tempName);
 
-				if (versCode > LOKSIM3D_VERSION_CODE)
+				if (versCode > l3dVersionCode)
 				{
 					InstallerErrorInformation errInfo(InstallerErrorInformation::InstallErrorPkgVersionNewer, curPkgInfo, L"", curPkgInfo.packageName);
 					throw InstallerException(errInfo, "Package is newer than installed Loksim Version");

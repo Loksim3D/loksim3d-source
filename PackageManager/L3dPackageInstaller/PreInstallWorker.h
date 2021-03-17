@@ -87,6 +87,8 @@ private:
 
 	std::set<std::wstring> packageGuidsToDeinstall;
 
+	int l3dVersionCode;
+
 private:
 	PreInstallWorker(const PreInstallWorker&);
 	PreInstallWorker& operator=(const PreInstallWorker&);

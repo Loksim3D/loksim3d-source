@@ -185,7 +185,7 @@ void DBHelper::Update13To14()
 {
 	{
 		boost::system::error_code ec;
-		boost::filesystem::copy_file(dbPath, dbPath.wstring() + L".bak", boost::filesystem::copy_option::overwrite_if_exists, ec);
+		boost::filesystem::copy_file(dbPath, dbPath.wstring() + L".bak", boost::filesystem::copy_options::overwrite_existing, ec);
 	}
 
 	SQLiteStatement stmt(&db);
