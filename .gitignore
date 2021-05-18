@@ -185,6 +185,7 @@ PackageManager/lib/lhStd.lib
 PackageManager/lib/lhWinAPI.lib
 PackageManager/libD/lhStd.lib
 PackageManager/libD/lhWinAPI.lib
+PackageManager/libD/
 
 Libs/CrashRpt/bin_x64/
 Libs/CrashRpt/lib_x64/
