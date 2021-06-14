@@ -38,7 +38,7 @@ boost::filesystem::path GetDataDirPathFromPathsIni(const boost::filesystem::path
 	    CreateFile((l3dPath / L"\\paths.ini").c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL));
 	std::array<char, 2048> buf;
 	DWORD bytesRead = 0;
-	if (ReadFile(hIniFile.get(), buf.data(), buf.size() - 1, &bytesRead, nullptr)) {
+	if (ReadFile(hIniFile.get(), buf.data(), static_cast<DWORD>(buf.size() - 1), &bytesRead, nullptr)) {
 		buf[bytesRead] = buf[bytesRead + 1] = '\0';
 		std::wstringstream strStream;
 		std::wstring strData;
