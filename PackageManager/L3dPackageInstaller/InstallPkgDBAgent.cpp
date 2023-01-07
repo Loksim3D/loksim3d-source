@@ -3,6 +3,7 @@
 #include "DBHelper.h"
 
 #include <memory>
+#include <fstream>
 
 #include <KompexSQLiteDatabase.h>
 #include <KompexSQLiteStatement.h>
