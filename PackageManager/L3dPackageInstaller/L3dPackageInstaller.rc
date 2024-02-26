@@ -56,7 +56,7 @@ FONT 8, "MS Shell Dlg", 0, 0, 1
 {
     ICON            IDI_LOKSIM3D, IDC_STATIC, 14, 14, 21, 20, SS_ICON, WS_EX_LEFT
     LTEXT           "Package Manager", IDC_STATIC, 91, 14, 60, 8, SS_LEFT | SS_NOPREFIX, WS_EX_LEFT
-    LTEXT           "Copyright (C) 2021", IDC_STATIC, 57, 27, 88, 8, SS_LEFT, WS_EX_LEFT
+    LTEXT           "Copyright (C) 2023", IDC_STATIC, 57, 27, 88, 8, SS_LEFT, WS_EX_LEFT
     PUSHBUTTON      "OK", IDOK, 102, 107, 50, 14, 0, WS_EX_LEFT
     LTEXT           "Lukas Haselsteiner, Uwe Klein, Martin Mory", IDC_STATIC, 7, 43, 140, 17, SS_LEFT, WS_EX_LEFT
     LTEXT           "Version", IDC_STATIC, 7, 62, 24, 8, SS_LEFT, WS_EX_LEFT
@@ -669,8 +669,8 @@ IDI_LOKSIM3D       ICON           "L3dPackageInstaller.ico"
 //
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 1 VERSIONINFO
-FILEVERSION 2,11,0,30
-PRODUCTVERSION 2,11,0,30
+FILEVERSION 2,11,0,37
+PRODUCTVERSION 2,11,0,37
     FILEOS          VOS_UNKNOWN
     FILETYPE        VFT_APP
     FILESUBTYPE     VFT2_UNKNOWN
@@ -683,21 +683,21 @@ PRODUCTVERSION 2,11,0,30
         {
             VALUE "CompanyName", "Loksim3D"
             VALUE "FileDescription", "Package Manager for Loksim3D"
-            VALUE "FileVersion", "2.11.0.30"
+            VALUE "FileVersion", "2.11.0.37"
             VALUE "InternalName", "PackageManager.exe"
             VALUE "OriginalFilename", "PackageManager.exe"
             VALUE "ProductName", "Loksim3D"
-            VALUE "ProductVersion", "2.11.0.30"
+            VALUE "ProductVersion", "2.11.0.37"
         }
         BLOCK "0C07FDE9"
         {
             VALUE "CompanyName", "Loksim3D"
             VALUE "FileDescription", "Package Manager für Loksim3D"
-            VALUE "FileVersion", "2.11.0.30"
+            VALUE "FileVersion", "2.11.0.37"
             VALUE "InternalName", "PackageManager.exe"
             VALUE "OriginalFilename", "PackageManager.exe"
             VALUE "ProductName", "Loksim3D"
-            VALUE "ProductVersion", "2.11.0.30"
+            VALUE "ProductVersion", "2.11.0.37"
         }
     }
     BLOCK "VarFileInfo"
